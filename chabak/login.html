@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Cambak 로그인</title>
+
+    <style>
+        /* 기본 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+            background-color: #ffffff;
+            font-family:
+                Pretendard,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Apple SD Gothic Neo",
+                "Noto Sans KR",
+                Arial,
+                sans-serif;
+        }
+
+        input,
+        button,
+        a {
+            font-family: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            border: 0;
+            cursor: pointer;
+        }
+
+        /* 모바일 앱 전체 화면 */
+        .app {
+            position: relative;
+            width: 100%;
+            height: 812px;
+            min-height: 812px;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        /* 로그인 전체 영역 */
+        .login-wrap {
+            width: 100%;
+            height: 100%;
+            padding: 0 24px;
+        }
+
+        /* 로고 영역 */
+        .logo-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding-top: 101px;
+        }
+
+        .logo-image {
+            display: block;
+            width: 129px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* 로그인 입력 영역 */
+        .login-form {
+            margin-top: 45px;
+            width: 100%;
+        }
+
+        .input-group {
+            width: 100%;
+        }
+
+        .input-group + .input-group {
+            margin-top: 8px;
+        }
+
+        .login-input {
+            width: 100%;
+            height: 59px;
+            padding: 0 1px;
+            color: #334e8b;
+            background-color: transparent;
+            border: 0;
+            border-bottom: 1px solid #d5d5d5;
+            border-radius: 0;
+            outline: none;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .login-input::placeholder {
+            color: #4566ad;
+            opacity: 1;
+        }
+
+        .login-input:focus {
+            border-bottom-color: #5272ba;
+        }
+
+        /* 버튼 영역 */
+        .button-area {
+            margin-top: 32px;
+            width: 100%;
+        }
+
+        .login-button,
+        .join-button {
+            display: block;
+            width: 100%;
+            height: 49px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .login-button {
+            color: #ffffff;
+            background-color: #5575bb;
+        }
+
+        .login-button:active {
+            background-color: #4968ad;
+        }
+
+        .join-button {
+            margin-top: 8px;
+            color: #5271b8;
+            background-color: #ffffff;
+            border: 1px solid #5575bb;
+        }
+
+        .join-button:active {
+            background-color: #f4f6fb;
+        }
+
+        /* 로그인 보조 메뉴 */
+        .account-menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .account-menu a {
+            color: #48639c;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+        }
+
+        .menu-line {
+            display: block;
+            width: 1px;
+            height: 13px;
+            margin: 0 15px;
+            background-color: #9dadcc;
+        }
+
+        /* 간편 로그인 제목 */
+        .simple-login-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 34px;
+            width: 100%;
+        }
+
+        .simple-login-title::before,
+        .simple-login-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: #8fa6d4;
+        }
+
+        .simple-login-title span {
+            margin: 0 14px;
+            color: #506ca8;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: -0.4px;
+            white-space: nowrap;
+        }
+
+        /* SNS 로그인 아이콘 */
+        .social-login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 24px;
+            width: 100%;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            padding: 0;
+            background-color: transparent;
+        }
+
+        .social-icon {
+            display: block;
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+
+        <main class="login-wrap">
+
+            <!-- 로고 -->
+            <div class="logo-area">
+                <img
+                    src="./images/logo.svg"
+                    alt="cambak"
+                    class="logo-image"
+                >
+            </div>
+
+            <!-- 로그인 폼 -->
+            <form class="login-form">
+
+                <div class="input-group">
+                    <input
+                        type="text"
+                        class="login-input"
+                        placeholder="아이디"
+                        aria-label="아이디"
+                    >
+                </div>
+                <div class="input-group">
+                    <input
+                        type="password"
+                        class="login-input"
+                        placeholder="비밀번호"
+                        aria-label="비밀번호"
+                    >
+                </div>
+
+                <!-- 로그인 및 회원가입 -->
+                <div class="button-area">
+                    <button type="submit" class="login-button">
+                        로그인
+                    </button>
+
+                    <button type="button" class="join-button">
+                        회원가입
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- 아이디 및 비밀번호 찾기 -->
+            <nav class="account-menu">
+                <a href="#">아이디 찾기</a>
+                <span class="menu-line"></span>
+
+                <a href="#">비밀번호 찾기</a>
+                <span class="menu-line"></span>
+
+                <a href="#">둘러보기</a>
+            </nav>
+
+            <!-- 간편 로그인 -->
+            <div class="simple-login-title">
+                <span>간편로그인</span>
+            </div>
+
+            <!-- SNS 로그인 버튼 -->
+            <div class="social-login">
+
+                <button type="button" class="social-button" aria-label="카카오 로그인">
+                    <img
+                        src="./images/kakao.png"
+                        alt="카카오"
+                        class="social-icon"
+                    >
+                </button>
+
+                <button type="button" class="social-button" aria-label="네이버 로그인">
+                    <img
+                        src="./images/naver.png"
+                        alt="네이버"
+                        class="social-icon"
+                    >
+                </button>
+
+                <button type="button" class="social-button" aria-label="구글 로그인">
+                    <img
+                        src="./images/google.png"
+                        alt="구글"
+                        class="social-icon"
+                    >
+                </button>
+
+                <button type="button" class="social-button" aria-label="페이스북 로그인">
+                    <img
+                        src="./images/facebook.png"
+                        alt="페이스북"
+                        class="social-icon"
+                    >
+                </button>
+
+            </div>
+
+        </main>
+
+    </div>
+</body>
+</html>
