@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Q-Link 회원가입 정보입력</title>
+
+    <style>
+        /* =========================
+           기본 초기화
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            overflow-x: hidden;
+            font-family:
+                "SUIT",
+                "Pretendard",
+                -apple-system,
+                BlinkMacSystemFont,
+                "Apple SD Gothic Neo",
+                sans-serif;
+            background-color: #ffffff;
+            color: #273343;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            border: 0;
+            background: none;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        img {
+            display: block;
+        }
+
+        /* =========================
+           전체 화면
+        ========================= */
+        .signup-page {
+            position: relative;
+            width: 100%;
+            height: 100svh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background-color: #ffffff;
+            scrollbar-width: none;
+        }
+
+        .signup-page::-webkit-scrollbar {
+            display: none;
+        }
+
+        .signup-container {
+            width: 100%;
+            min-height: 100%;
+            padding: 48px 23px 32px;
+        }
+
+        /* =========================
+           상단 헤더
+        ========================= */
+        .signup-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 40px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 50%;
+            left: -8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            transform: translateY(-50%);
+        }
+
+        .back-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        .header-title {
+            color: #202936;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.4;
+            letter-spacing: -0.5px;
+        }
+
+        /* =========================
+           회원가입 단계
+        ========================= */
+        .signup-step {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            margin-top: 34px;
+        }
+
+        .step-item {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: center;
+            min-width: 0;
+        }
+
+        .step-circle {
+            width: 37px;
+            height: 37px;
+            object-fit: contain;
+        }
+
+        .step-name {
+            margin-top: 7px;
+            color: #333b48;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.3;
+            white-space: nowrap;
+            letter-spacing: -0.5px;
+        }
+
+        .step-item.active .step-name {
+            color: #4f8ef7;
+        }
+
+        .step-line {
+            flex: 1;
+            height: 1px;
+            margin-top: 18px;
+            background-color: #bcc3cc;
+        }
+
+        /* =========================
+           회원정보 입력 폼
+        ========================= */
+        .signup-form {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .input-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .input-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 48px;
+            border: 1px solid #b2b7bf;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .input-box:focus-within {
+            border-color: #5594f7;
+            box-shadow: 0 0 0 2px rgba(85, 148, 247, 0.1);
+        }
+
+        .field-icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            margin-left: 16px;
+            object-fit: contain;
+        }
+
+        .signup-input {
+            min-width: 0;
+            flex: 1;
+            height: 100%;
+            padding: 0 14px;
+            border: 0;
+            outline: 0;
+            background-color: transparent;
+            color: #273343;
+            font-size: 14px;
+            caret-color: #5594f7;
+        }
+
+        .signup-input::placeholder {
+            color: #8f959e;
+            opacity: 1;
+        }
+
+        /* 비밀번호 보기 버튼 */
+        .password-toggle {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .eye-icon {
+            width: 21px;
+            height: 21px;
+            object-fit: contain;
+        }
+
+        /* 휴대폰 번호 + 인증 버튼 */
+        .phone-row {
+            display: flex;
+            gap: 9px;
+            width: 100%;
+        }
+
+        .phone-input-box {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .verification-send-button {
+            flex-shrink: 0;
+            width: 126px;
+            height: 48px;
+            border: 1px solid #a3a9b2;
+            border-radius: 8px;
+            background-color: #ffffff;
+            color: #343d49;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .verification-send-button:disabled {
+            border-color: #d5d8dd;
+            background-color: #f3f4f6;
+            color: #a7adb5;
+            cursor: default;
+        }
+
+        /* 인증번호 타이머 */
+        .verification-timer {
+            flex-shrink: 0;
+            margin-right: 16px;
+            color: #363e49;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+        }
+
+        /* 입력 안내 문구 */
+        .form-message {
+            min-height: 18px;
+            margin-top: 9px;
+            color: #ff6464;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        /* =========================
+           하단 버튼
+        ========================= */
+        .button-area {
+            width: 100%;
+            margin-top: 80px;
+            padding-bottom: 24px;
+        }
+
+        .next-button,
+        .previous-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 49px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .next-button {
+            border: 0;
+            background-color: #5594f7;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .next-button:disabled {
+            background-color: #cbd5e5;
+            color: #ffffff;
+            cursor: default;
+        }
+
+        .previous-button {
+            margin-top: 15px;
+            border: 1px solid #79818d;
+            background-color: #ffffff;
+            color: #37414f;
+        }
+
+        /* 눌림 효과 */
+        .back-button:active,
+        .password-toggle:active,
+        .verification-send-button:not(:disabled):active,
+        .next-button:not(:disabled):active,
+        .previous-button:active {
+            opacity: 0.65;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="signup-page">
+
+        <div class="signup-container">
+
+            <!-- 상단 헤더 -->
+            <header class="signup-header">
+
+                <a
+                    href="./signup1.html"
+                    class="back-button"
+                    aria-label="약관동의 화면으로 돌아가기"
+                >
+                    <img
+                        src="./icons/Signupicons_prev.svg"
+                        alt="뒤로가기 아이콘"
+                        class="back-icon"
+                    >
+                </a>
+
+                <h1 class="header-title">
+                    회원가입
+                </h1>
+
+            </header>
+
+            <!-- 회원가입 단계 -->
+            <section
+                class="signup-step"
+                aria-label="회원가입 진행 단계"
+            >
+
+                <div class="step-item">
+
+                    <img
+                        src="./icons/Signup_1.svg"
+                        alt="회원가입 1단계 아이콘"
+                        class="step-circle"
+                    >
+
+                    <span class="step-name">
+                        약관동의
+                    </span>
+
+                </div>
+
+                <span class="step-line"></span>
+
+                <div class="step-item active">
+
+                    <img
+                        src="./icons/Signup_2(blue).svg"
+                        alt="회원가입 2단계 아이콘"
+                        class="step-circle"
+                    >
+
+                    <span class="step-name">
+                        정보입력
+                    </span>
+
+                </div>
+
+                <span class="step-line"></span>
+
+                <div class="step-item">
+
+                    <img
+                        src="./icons/Signup_3.svg"
+                        alt="회원가입 3단계 아이콘"
+                        class="step-circle"
+                    >
+
+                    <span class="step-name">
+                        가입완료
+                    </span>
+
+                </div>
+
+            </section>
+
+            <!-- 회원정보 입력 -->
+            <form
+                id="signupForm"
+                class="signup-form"
+                novalidate
+            >
+
+                <div class="input-list">
+
+                    <!-- 이름 -->
+                    <div class="input-box">
+
+                        <img
+                            src="./icons/Signup2icons_name.svg"
+                            alt="이름 입력 사람 아이콘"
+                            class="field-icon"
+                        >
+
+                        <label for="userName" hidden>
+                            이름 입력
+                        </label>
+
+                        <input
+                            type="text"
+                            id="userName"
+                            name="userName"
+                            class="signup-input required-input"
+                            placeholder="이름 입력"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+                    <!-- 이메일 -->
+                    <div class="input-box">
+
+                        <img
+                            src="./icons/Signup2icons_e-mail.svg"
+                            alt="이메일 입력 아이콘"
+                            class="field-icon"
+                        >
+
+                        <label for="userEmail" hidden>
+                            이메일 입력
+                        </label>
+
+                        <input
+                            type="email"
+                            id="userEmail"
+                            name="userEmail"
+                            class="signup-input required-input"
+                            placeholder="이메일 입력"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                    <!-- 비밀번호 -->
+                    <div class="input-box">
+
+                        <img
+                            src="./icons/Signup2icons_password.svg"
+                            alt="비밀번호 자물쇠 아이콘"
+                            class="field-icon"
+                        >
+
+                        <label for="userPassword" hidden>
+                            비밀번호 입력
+                        </label>
+
+                        <input
+                            type="password"
+                            id="userPassword"
+                            name="userPassword"
+                            class="signup-input required-input"
+                            placeholder="비밀번호 입력"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="userPassword"
+                            aria-label="비밀번호 표시 또는 숨기기"
+                        >
+                            <img
+                                src="./icons/Signup2icons_eye.svg"
+                                alt="비밀번호 보기 아이콘"
+                                class="eye-icon"
+                            >
+                        </button>
+
+                    </div>
+
+                    <!-- 비밀번호 확인 -->
+                    <div class="input-box">
+
+                        <img
+                            src="./icons/Signup2icons_password.svg"
+                            alt="비밀번호 확인 자물쇠 아이콘"
+                            class="field-icon"
+                        >
+
+                        <label for="passwordConfirm" hidden>
+                            비밀번호 확인
+                        </label>
+
+                        <input
+                            type="password"
+                            id="passwordConfirm"
+                            name="passwordConfirm"
+                            class="signup-input required-input"
+                            placeholder="비밀번호 확인"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required
+                        >
+
+                    </div>
+
+                    <!-- 휴대폰 번호 -->
+                    <div class="phone-row">
+
+                        <div class="input-box phone-input-box">
+
+                            <img
+                                src="./icons/Signup2icons_phone.svg"
+                                alt="휴대폰 번호 전화 아이콘"
+                                class="field-icon"
+                            >
+
+                            <label for="phoneNumber" hidden>
+                                휴대폰 번호 입력
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phoneNumber"
+                                name="phoneNumber"
+                                class="signup-input required-input"
+                                placeholder="휴대폰 번호 입력"
+                                inputmode="numeric"
+                                autocomplete="tel"
+                                maxlength="13"
+                                required
+                            >
+
+                        </div>
+
+                        <button
+                            type="button"
+                            id="sendVerificationButton"
+                            class="verification-send-button"
+                            disabled
+                        >
+                            인증번호 발송
+                        </button>
+
+                    </div>
+
+                    <!-- 인증번호 -->
+                    <div class="input-box">
+
+                        <img
+                            src="./icons/Signup2icons_protext.svg"
+                            alt="인증번호 방패 아이콘"
+                            class="field-icon"
+                        >
+
+                        <label for="verificationCode" hidden>
+                            인증번호 입력
+                        </label>
+
+                        <input
+                            type="text"
+                            id="verificationCode"
+                            name="verificationCode"
+                            class="signup-input required-input"
+                            placeholder="인증번호 입력"
+                            inputmode="numeric"
+                            maxlength="6"
+                            disabled
+                            required
+                        >
+
+                        <span
+                            id="verificationTimer"
+                            class="verification-timer"
+                        >
+                            02:59
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <p
+                    id="formMessage"
+                    class="form-message"
+                    aria-live="polite"
+                ></p>
+
+                <!-- 하단 이동 버튼 -->
+                <div class="button-area">
+
+                    <button
+                        type="submit"
+                        id="nextButton"
+                        class="next-button"
+                        disabled
+                    >
+                        다음
+                    </button>
+
+                    <a
+                        href="./signup1.html"
+                        class="previous-button"
+                    >
+                        이전
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+   <script>
+    const signupForm =
+        document.getElementById("signupForm");
+
+    const userName =
+        document.getElementById("userName");
+
+    const userEmail =
+        document.getElementById("userEmail");
+
+    const userPassword =
+        document.getElementById("userPassword");
+
+    const passwordConfirm =
+        document.getElementById("passwordConfirm");
+
+    const phoneNumber =
+        document.getElementById("phoneNumber");
+
+    const sendVerificationButton =
+        document.getElementById("sendVerificationButton");
+
+    const verificationCode =
+        document.getElementById("verificationCode");
+
+    const verificationTimer =
+        document.getElementById("verificationTimer");
+
+    const nextButton =
+        document.getElementById("nextButton");
+
+    const formMessage =
+        document.getElementById("formMessage");
+
+    const passwordToggleButtons =
+        document.querySelectorAll(".password-toggle");
+
+    let verificationSent = false;
+    let timerInterval = null;
+    let remainingSeconds = 179;
+
+    /* 휴대폰 번호 입력 시 인증번호 발송 버튼 활성화 */
+    phoneNumber.addEventListener("input", function () {
+        phoneNumber.value =
+            phoneNumber.value.replace(/[^0-9]/g, "");
+
+        /* 숫자를 한 자리 이상 입력하면 버튼 활성화 */
+        sendVerificationButton.disabled =
+            phoneNumber.value.trim() === "";
+
+        checkFormCompletion();
+    });
+
+    /* 인증번호에는 숫자만 입력 */
+    verificationCode.addEventListener("input", function () {
+        verificationCode.value =
+            verificationCode.value.replace(/[^0-9]/g, "");
+
+        checkFormCompletion();
+    });
+
+    /* 인증번호 발송 버튼 */
+    sendVerificationButton.addEventListener(
+        "click",
+        function () {
+            verificationSent = true;
+
+            verificationCode.disabled = false;
+            verificationCode.focus();
+
+            sendVerificationButton.textContent = "재발송";
+
+            formMessage.textContent =
+                "인증번호가 발송되었습니다. 아무 숫자나 입력해주세요.";
+
+            startVerificationTimer();
+            checkFormCompletion();
+        }
+    );
+
+    /* 인증번호 타이머 */
+    function startVerificationTimer() {
+        clearInterval(timerInterval);
+
+        remainingSeconds = 179;
+        updateTimerText();
+
+        timerInterval = setInterval(function () {
+            remainingSeconds -= 1;
+            updateTimerText();
+
+            if (remainingSeconds <= 0) {
+                clearInterval(timerInterval);
+
+                verificationSent = false;
+                verificationCode.disabled = true;
+                verificationCode.value = "";
+                nextButton.disabled = true;
+
+                formMessage.textContent =
+                    "인증 시간이 만료되었습니다. 다시 발송해주세요.";
+            }
+        }, 1000);
+    }
+
+    function updateTimerText() {
+        const minutes =
+            String(Math.floor(remainingSeconds / 60))
+                .padStart(2, "0");
+
+        const seconds =
+            String(remainingSeconds % 60)
+                .padStart(2, "0");
+
+        verificationTimer.textContent =
+            minutes + ":" + seconds;
+    }
+
+    /* 비밀번호 보이기와 숨기기 */
+    passwordToggleButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const targetId =
+                button.getAttribute("data-target");
+
+            const passwordInput =
+                document.getElementById(targetId);
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+
+                button.setAttribute(
+                    "aria-label",
+                    "비밀번호 숨기기"
+                );
+            } else {
+                passwordInput.type = "password";
+
+                button.setAttribute(
+                    "aria-label",
+                    "비밀번호 표시하기"
+                );
+            }
+        });
+    });
+
+    /* 모든 입력창에 입력할 때마다 상태 확인 */
+    const allInputs = [
+        userName,
+        userEmail,
+        userPassword,
+        passwordConfirm,
+        phoneNumber,
+        verificationCode
+    ];
+
+    allInputs.forEach(function (input) {
+        input.addEventListener(
+            "input",
+            checkFormCompletion
+        );
+    });
+
+    /* 다음 버튼 활성화 조건 */
+    function checkFormCompletion() {
+        const nameCompleted =
+            userName.value.trim() !== "";
+
+        const emailCompleted =
+            userEmail.value.trim() !== "";
+
+        const passwordCompleted =
+            userPassword.value.trim() !== "";
+
+        const passwordConfirmCompleted =
+            passwordConfirm.value.trim() !== "";
+
+        const passwordsMatch =
+            userPassword.value ===
+            passwordConfirm.value;
+
+        const phoneCompleted =
+            phoneNumber.value.trim() !== "";
+
+        const codeCompleted =
+            verificationCode.value.trim() !== "";
+
+        const canProceed =
+            nameCompleted &&
+            emailCompleted &&
+            passwordCompleted &&
+            passwordConfirmCompleted &&
+            passwordsMatch &&
+            phoneCompleted &&
+            verificationSent &&
+            codeCompleted;
+
+        nextButton.disabled = !canProceed;
+
+        if (
+            passwordConfirm.value !== "" &&
+            !passwordsMatch
+        ) {
+            formMessage.textContent =
+                "비밀번호가 일치하지 않습니다.";
+        } else if (
+            verificationSent &&
+            codeCompleted
+        ) {
+            formMessage.textContent =
+                "모든 정보가 입력되었습니다.";
+        }
+    }
+
+    /* 다음 버튼 클릭 시 가입 완료 화면으로 이동 */
+    signupForm.addEventListener(
+        "submit",
+        function (event) {
+            event.preventDefault();
+
+            if (nextButton.disabled) {
+                return;
+            }
+
+            window.location.href =
+                "./signupsuccess.html";
+        }
+    );
+</script>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Q-Link 온보딩 3</title>
+
+    <style>
+        /* 기본 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family:
+                "SUIT",
+                "Pretendard",
+                -apple-system,
+                BlinkMacSystemFont,
+                "Apple SD Gothic Neo",
+                sans-serif;
+            background-color: #ffffff;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 온보딩 전체 화면 */
+        .onboarding {
+            position: relative;
+            width: 100%;
+            height: 100svh;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        /* 상단 텍스트 영역 */
+        .onboarding-content {
+            position: absolute;
+            top: 13.7%;
+            left: 0;
+            z-index: 2;
+            width: 100%;
+            padding: 0 16px;
+        }
+
+        /* 메인 제목 */
+        .onboarding-title {
+            color: #283444;
+            font-size: 27px;
+            font-weight: 700;
+            line-height: 1.55;
+            letter-spacing: -1.2px;
+        }
+
+        /* 설명 문구 */
+        .onboarding-description {
+            margin-top: 12px;
+            color: #758190;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.55;
+            letter-spacing: -0.5px;
+        }
+
+        /* 중앙 그림 영역 */
+        .onboarding-visual {
+            position: absolute;
+            top: 38%;
+            left: 50%;
+            z-index: 1;
+            width: 245px;
+            transform: translateX(-50%);
+        }
+
+        /* 삽입하는 그림 이미지 */
+        .onboarding-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* 하단 전체 영역 */
+        .onboarding-footer {
+            position: absolute;
+            right: 0;
+            bottom: 8.2%;
+            left: 0;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 24px;
+        }
+
+        /* 공통 링크 */
+        .onboarding-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 44px;
+            cursor: pointer;
+        }
+
+        /* 건너뛰기 */
+        .skip-link {
+            color: #344150;
+            font-size: 19px;
+            font-weight: 500;
+            letter-spacing: -0.7px;
+        }
+
+        /* 시작하기 버튼 */
+        .start-link {
+            min-width: 120px;
+            height: 48px;
+            padding: 0 24px;
+            border-radius: 18px;
+            background-color: #4f8ef7;
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        /* 페이지 표시 점 */
+        .pagination {
+            position: absolute;
+            left: 50%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transform: translateX(-50%);
+        }
+
+        /* 클릭 가능한 점 */
+        .pagination-dot {
+            display: block;
+            flex-shrink: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #d3d8df;
+            cursor: pointer;
+        }
+
+        /* 현재 세 번째 페이지 */
+        .pagination-dot.active {
+            background-color: #4f8ef7;
+        }
+
+        /* 포커스 표시 */
+        .onboarding-link:focus-visible,
+        .pagination-dot:focus-visible {
+            outline: 2px solid #4f8ef7;
+            outline-offset: 4px;
+        }
+
+        /* 터치 피드백 */
+        .onboarding-link:active,
+        .pagination-dot:active {
+            opacity: 0.65;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="onboarding">
+
+        <!-- 상단 제목 및 설명 -->
+        <section class="onboarding-content">
+
+            <h1 class="onboarding-title">
+                키오스크와 연동으로<br>
+                더 빠르게
+            </h1>
+
+            <p class="onboarding-description">
+                QR 체크인으로 접수 없이<br>
+                바로 진료를 시작하세요.
+            </p>
+
+        </section>
+
+        <!-- 그림 이미지만 삽입 -->
+        <div class="onboarding-visual">
+
+            <img
+                src="./images/onboarding_pic3.svg"
+                alt="QR 체크인 기능이 있는 병원 키오스크"
+                class="onboarding-image"
+            >
+
+        </div>
+
+        <!-- 하단 이동 영역 -->
+        <nav
+            class="onboarding-footer"
+            aria-label="온보딩 이동 메뉴"
+        >
+
+            <!-- 건너뛰기 -->
+            <a
+                href="./login.html"
+                class="onboarding-link skip-link"
+            >
+                건너뛰기
+            </a>
+
+            <!-- 점 아이콘 -->
+            <div
+                class="pagination"
+                aria-label="온보딩 페이지 이동"
+            >
+
+                <!-- 온보딩 1 이동 -->
+                <a
+                    href="./onboard1.html"
+                    class="pagination-dot"
+                    aria-label="온보딩 1페이지로 이동"
+                ></a>
+
+                <!-- 온보딩 2 이동 -->
+                <a
+                    href="./onboard2.html"
+                    class="pagination-dot"
+                    aria-label="온보딩 2페이지로 이동"
+                ></a>
+
+                <!-- 현재 온보딩 3 -->
+                <a
+                    href="./onboard3.html"
+                    class="pagination-dot active"
+                    aria-label="현재 온보딩 3페이지"
+                ></a>
+
+            </div>
+
+            <!-- 시작하기 -->
+            <a
+                href="./login.html"
+                class="onboarding-link start-link"
+            >
+                시작하기
+            </a>
+
+        </nav>
+
+    </main>
+
+    <script>
+        // 3초 후 로그인 화면으로 자동 이동
+        setTimeout(function () {
+            window.location.href = "./login.html";
+        }, 3000);
+    </script>
+
+</body>
+</html>

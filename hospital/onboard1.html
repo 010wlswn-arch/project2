@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Q-Link 온보딩 1</title>
+
+    <style>
+        /* 기본 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family:
+                "SUIT",
+                "Pretendard",
+                -apple-system,
+                BlinkMacSystemFont,
+                "Apple SD Gothic Neo",
+                sans-serif;
+            background-color: #ffffff;
+        }
+
+        button,
+        a {
+            font: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* 온보딩 전체 화면 */
+        .onboarding {
+            position: relative;
+            width: 100%;
+            height: 100svh;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        /* 상단 텍스트 영역 */
+        .onboarding-content {
+            position: absolute;
+            top: 13.8%;
+            left: 0;
+            width: 100%;
+            padding: 0 16px;
+            z-index: 2;
+        }
+
+        /* 메인 제목 */
+        .onboarding-title {
+            color: #283444;
+            font-size: 27px;
+            font-weight: 700;
+            line-height: 1.5;
+            letter-spacing: -1.2px;
+        }
+
+        /* 설명 문구 */
+        .onboarding-description {
+            margin-top: 12px;
+            color: #758190;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.55;
+            letter-spacing: -0.5px;
+        }
+
+        /* 중앙 그림 영역 */
+        .onboarding-visual {
+            position: absolute;
+            top: 39.5%;
+            left: 50%;
+            width: 290px;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        /* 사용자가 삽입할 그림 이미지 */
+        .onboarding-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* 하단 컨트롤 영역 */
+        .onboarding-footer {
+            position: absolute;
+            right: 0;
+            bottom: 8.5%;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 24px;
+            z-index: 3;
+        }
+
+        /* 건너뛰기 및 다음 공통 */
+        .onboarding-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 44px;
+            border: 0;
+            background-color: transparent;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 건너뛰기 */
+        .skip-link {
+            color: #344150;
+            font-size: 19px;
+            font-weight: 500;
+            letter-spacing: -0.7px;
+        }
+
+        /* 다음 */
+        .next-link {
+            color: #4f8ef7;
+            font-size: 19px;
+            font-weight: 500;
+            letter-spacing: -0.7px;
+        }
+
+        /* 페이지 표시 점 */
+        .pagination {
+            position: absolute;
+            left: 50%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transform: translateX(-50%);
+        }
+
+        .pagination-dot {
+    display: block;
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #d3d8df;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+        .pagination-dot.active {
+            background-color: #4f8ef7;
+        }
+
+        /* 키보드 포커스 표시 */
+        .onboarding-link:focus-visible {
+            outline: 2px solid #4f8ef7;
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        /* 버튼을 누르는 동안 피드백 */
+        .onboarding-link:active {
+            opacity: 0.65;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="onboarding">
+
+        <!-- 상단 제목과 설명 -->
+        <section class="onboarding-content">
+            <h1 class="onboarding-title">
+                병원 접수,<br>
+                이제 집에서 하세요
+            </h1>
+
+            <p class="onboarding-description">
+                원격접수로 편리하게 접수하고<br>
+                대기 시간을 줄여보세요.
+            </p>
+        </section>
+
+        <!-- 그림 이미지만 삽입 -->
+        <div class="onboarding-visual">
+            <img
+                src="./images/onboarding_pic1.svg"
+                alt="휴대폰으로 병원 원격접수를 완료한 모습"
+                class="onboarding-image"
+            >
+        </div>
+
+        <!-- 하단 버튼과 페이지 표시 -->
+        <nav class="onboarding-footer" aria-label="온보딩 이동 메뉴">
+
+            <!-- 건너뛰기 버튼 -->
+            <a
+                href="./login.html"
+                class="onboarding-link skip-link"
+            >
+                건너뛰기
+            </a>
+
+            <!-- 페이지 표시 점 -->
+            <div class="pagination">
+
+    <!-- 온보딩1 -->
+    <a href="./onboard1.html" class="pagination-dot active"></a>
+
+    <!-- 온보딩2 -->
+    <a href="./onboard2.html" class="pagination-dot"></a>
+
+    <!-- 온보딩3 -->
+    <a href="./onboard3.html" class="pagination-dot"></a>
+
+</div>
+
+            <!-- 다음 버튼 -->
+            <a
+                href="./onboard2.html"
+                class="onboarding-link next-link"
+            >
+                다음
+            </a>
+
+        </nav>
+
+    </main>
+
+    <script>
+        /*
+            3초 후 온보딩 2 화면으로 자동 이동
+            3000은 3초를 의미합니다.
+        */
+        setTimeout(function () {
+            window.location.href = "./onboard2.html";
+        }, 3000);
+    </script>
+
+</body>
+</html>

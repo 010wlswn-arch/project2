@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Q-Link 내 대기 현황</title>
+
+    <style>
+        /* =========================
+           기본 초기화
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+            font-family:
+                "SUIT",
+                "Pretendard",
+                -apple-system,
+                BlinkMacSystemFont,
+                "Apple SD Gothic Neo",
+                sans-serif;
+            background-color: #ffffff;
+            color: #273343;
+        }
+
+        button {
+            border: 0;
+            background: none;
+            font: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        img {
+            display: block;
+        }
+
+        /* =========================
+           모바일 앱 전체 화면
+        ========================= */
+        .app {
+            position: relative;
+            width: 100%;
+            height: 100svh;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        /* 탭바를 제외한 본문 */
+        .app-content {
+            width: 100%;
+            height: calc(100svh - 70px);
+            padding: 39px 16px 28px;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .app-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* =========================
+           상단 공통 헤더
+        ========================= */
+        .top-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .brand-link {
+            display: block;
+        }
+
+        .brand-logo {
+            width: 91px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .notification-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+        }
+
+        .notification-icon {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+        }
+
+        /* =========================
+           화면 제목 및 대기 취소
+        ========================= */
+        .page-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .page-title {
+            color: #101820;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: -1px;
+        }
+
+        .cancel-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 95px;
+            height: 32px;
+            padding: 0 15px;
+            border: 1px solid #ff6d68;
+            border-radius: 9px;
+            background-color: #fff7f7;
+            color: #ff5e59;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* =========================
+           현재 순번 카드
+        ========================= */
+        .queue-summary-card {
+            width: 100%;
+            margin-top: 13px;
+            padding: 15px 16px 10px;
+            border: 1px solid #a5b0be;
+            border-radius: 8px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .queue-label {
+            color: #303b49;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .queue-number-line {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin-top: 8px;
+            color: #263140;
+        }
+
+        .queue-number {
+            font-size: 38px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .queue-unit {
+            margin: 0 0 3px 4px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .total-waiting {
+            margin-top: 10px;
+            color: #a4adb9;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .summary-divider {
+            width: 100%;
+            height: 1px;
+            margin-top: 7px;
+            background-color: #9aa6b5;
+        }
+
+        .estimated-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 9px;
+            color: #303a48;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* 시계 아이콘 */
+
+       .clock-icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+        .estimated-time {
+            margin-top: 7px;
+            color: #303a48;
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .estimated-time strong {
+            font-weight: 500;
+        }
+
+        .estimated-note {
+            margin-left: 6px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* =========================
+           진료 진행 현황 카드
+        ========================= */
+        .progress-card {
+            width: 100%;
+            margin-top: 16px;
+            padding: 10px 16px 8px;
+            border: 1px solid #a5b0be;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .card-title {
+            color: #485363;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .progress-track {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 11px;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 9px;
+            right: 20px;
+            left: 20px;
+            height: 1px;
+            background-color: #7d8998;
+        }
+
+        .progress-step {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .progress-circle {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #384555;
+            border-radius: 50%;
+            background-color: #ffffff;
+        }
+
+        .progress-step.active .progress-circle {
+            border-color: #5a98fa;
+            background-color: #5a98fa;
+        }
+
+        .progress-name {
+            margin-top: 4px;
+            color: #34404f;
+            font-size: 11px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* =========================
+           대기자 현황 카드
+        ========================= */
+        .waiting-people-card {
+            width: 100%;
+            margin-top: 16px;
+            padding: 10px 16px 9px;
+            border: 1px solid #a5b0be;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .waiting-row {
+            display: flex;
+            align-items: center;
+            min-height: 38px;
+        }
+
+        .waiting-row + .waiting-row {
+            border-top: 1px solid #9ca7b5;
+        }
+
+        .status-icon-wrap {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            width: 31px;
+            height: 31px;
+            margin-right: 40px;
+        }
+
+        .status-icon {
+            width: 31px;
+            height: 31px;
+            object-fit: contain;
+        }
+
+        .status-name {
+            flex: 1;
+            color: #34404e;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-count {
+            color: #303a48;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        /* =========================
+           알림 안내 카드
+        ========================= */
+        .notification-card {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            min-height: 49px;
+            margin-top: 16px;
+            padding: 7px 16px;
+            border: 1px solid #a5b0be;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .speaker-icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+        }
+
+        .notification-message {
+            flex: 1;
+            margin-left: 8px;
+            color: #526071;
+            font-size: 11px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .notification-setting-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 61px;
+            height: 23px;
+            border: 1px solid #4f8ef7;
+            border-radius: 5px;
+            color: #4f8ef7;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* =========================
+           하단 공통 탭바
+        ========================= */
+        .bottom-tabbar {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            display: flex;
+            width: 100%;
+            height: 70px;
+            border-top: 1px solid #e5e8ed;
+            background-color: #ffffff;
+            box-shadow: 0 -2px 8px rgba(25, 42, 70, 0.03);
+        }
+
+        .tab-item {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            color: #4d5866;
+        }
+
+        .tab-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .tab-name {
+            margin-top: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1;
+            white-space: nowrap;
+            letter-spacing: -0.4px;
+        }
+
+        .tab-item.active {
+            color: #4f8ef7;
+        }
+
+        /* 눌림 효과 */
+        .brand-link:active,
+        .notification-button:active,
+        .cancel-button:active,
+        .notification-setting-button:active,
+        .tab-item:active {
+            opacity: 0.65;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="app">
+
+        <!-- 본문 -->
+        <div class="app-content">
+
+            <!-- 상단 헤더 -->
+            <header class="top-header">
+
+                <!-- 로고 클릭 시 홈 화면 이동 -->
+                <a
+                    href="./home.html"
+                    class="brand-link"
+                    aria-label="Q-Link 홈 화면으로 이동"
+                >
+                    <img
+                        src="./images/homeLogo.svg"
+                        alt="Q-Link 로고"
+                        class="brand-logo"
+                    >
+                </a>
+
+                <!-- 알림 화면 이동 -->
+                <a
+                    href="./알림화면"
+                    class="notification-button"
+                    aria-label="알림 화면으로 이동"
+                >
+                    <img
+                        src="./icons/homebell.svg"
+                        alt="알림종 모양 아이콘"
+                        class="notification-icon"
+                    >
+                </a>
+
+            </header>
+
+            <!-- 제목과 대기 취소 -->
+            <div class="page-heading">
+
+                <h1 class="page-title">
+                    내 대기 현황
+                </h1>
+
+                <a
+                    href="./대기취소화면"
+                    class="cancel-button"
+                >
+                    대기 취소
+                </a>
+
+            </div>
+
+            <!-- 현재 내 순번 -->
+            <section class="queue-summary-card">
+
+                <h2 class="queue-label">
+                    현재 내 순번
+                </h2>
+
+                <p class="queue-number-line">
+                    <strong class="queue-number">12</strong>
+                    <span class="queue-unit">번</span>
+                </p>
+
+                <p class="total-waiting">
+                    총 대기 인원 28명
+                </p>
+
+                <div class="summary-divider"></div>
+
+                <p class="estimated-label">
+                     <img
+        src="./icons/waiticons_clock.svg"
+        alt="시계 아이콘"
+        class="clock-icon"
+    >
+
+                    예상 진료 시간
+                </p>
+
+                <p class="estimated-time">
+                    <strong>오전 11:20</strong>
+                    <span class="estimated-note">(약 40분후)</span>
+                </p>
+
+            </section>
+
+            <!-- 진료 진행 현황 -->
+            <section class="progress-card">
+
+                <h2 class="card-title">
+                    진료 진행 현황
+                </h2>
+
+                <div class="progress-track">
+
+                    <span class="progress-line"></span>
+
+                    <div class="progress-step active">
+                        <span class="progress-circle"></span>
+                        <span class="progress-name">접수완료</span>
+                    </div>
+
+                    <div class="progress-step">
+                        <span class="progress-circle"></span>
+                        <span class="progress-name">진료준비</span>
+                    </div>
+
+                    <div class="progress-step">
+                        <span class="progress-circle"></span>
+                        <span class="progress-name">진료중</span>
+                    </div>
+
+                    <div class="progress-step">
+                        <span class="progress-circle"></span>
+                        <span class="progress-name">진료완료</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- 내 앞 대기자 -->
+            <section class="waiting-people-card">
+
+                <h2 class="card-title">
+                    내 앞 대기자
+                </h2>
+
+                <div class="waiting-row">
+
+                    <span class="status-icon-wrap">
+                        <img
+                            src="./icons/waiticons_wait.svg"
+                            alt="대기 중인 사람 아이콘"
+                            class="status-icon"
+                        >
+                    </span>
+
+                    <span class="status-name">
+                        대기중
+                    </span>
+
+                    <strong class="status-count">
+                        10명
+                    </strong>
+
+                </div>
+
+                <div class="waiting-row">
+
+                    <span class="status-icon-wrap">
+                        <img
+                            src="./icons/waiticons_ing.svg"
+                            alt="진료 중인 사람 아이콘"
+                            class="status-icon"
+                        >
+                    </span>
+
+                    <span class="status-name">
+                        진료중
+                    </span>
+
+                    <strong class="status-count">
+                        2명
+                    </strong>
+
+                </div>
+
+            </section>
+
+            <!-- 알림 설정 안내 -->
+            <section class="notification-card">
+
+                <img
+                    src="./icons/waiticons_speaker.svg"
+                    alt="확성기 알림 아이콘"
+                    class="speaker-icon"
+                >
+
+                <p class="notification-message">
+                    회원님 차례가 되면 알림을 보내드려요.
+                </p>
+
+                <a
+                    href="./알림설정화면"
+                    class="notification-setting-button"
+                >
+                    알림 설정
+                </a>
+
+            </section>
+
+        </div>
+
+        <!-- 하단 공통 탭바 -->
+        <nav
+            class="bottom-tabbar"
+            aria-label="하단 메뉴"
+        >
+
+            <!-- 홈 -->
+            <a
+                href="./home.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_home.svg"
+                    alt="홈 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">홈</span>
+            </a>
+
+            <!-- 검색 -->
+            <a
+                href="./search.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_search.svg"
+                    alt="검색 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">검색</span>
+            </a>
+
+            <!-- 대기현황 -->
+            <a
+                href="./wait.html"
+                class="tab-item active"
+            >
+                <img
+                    src="./icons/tabbaricons_wait(blue).svg"
+                    alt="대기현황 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">대기현황</span>
+            </a>
+
+            <!-- 접수내역 -->
+            <a
+                href="./list.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_list.svg"
+                    alt="접수내역 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">접수 내역</span>
+            </a>
+
+            <!-- 마이페이지 -->
+            <a
+                href="./mypage.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_my.svg"
+                    alt="마이페이지 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">마이페이지</span>
+            </a>
+
+        </nav>
+
+    </main>
+
+</body>
+</html>
