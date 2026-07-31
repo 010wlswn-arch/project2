@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>CAMBAK Home</title>
+
+    <style>
+        /* =========================
+           기본 초기화
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+            background-color: #ffffff;
+            font-family:
+                Pretendard,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Apple SD Gothic Neo",
+                "Noto Sans KR",
+                Arial,
+                sans-serif;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            border: 0;
+            background: none;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        /* =========================
+           모바일 앱 전체 영역
+        ========================= */
+        .app {
+            position: relative;
+            width: 100%;
+            height: 100svh;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+
+        /* 세로 스크롤 영역 */
+        .home-scroll {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding-bottom: 80px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .home-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* =========================
+           상단 메인 이미지
+        ========================= */
+        .hero {
+            width: 100%;
+            height: 285px;
+            overflow: hidden;
+            background-color: #edf1f5;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        /* =========================
+           공통 콘텐츠 영역
+        ========================= */
+        .content {
+            width: 100%;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            color: #4f6fb8;
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: -0.7px;
+        }
+
+        /* =========================
+           테마별 카테고리
+        ========================= */
+        .category-section {
+            padding-top: 24px;
+        }
+
+        .category-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            row-gap: 22px;
+            width: 100%;
+            margin-top: 24px;
+        }
+
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-width: 0;
+        }
+
+.category-icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+        .category-name {
+            margin-top: 7px;
+            color: #5e5e5e;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: -0.4px;
+            white-space: nowrap;
+        }
+
+        /* =========================
+           쿠폰 / 이벤트 / 혜택
+        ========================= */
+        .quick-menu {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 100%;
+            margin-top: 25px;
+        }
+
+        .quick-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            height: 42px;
+            color: #4f6eb2;
+            background-color: #f1f4fa;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+        }
+
+        .quick-icon-image {
+    display: block;
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+        /* =========================
+           장소 랭킹
+        ========================= */
+        .ranking-section {
+            padding-top: 21px;
+        }
+
+        .ranking-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 9px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .ranking-image-box {
+            width: 100%;
+            height: 204px;
+            overflow: hidden;
+            background-color: #eeeeee;
+        }
+
+        .ranking-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ranking-image-box:nth-child(1) img {
+            object-position: center center;
+        }
+
+        .ranking-image-box:nth-child(2) img {
+            object-position: center center;
+        }
+
+        .ranking-wide {
+            grid-column: 1 / 3;
+            height: 197px;
+            margin-top: 14px;
+        }
+
+        /* =========================
+           장소 상세 정보
+        ========================= */
+        .place-info {
+            padding-top: 25px;
+            padding-bottom: 37px;
+        }
+
+        .place-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .place-title {
+            color: #171717;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: -0.7px;
+        }
+
+     .bookmark-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.bookmark-image{
+    display: block;
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+        .address {
+            margin-top: 24px;
+            color: #777777;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: -0.4px;
+        }
+
+        /* =========================
+           하단 상세 버튼
+        ========================= */
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1.45fr 1fr;
+            gap: 18px;
+            width: 100%;
+            margin-top: 21px;
+        }
+
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 49px;
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .direction-button {
+            color: #ffffff;
+            background-color: #5273ba;
+        }
+
+        .cancel-button {
+            color: #171717;
+            background-color: #ffffff;
+            border: 1px solid #5578c8;
+        }
+
+        /* =========================
+           하단 고정 내비게이션
+        ========================= */
+        .bottom-nav {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+
+            width: 100%;
+            height: 67px;
+
+            padding-bottom: env(safe-area-inset-bottom);
+
+            background-color: #ffffff;
+            border-top: 1px solid #e9e9e9;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            color: #111111;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .nav-item.active {
+            color: #5273bd;
+        }
+
+       .nav-icon-image {
+    display: block;
+    width: 26px;
+    height: 26px;
+    margin-bottom: 4px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- 세로 스크롤 영역 -->
+        <main class="home-scroll">
+
+            <!-- 상단 메인 이미지 -->
+            <section class="hero">
+                <img
+                    src="./images/home.svg"
+                    alt="캠핑카를 운전하는 곰 캐릭터"
+                    class="hero-image"
+                >
+            </section>
+
+            <!-- 테마별 카테고리 -->
+            <section class="content category-section">
+                <h1 class="section-title">테마별 카테고리</h1>
+
+               <div class="category-list">
+
+    <a href="#" class="category-item">
+        <img
+            src="./icons/home icon1.svg"
+            alt="꽃놀이"
+            class="category-icon"
+        >
+        <span class="category-name">꽃놀이</span>
+    </a>
+
+    <a href="#" class="category-item">
+        <img
+            src="./icons/home icon2.svg"
+            alt="불멍"
+            class="category-icon"
+        >
+        <span class="category-name">불멍</span>
+    </a>
+
+    <a href="#" class="category-item">
+        <img
+            src="./icons/home icon3.svg""
+            class="category-icon"
+        >
+        <span class="category-name">도심</span>
+    </a>
+
+    <a href="#" class="category-item">
+        <img
+            src="./icons/home icon4.svg"
+            alt="별감상"
+            class="category-icon"
+        >
+        <span class="category-name">별감상</span>
+    </a>
+
+    <a href="#" class="category-item">
+        <img
+            src="./icons/home icon5.svg"
+            alt="반려견"
+            class="category-icon"
+        >
+        <span class="category-name">반려견</span>
+    </a>
+
+    <a href="#" class="category-item">
+        <img
+            src="./icons/home icon6.svg"
+            alt="오지"
+            class="category-icon"
+        >
+        <span class="category-name">오지</span>
+    </a>
+
+    <a href="#" class="category-item">
+        <img
+            src="./icons/home icon7.svg"
+            alt="바베큐"
+            class="category-icon"
+        >
+        <span class="category-name">바베큐</span>
+    </a>
+
+    <a href="#" class="category-item">
+        <img
+            src="./icons/home icon8.svg"
+            alt="장비"
+            class="category-icon"
+        >
+        <span class="category-name">장비</span>
+    </a>
+
+</div>
+                <!-- 빠른 메뉴 -->
+                <div class="quick-menu">
+
+    <a href="#" class="quick-button">
+        <img
+            src="./icons/homeicons_cupon.svg"
+            alt="쿠폰"
+            class="quick-icon-image"
+        >
+        <span>쿠폰</span>
+    </a>
+
+    <a href="#" class="quick-button">
+        <img
+            src="./icons/homeicons_event.svg"
+            alt="이벤트"
+            class="quick-icon-image"
+        >
+        <span>이벤트</span>
+    </a>
+
+    <a href="#" class="quick-button">
+        <img
+            src="./icons/homeicons_benefit.svg"
+            alt="혜택"
+            class="quick-icon-image"
+        >
+        <span>혜택</span>
+    </a>
+
+</div>
+            </section>
+
+            <!-- 장소 랭킹 -->
+            <section class="content ranking-section">
+                <h2 class="section-title">장소 랭킹 Top 10</h2>
+
+                <div class="ranking-gallery">
+
+                    <div class="ranking-image-box">
+                        <img
+                            src="./images/homepicture1.jpg"
+                            alt="캠핑카 앞에 서 있는 여행객"
+                        >
+                    </div>
+
+                    <div class="ranking-image-box">
+                        <img
+                            src="./images/homepicture2.jpg"
+                            alt="숲속에 주차된 캠핑카"
+                        >
+                    </div>
+
+                    <div class="ranking-image-box ranking-wide">
+                        <img
+                            src="./images/homepicture3.jpg"
+                            alt="숲속 캠핑장과 해먹"
+                        >
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 장소 정보 -->
+            <section class="content place-info">
+
+ <div class="place-heading">
+
+    <h2 class="place-title">
+        테마별 카테고리
+    </h2>
+
+    <button
+        type="button"
+        class="bookmark-button"
+        aria-label="북마크"
+    >
+        <img
+            src="./icons/homeicons_banner.svg"
+            alt="북마크"
+            class="bookmark-image"
+        >
+    </button>
+
+</div>
+
+                <p class="address">
+                    강원도 원주시 치악면 치악산 1번지
+                </p>
+
+                <div class="action-buttons">
+                    <a href="#" class="action-button direction-button">
+                        길찾기
+                    </a>
+
+                    <button type="button" class="action-button cancel-button">
+                        해제하기
+                    </button>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- 하단 고정 메뉴 -->
+       <nav class="bottom-nav">
+
+    <a href="./home.html" class="nav-item active">
+        <img
+            src="./icons/tabbaricon_home.svg"
+            alt="홈"
+            class="nav-icon-image"
+        >
+        <span class="nav-name">홈</span>
+    </a>
+
+    <a href="./search2.html" class="nav-item">
+        <img
+            src="./icons/tabbaricon_search.svg"
+            alt="검색"
+            class="nav-icon-image"
+        >
+        <span class="nav-name">검색</span>
+    </a>
+
+    <a href="./group.html" class="nav-item">
+        <img
+            src="./icons/tabbaricon_people.svg"
+            alt="모임"
+            class="nav-icon-image"
+        >
+        <span class="nav-name">모임</span>
+    </a>
+
+    <a href="./live.html" class="nav-item">
+        <img
+            src="./icons/tabbaricon_live.svg"
+            alt="LIVE"
+            class="nav-icon-image"
+        >
+        <span class="nav-name">LIVE</span>
+    </a>
+
+    <a href="./mypage.html" class="nav-item">
+        <img
+            src="./icons/tabbaricon_my.svg"
+            alt="MY"
+            class="nav-icon-image"
+        >
+        <span class="nav-name">MY</span>
+    </a>
+
+</nav>
+    </div>
+</body>
+</html>

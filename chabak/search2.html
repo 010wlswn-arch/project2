@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+    <title>검색결과</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Apple SD Gothic Neo",
+                "Noto Sans KR",
+                Arial,
+                sans-serif;
+            color: #111111;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            border: none;
+            background: none;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .app {
+            position: relative;
+            width: 100%;
+            height: 100svh;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        /* =========================
+           상단 헤더
+        ========================= */
+        .top-header {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 20;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+            height: 81px;
+
+            padding-top: env(safe-area-inset-top);
+            background-color: #ffffff;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 24px;
+            bottom: 17px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 30px;
+            height: 30px;
+        }
+
+        .back-icon {
+            display: block;
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        .page-title {
+            margin-top: auto;
+            margin-bottom: 15px;
+
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        /* =========================
+           검색 결과 스크롤 영역
+        ========================= */
+        .search-scroll {
+            position: absolute;
+            top: 81px;
+            right: 0;
+            bottom: 67px;
+            left: 0;
+
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior-y: contain;
+            -webkit-overflow-scrolling: touch;
+
+            background-color: #ffffff;
+        }
+
+        .search-list {
+            width: 100%;
+        }
+
+        /* =========================
+           장소 결과 카드
+        ========================= */
+        .place-card {
+            position: relative;
+
+            display: grid;
+            grid-template-columns: 100px minmax(0, 1fr) 34px;
+            column-gap: 14px;
+
+            min-height: 148px;
+            padding: 24px 24px 22px;
+
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .place-image {
+            display: block;
+            width: 100px;
+            height: 100px;
+
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .place-info {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .place-name {
+            margin-top: 1px;
+
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.4px;
+        }
+
+        .place-address {
+            margin-top: 4px;
+
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.35;
+            letter-spacing: -0.25px;
+            color: #222222;
+        }
+
+        .place-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+
+            margin-top: auto;
+        }
+
+        .tag-list {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 24px;
+            padding: 4px 9px;
+
+            border-radius: 8px;
+            background-color: #5676bc;
+
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .distance {
+            flex-shrink: 0;
+
+            color: #5273bd;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .bookmark-button {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+
+            width: 34px;
+            height: 40px;
+            padding-top: 2px;
+        }
+
+        .bookmark-image {
+            display: block;
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+        }
+
+        /* =========================
+           하단 고정 내비게이션
+        ========================= */
+        .bottom-nav {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+
+            width: 100%;
+            height: 67px;
+
+            padding-bottom: env(safe-area-inset-bottom);
+
+            background-color: #ffffff;
+            border-top: 1px solid #e9e9e9;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            color: #111111;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .nav-item.active {
+            color: #5273bd;
+        }
+
+        .nav-icon-image {
+            display: block;
+            width: 26px;
+            height: 26px;
+            margin-bottom: 4px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- 상단 헤더 -->
+        <header class="top-header">
+
+            <a
+                href="./search.html"
+                class="back-button"
+                aria-label="뒤로가기"
+            >
+                <img
+                    src="./icons/search2_icons_prev.svg"
+                    alt=""
+                    class="back-icon"
+                >
+            </a>
+
+            <h1 class="page-title">검색결과</h1>
+
+        </header>
+
+        <!-- 검색 결과 스크롤 영역 -->
+        <main class="search-scroll">
+
+            <section class="search-list">
+
+                <!-- 검색 결과 1 -->
+                <article class="place-card">
+
+                    <img
+                        src="./images/search2_pic1.png"
+                        alt="망원한강공원"
+                        class="place-image"
+                    >
+
+                    <div class="place-info">
+
+                        <h2 class="place-name">
+                            망원한강공원
+                        </h2>
+
+                        <p class="place-address">
+                            서울 마포구 망원동 205-4
+                        </p>
+
+                        <div class="place-bottom">
+
+                            <div class="tag-list">
+                                <span class="tag">차크닉</span>
+                                <span class="tag">주차장</span>
+                            </div>
+
+                            <span class="distance">
+                                11.1km
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="bookmark-button"
+                        aria-label="망원한강공원 북마크"
+                    >
+                        <img
+                            src="./icons/homeicons_banner.svg"
+                            alt=""
+                            class="bookmark-image"
+                        >
+                    </button>
+
+                </article>
+
+                <!-- 검색 결과 2 -->
+                <article class="place-card">
+
+                    <img
+                        src="./images/search2_pic2.png"
+                        alt="광교호수공원"
+                        class="place-image"
+                    >
+
+                    <div class="place-info">
+
+                        <h2 class="place-name">
+                            광교호수공원
+                        </h2>
+
+                        <p class="place-address">
+                            서울 마포구 망원동 205-4
+                        </p>
+
+                        <div class="place-bottom">
+
+                            <div class="tag-list">
+                                <span class="tag">도심</span>
+                                <span class="tag">주차장</span>
+                            </div>
+
+                            <span class="distance">
+                                26km
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="bookmark-button"
+                        aria-label="광교호수공원 북마크"
+                    >
+                        <img
+                            src="./icons/homeicons_banner.svg"
+                            alt=""
+                            class="bookmark-image"
+                        >
+                    </button>
+
+                </article>
+
+                <!-- 검색 결과 3 -->
+                <article class="place-card">
+
+                    <img
+                        src="./images/search2_pic3.png"
+                        alt="갈르 야바데기"
+                        class="place-image"
+                    >
+
+                    <div class="place-info">
+
+                        <h2 class="place-name">
+                            갈르 야바데기
+                        </h2>
+
+                        <p class="place-address">
+                            대거리 2214-207
+                        </p>
+
+                        <div class="place-bottom">
+
+                            <div class="tag-list">
+                                <span class="tag">오션뷰</span>
+                                <span class="tag">주차장</span>
+                            </div>
+
+                            <span class="distance">
+                                108km
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="bookmark-button"
+                        aria-label="갈르 야바데기 북마크"
+                    >
+                        <img
+                            src="./icons/homeicons_banner.svg"
+                            alt=""
+                            class="bookmark-image"
+                        >
+                    </button>
+
+                </article>
+
+                <!-- 검색 결과 4 -->
+                <article class="place-card">
+
+                    <img
+                        src="./images/search2_pic4.png"
+                        alt="화성 궁평항"
+                        class="place-image"
+                    >
+
+                    <div class="place-info">
+
+                        <h2 class="place-name">
+                            화성 궁평항
+                        </h2>
+
+                        <p class="place-address">
+                            경기도 화성시 서신면<br>
+                            궁평항로 1049-24
+                        </p>
+
+                        <div class="place-bottom">
+
+                            <div class="tag-list">
+                                <span class="tag">차크닉</span>
+                                <span class="tag">주차장</span>
+                            </div>
+
+                            <span class="distance">
+                                58km
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="bookmark-button"
+                        aria-label="화성 궁평항 북마크"
+                    >
+                        <img
+                            src="./icons/homeicons_banner.svg"
+                            alt=""
+                            class="bookmark-image"
+                        >
+                    </button>
+
+                </article>
+
+                <!-- 검색 결과 5 -->
+                <article class="place-card">
+
+                    <img
+                        src="./images/search2_pic5.png"
+                        alt="서귀포 돈내코"
+                        class="place-image"
+                    >
+
+                    <div class="place-info">
+
+                        <h2 class="place-name">
+                            서귀포 돈내코
+                        </h2>
+
+                        <p class="place-address">
+                            제주특별자치도<br>
+                            서귀포시 돈내코로 114
+                        </p>
+
+                        <div class="place-bottom">
+
+                            <div class="tag-list">
+                                <span class="tag">이색</span>
+                                <span class="tag">주차장</span>
+                            </div>
+
+                            <span class="distance">
+                                483km
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="bookmark-button"
+                        aria-label="서귀포 돈내코 북마크"
+                    >
+                        <img
+                            src="./icons/homeicons_banner.svg"
+                            alt=""
+                            class="bookmark-image"
+                        >
+                    </button>
+
+                </article>
+
+                <!-- 검색 결과 6 -->
+                <article class="place-card">
+
+                    <img
+                        src="./images/search2_pic6.png"
+                        alt="영종도 마시안해변"
+                        class="place-image"
+                    >
+
+                    <div class="place-info">
+
+                        <h2 class="place-name">
+                            영종도 마시안해변
+                        </h2>
+
+                        <p class="place-address">
+                            덕교동 562-9
+                        </p>
+
+                        <div class="place-bottom">
+
+                            <div class="tag-list">
+                                <span class="tag">수도권</span>
+                                <span class="tag">주차장</span>
+                            </div>
+
+                            <span class="distance">
+                                32km
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="bookmark-button"
+                        aria-label="영종도 마시안해변 북마크"
+                    >
+                        <img
+                            src="./icons/homeicons_banner.svg"
+                            alt=""
+                            class="bookmark-image"
+                        >
+                    </button>
+
+                </article>
+
+            </section>
+
+        </main>
+
+        <!-- 하단 고정 메뉴 -->
+        <nav class="bottom-nav">
+
+            <a href="./home.html" class="nav-item">
+                <img
+                    src="./icons/tabbaricon_home.svg"
+                    alt="홈"
+                    class="nav-icon-image"
+                >
+                <span class="nav-name">홈</span>
+            </a>
+
+            <a href="./search.html" class="nav-item active">
+                <img
+                    src="./icons/tabbaricon_search(blue).svg"
+                    alt="검색"
+                    class="nav-icon-image"
+                >
+                <span class="nav-name">검색</span>
+            </a>
+
+            <a href="./group.html" class="nav-item">
+                <img
+                    src="./icons/tabbaricon_people.svg"
+                    alt="모임"
+                    class="nav-icon-image"
+                >
+                <span class="nav-name">모임</span>
+            </a>
+
+            <a href="./live.html" class="nav-item">
+                <img
+                    src="./icons/tabbaricon_live.svg"
+                    alt="LIVE"
+                    class="nav-icon-image"
+                >
+                <span class="nav-name">LIVE</span>
+            </a>
+
+            <a href="./mypage.html" class="nav-item">
+                <img
+                    src="./icons/tabbaricon_my.svg"
+                    alt="MY"
+                    class="nav-icon-image"
+                >
+                <span class="nav-name">MY</span>
+            </a>
+
+        </nav>
+
+    </div>
+
+</body>
+</html>
