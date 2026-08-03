@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박스모델1</title>
+    <style>
+          *{
+            margin: 0;
+            padding: 0;}
+    .box{width: 1000px;
+        height: 500px;
+        /*박스 통째로 가운데 정렬*/
+        border: 5px solid #0000fe;
+        display: flex; gap: 20px;
+    margin: 0auto;}
+    .box .box1{
+        width: 300px;
+        height: 200px;
+        /*테두리선*/
+        border: 4px solid #000;}
+        .box .box2 {
+        width: 300px;
+        height: 200px;
+        border: 4px solid #000;}
+        .box .box3 {
+            width: 300px;
+            height: 200px;
+            border: 4px solid #000;
+        }
+    </style>
+
+</head>
+<body>
+<div class="box">
+    <div class="box1">배너1</div>
+    <div class="box2">배너2</div>
+    <div class="box3">배너3</div>
+</div> 
+</body>
+</html>
