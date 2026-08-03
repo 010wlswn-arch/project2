@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박스모델 2</title>
+
+    <style>
+        /* 기본 여백 초기화 */
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        /* 부모 박스 */
+        .parent{
+            width:1000px;
+            height:300px;
+            border:4px solid red;
+            margin: 0 auto;
+            display:flex;
+            gap:40px;
+        }
+
+        /* 자식 박스 */
+        .child{
+            width:480px;
+            height:300px;
+            background-color:orchid;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="parent">
+
+        <div class="child">
+            박스1
+        </div>
+
+        <div class="child">
+            박스2
+        </div>
+
+    </div>
+
+</body>
+</html>
