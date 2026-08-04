@@ -16,22 +16,24 @@
             font-family:"맑은 고딕", sans-serif;
         }
 
+        /* 하나의 상품 영역 */
         .section{
             width:1200px;
-            margin:40px auto 70px;
+            margin:30px auto 70px;
         }
 
         .section h2{
-            font-size:24px;
+            font-size:26px;
             margin-bottom:8px;
         }
 
         .section .sub-title{
             font-size:13px;
             color:#777;
-            margin-bottom:30px;
+            margin-bottom:42px;
         }
 
+        /* 카드 4개를 감싸는 부모 */
         .parent{
             width:1200px;
             height:auto;
@@ -39,18 +41,21 @@
             gap:24px;
         }
 
+        /* 카드 */
         .parent .card{
             width:282px;
             height:auto;
+            flex-shrink:0;
         }
 
+        /* 이미지 박스 */
         .parent .card .img{
             width:282px;
             height:210px;
             overflow:hidden;
         }
 
-        /* 이미지 박스에 꽉 차게 들어감 */
+        /* 부모 이미지 박스에 꽉 차게 들어감 */
         .parent .card .img img{
             width:100%;
             height:100%;
@@ -58,6 +63,7 @@
             display:block;
         }
 
+        /* 글자 박스 */
         .parent .card .info{
             padding:18px 0;
         }
@@ -70,7 +76,7 @@
 
         .parent .card .info h3{
             font-size:17px;
-            letter-spacing:-1px;
+            letter-spacing:-1.5px;
             margin-bottom:13px;
             font-weight:500;
         }
@@ -83,13 +89,22 @@
             text-overflow:ellipsis;
         }
 
+        .parent .card .info .price{
+            font-size:13px;
+            margin-bottom:14px;
+        }
+
         .parent .card .info .price span{
             font-size:22px;
             font-weight:600;
         }
 
-        .parent .card .info .price{
-            font-size:13px;
+        .parent .card .info .badge{
+            display:inline-block;
+            border:1px solid #999;
+            padding:3px 8px;
+            font-size:12px;
+            color:#555;
         }
     </style>
 </head>
@@ -115,6 +130,7 @@
                     <h3>[인천/청주/부산/대구] 나트랑/달랏 5,6일</h3>
                     <p class="tag">#타임세일 #NO옵션 #전일정5성급호텔</p>
                     <p class="price"><span>549,000</span>원~</p>
+                    <p class="badge">🚌 호핑투어</p>
                 </div>
             </div>
 
@@ -129,6 +145,7 @@
                     <h3>[인천/부산/대구] 태항산 4,5일</h3>
                     <p class="tag">#타임세일 #보천대협곡 #태항대협곡</p>
                     <p class="price"><span>899,900</span>원~</p>
+                    <p class="badge">🙅 NO쇼핑/옵션/팁</p>
                 </div>
             </div>
 
@@ -141,8 +158,9 @@
                 <div class="info">
                     <p class="pkg">패키지</p>
                     <h3>이탈리아 일주 9일</h3>
-                    <p class="tag">#타임세일 #갓성비VS하나팩2.0</p>
+                    <p class="tag">#타임세일 #갓성비 VS 하나팩2.0</p>
                     <p class="price"><span>1,899,000</span>원~</p>
+                    <p class="badge">🏨 전일정 4성급 호텔</p>
                 </div>
             </div>
 
@@ -157,6 +175,7 @@
                     <h3>스페인 일주 9일</h3>
                     <p class="tag">#세일위크 #하나팩2.0 #NO쇼핑/팁</p>
                     <p class="price"><span>3,249,000</span>원~</p>
+                    <p class="badge">📷 스페셜 가우디투어</p>
                 </div>
             </div>
 
@@ -182,6 +201,7 @@
                     <h3>장가계 4,5,6일</h3>
                     <p class="tag">#천문산 #칠성산케이블카</p>
                     <p class="price"><span>499,000</span>원~</p>
+                    <p class="badge">🚗 전일정 리무진서비스</p>
                 </div>
             </div>
 
@@ -194,8 +214,9 @@
                 <div class="info">
                     <p class="pkg">패키지VS자유</p>
                     <h3>푸꾸옥 5,6일</h3>
-                    <p class="tag">#5성급추천리조트 #연휴특가상품</p>
+                    <p class="tag">#5성급 추천리조트 #연휴 특가상품</p>
                     <p class="price"><span>509,000</span>원~</p>
+                    <p class="badge">👜 선셋타운&amp;현지맛집</p>
                 </div>
             </div>
 
@@ -210,6 +231,7 @@
                     <h3>괌 4,5일</h3>
                     <p class="tag">#PIC리조트 #골드패스</p>
                     <p class="price"><span>749,000</span>원~</p>
+                    <p class="badge">👨‍👩‍👧 가족여행 베스트셀러</p>
                 </div>
             </div>
 
@@ -222,8 +244,9 @@
                 <div class="info">
                     <p class="pkg">패키지</p>
                     <h3>동유럽 3/4국 9일</h3>
-                    <p class="tag">#하나팩2.0 #NO쇼핑 #가이드기사팁</p>
+                    <p class="tag">#하나팩2.0 #NO쇼핑 #가이드기사경비</p>
                     <p class="price"><span>3,699,000</span>원~</p>
+                    <p class="badge">🛩 2대 낭만 야간투어 포함</p>
                 </div>
             </div>
 
