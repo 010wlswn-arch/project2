@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="260" height="64" viewBox="0 0 260 64"
+     role="img" aria-labelledby="title desc">
+  <title id="title">CHABAK logo</title>
+  <desc id="desc">Blue bear camping mascot with CHABAK wordmark and camper van, transparent background</desc>
+
+  <defs>
+    <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E66C5"/>
+      <stop offset="1" stop-color="#214E9D"/>
+    </linearGradient>
+    <linearGradient id="tanGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E7B768"/>
+      <stop offset="1" stop-color="#C9903D"/>
+    </linearGradient>
+  </defs>
+
+  <!-- mascot icon -->
+  <g transform="translate(2 5)">
+    <circle cx="27" cy="27" r="24" fill="#EEF4FF"/>
+    <path d="M6 45 Q27 53 48 45" fill="none" stroke="#2E66C5" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- mountains / trees -->
+    <path d="M7 33 L15 23 L22 31 L29 19 L40 33 Z" fill="#BFD1F2"/>
+    <path d="M26 23 L29 19 L33 23 L31 22 L29 21 L27 23 Z" fill="#FFFFFF"/>
+    <path d="M9 34 L13 27 L17 34 Z" fill="#6D9148"/>
+    <rect x="12.4" y="34" width="1.4" height="4" fill="#6D9148"/>
+    <path d="M39 34 L43 26 L47 34 Z" fill="#6D9148"/>
+    <rect x="42.4" y="34" width="1.4" height="4" fill="#6D9148"/>
+
+    <!-- bear -->
+    <circle cx="22" cy="18" r="4" fill="#2557AB"/>
+    <circle cx="34" cy="18" r="4" fill="#2557AB"/>
+    <ellipse cx="28" cy="31" rx="14" ry="15" fill="url(#blueGrad)"/>
+    <ellipse cx="28" cy="33" rx="8" ry="7" fill="#FFFFFF"/>
+    <circle cx="24" cy="29" r="1.4" fill="#111"/>
+    <circle cx="32" cy="29" r="1.4" fill="#111"/>
+    <ellipse cx="28" cy="33" rx="2.2" ry="1.8" fill="#111"/>
+    <path d="M28 35 v2.5 M24.5 37.5 Q28 40 31.5 37.5" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round"/>
+
+    <!-- hat -->
+    <path d="M17 22 Q18 12 28 12 Q38 12 39 22 Z" fill="url(#tanGrad)"/>
+    <path d="M15 22 Q28 18.5 41 22 Q39 25 28 25 Q17 25 15 22 Z" fill="#D6A04D"/>
+    <rect x="18" y="19" width="20" height="2.2" rx="1.1" fill="#214E9D"/>
+  </g>
+
+  <!-- wordmark -->
+  <g transform="translate(60 12)">
+    <text x="0" y="31"
+          font-family="Arial, Helvetica, sans-serif"
+          font-size="31"
+          font-weight="900"
+          letter-spacing="1.2"
+          fill="url(#blueGrad)">CHABAK</text>
+    <path d="M1 39 H128" stroke="#D39B48" stroke-width="3" stroke-linecap="round"/>
+    <text x="2" y="51"
+          font-family="Arial, Helvetica, sans-serif"
+          font-size="8.5"
+          font-weight="700"
+          letter-spacing="2"
+          fill="#6F7C96">CAR CAMPING LIFE</text>
+  </g>
+
+  <!-- camper icon -->
+  <g transform="translate(198 19)">
+    <path d="M2 25 Q8 17 18 17 H38 Q43 17 47 23 L52 30 V39 H2 Z"
+          fill="none" stroke="#2E66C5" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="10" y="22" width="11" height="8" rx="1.5" fill="#BFD1F2"/>
+    <path d="M27 22 H37 Q40 22 42 26 L44 30 H27 Z"
+          fill="#BFD1F2" stroke="#2E66C5" stroke-width="2"/>
+    <circle cx="14" cy="39" r="5" fill="#FFFFFF" stroke="#2E66C5" stroke-width="3"/>
+    <circle cx="42" cy="39" r="5" fill="#FFFFFF" stroke="#2E66C5" stroke-width="3"/>
+    <path d="M0 44 Q27 48 56 43" fill="none" stroke="#2E66C5" stroke-width="3" stroke-linecap="round"/>
+    <path d="M48 8 l2.5 5 5 .5-3.8 3.4 1.2 5-4.9-2.6-4.4 2.6.8-5-3.8-3.4 5.2-.5z"
+          fill="#D39B48"/>
+  </g>
+</svg>
