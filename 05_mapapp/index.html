@@ -882,7 +882,7 @@
     카카오 JavaScript 키를 입력하세요.
 -->
 <script
-    src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=cdc4a945f8e2d325d1b2c9a5baec7db3=false"
+    src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=cdc4a945f8e2d325d1b2c9a5baec7db3&autoload=false"
 ></script>
 
 <script>
@@ -962,6 +962,7 @@
 
     /* 지도 초기화 */
     function initializeMap() {
+        console.log("initializeMap 실행");
         if (
             typeof kakao === "undefined" ||
             !kakao.maps
