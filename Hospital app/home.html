@@ -915,6 +915,91 @@ body.menu-open {
 .menu-close-button:active {
     opacity: 0.65;
 }
+/* =========================
+   홈 메인 배너 슬라이드
+========================= */
+
+.home-banner-section {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.home-banner-swiper {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.home-banner-swiper .swiper-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.home-banner-swiper .swiper-slide {
+    width: 100%;
+    height: 90px;
+    flex-shrink: 0;
+}
+
+/* 완성된 배너 이미지 링크 */
+.full-banner-link {
+    display: block;
+    width: 100%;
+    height: 90px;
+    overflow: hidden;
+    border-radius: 8px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 완성된 배너 이미지 */
+.full-banner-image {
+    display: block;
+    width: 100%;
+    height: 90px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* 페이지네이션 */
+.home-banner-pagination {
+    position: absolute !important;
+    right: 9px !important;
+    bottom: 6px !important;
+    left: auto !important;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    width: auto !important;
+}
+
+.home-banner-pagination .swiper-pagination-bullet {
+    width: 5px;
+    height: 5px;
+    margin: 0 2px !important;
+    border-radius: 50%;
+    background-color: rgba(61, 75, 94, 0.3);
+    opacity: 1;
+
+    transition:
+        width 0.25s ease,
+        border-radius 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.home-banner-pagination .swiper-pagination-bullet-active {
+    width: 13px;
+    border-radius: 5px;
+    background-color: #4f8ef7;
+}
+
+.full-banner-link:active {
+    opacity: 0.72;
+}
     </style>
 </head>
 
@@ -1225,33 +1310,53 @@ body.menu-open {
 
                 </article>
 
-                <!-- 예방접종 배너 -->
-                <article class="vaccine-banner">
+                <!-- =========================
+     홈 메인 배너 슬라이드
+========================= -->
+<section
+    class="home-banner-section"
+    aria-label="건강 서비스 안내"
+>
+    <div class="swiper home-banner-swiper">
 
-                    <h3 class="vaccine-title">
-                        독감 예방접종
-                    </h3>
+        <div class="swiper-wrapper">
 
-                    <p class="vaccine-description">
-                        지금 접수 가능해요!
-                    </p>
-
-                    <a
-                        href="./예방접종접수화면"
-                        class="vaccine-button"
-                    >
-                        접수하기
-                        <span class="vaccine-button-arrow">›</span>
-                    </a>
-
-                    <!-- 사용자가 삽입할 주사기·백신 이미지 -->
+            <div class="swiper-slide">
+                <a href="./vaccination.html" class="full-banner-link">
                     <img
-                        src="./images/homrbannerimg.svg"
-                        alt="주사기와 백신"
-                        class="vaccine-image"
+                        src="./images/banner1.png"
+                        alt="독감 예방접종 지금 접수 가능"
+                        class="full-banner-image"
                     >
+                </a>
+            </div>
 
-                </article>
+            <div class="swiper-slide">
+                <a href="./health-checkup.html" class="full-banner-link">
+                    <img
+                        src="./images/banner2.png"
+                        alt="건강검진 예약 안내"
+                        class="full-banner-image"
+                    >
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a href="./medicine-reminder.html" class="full-banner-link">
+                    <img
+                        src="./images/bannerimage3.png"
+                        alt="복약 알림 서비스 안내"
+                        class="full-banner-image"
+                    >
+                </a>
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination home-banner-pagination"></div>
+
+    </div>
+</section>
 
             </section>
 
@@ -1704,7 +1809,117 @@ document.addEventListener(
             window.location.href = "./login.html";
         }
     );
-</script>
+    /* =========================
+   홈 메인 배너 Swiper
+========================= */
 
+<!-- Swiper CSS (head 안에 넣는 것이 원칙이지만 임시 테스트용) -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+"use strict";
+
+/* =========================
+   메뉴
+========================= */
+
+const menuOpenButton = document.getElementById("menuOpenButton");
+const menuOverlay = document.getElementById("menuOverlay");
+const sideMenu = document.getElementById("sideMenu");
+const logoutButton = document.getElementById("logoutButton");
+
+function openMenu() {
+    menuOverlay.classList.add("open");
+    menuOverlay.setAttribute("aria-hidden", "false");
+    menuOpenButton.setAttribute("aria-expanded", "true");
+    document.body.classList.add("menu-open");
+}
+
+function closeMenu() {
+    menuOverlay.classList.remove("open");
+    menuOverlay.setAttribute("aria-hidden", "true");
+    menuOpenButton.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("menu-open");
+}
+
+if (menuOpenButton) {
+    menuOpenButton.addEventListener("click", openMenu);
+}
+
+if (menuOverlay) {
+    menuOverlay.addEventListener("click", function (event) {
+        if (event.target === menuOverlay) {
+            closeMenu();
+        }
+    });
+}
+
+if (sideMenu) {
+    sideMenu.addEventListener("click", function (event) {
+        event.stopPropagation();
+    });
+}
+
+document.addEventListener("keydown", function (event) {
+    if (
+        event.key === "Escape" &&
+        menuOverlay.classList.contains("open")
+    ) {
+        closeMenu();
+    }
+});
+
+/* =========================
+   로그아웃
+========================= */
+
+if (logoutButton) {
+    logoutButton.addEventListener("click", function () {
+
+        const logoutConfirmed =
+            confirm("로그아웃하시겠습니까?");
+
+        if (!logoutConfirmed) return;
+
+        location.href = "./login.html";
+    });
+}
+
+/* =========================
+   홈 배너 Swiper
+========================= */
+
+window.addEventListener("load", function () {
+
+    new Swiper(".home-banner-swiper", {
+
+        loop: true,
+
+        speed: 600,
+
+        slidesPerView: 1,
+
+        spaceBetween: 0,
+
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false
+        },
+
+        pagination: {
+            el: ".home-banner-pagination",
+            clickable: true
+        }
+
+    });
+
+});
+</script>
 </body>
 </html>
