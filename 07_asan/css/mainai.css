@@ -1,0 +1,194 @@
+/* =========================
+   기본 설정
+========================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:
+        "Pretendard",
+        "Noto Sans KR",
+        "맑은 고딕",
+        sans-serif;
+
+    color:#111;
+    background:#fff;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    padding:0;
+    border:0;
+    background:none;
+    font:inherit;
+    cursor:pointer;
+}
+
+img{
+    display:block;
+}
+
+
+/* =========================
+   모바일 APP 전체 화면
+========================= */
+.app{
+    width:100%;
+    min-height:100svh;
+    background:#fff;
+}
+
+
+/* =========================
+   헤더
+========================= */
+.header{
+    width:100%;
+    height:52px;
+    background:#30313b;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 12px;
+}
+
+.header-button{
+    width:44px;
+    height:44px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:none;
+    border:none;
+    cursor:pointer;
+
+    flex-shrink:0;
+}
+
+.header-button img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+}
+
+.header-logo img{
+    width:100px;
+    height:auto;
+    display:block;
+}
+
+
+
+
+/* =========================
+   메인 영역
+========================= */
+.main{
+    width:100%;
+}
+
+
+/* =========================
+   Swiper 메인 배너
+========================= */
+.main-banner{
+    position:relative;
+
+    width:100%;
+    height:300px;
+
+    overflow:hidden;
+    background:#edf7f8;
+}
+
+.main-banner .swiper-wrapper{
+    width:100%;
+    height:100%;
+}
+
+.main-banner .swiper-slide{
+    width:100%;
+    height:100%;
+}
+
+.banner-link{
+    display:block;
+    width:100%;
+    height:100%;
+}
+
+.banner-link img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+
+/* =========================
+   좌우 화살표
+========================= */
+.main-banner .swiper-button-prev,
+.main-banner .swiper-button-next{
+    width:34px;
+    height:56px;
+
+    margin-top:0;
+
+    top:50%;
+    transform:translateY(-50%);
+
+    color:#1483e6;
+}
+
+.main-banner .swiper-button-prev{
+    left:8px;
+}
+
+.main-banner .swiper-button-next{
+    right:8px;
+}
+
+.main-banner .swiper-button-prev::after,
+.main-banner .swiper-button-next::after{
+    font-size:34px;
+    font-weight:400;
+}
+
+
+/* =========================
+   페이지네이션
+========================= */
+.main-banner .swiper-pagination{
+    bottom:8px;
+}
+
+.main-banner .swiper-pagination-bullet{
+    width:8px;
+    height:8px;
+
+    margin:0 5px !important;
+
+    background:#aeb4bb;
+    opacity:1;
+}
+
+.main-banner .swiper-pagination-bullet-active{
+    background:#1684e8;
+}
