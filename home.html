@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Q-Link 홈</title>
+
+    <style>
+        /* =========================
+           기본 초기화
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+            font-family:
+                "SUIT",
+                "Pretendard",
+                -apple-system,
+                BlinkMacSystemFont,
+                "Apple SD Gothic Neo",
+                sans-serif;
+            background-color: #ffffff;
+            color: #273343;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            border: 0;
+            background: none;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        img {
+            display: block;
+        }
+
+        /* =========================
+           모바일 앱 전체 화면
+        ========================= */
+        .app {
+            position: relative;
+            width: 100%;
+            height: 100svh;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        /* 탭바를 제외한 스크롤 영역 */
+        .app-content {
+            width: 100%;
+            height: calc(100svh - 70px);
+            padding: 39px 16px 25px;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .app-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* =========================
+           상단 헤더
+        ========================= */
+        .top-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .brand-logo {
+            width: 91px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .notification-button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+        }
+
+        .notification-icon {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+        }
+
+        .notification-dot {
+            position: absolute;
+            top: 8px;
+            right: 5px;
+            width: 8px;
+            height: 8px;
+            border: 1px solid #ffffff;
+            border-radius: 50%;
+            background-color: #ff3c3c;
+        }
+
+        /* =========================
+           인사말
+        ========================= */
+        .greeting {
+            margin-top: 11px;
+        }
+
+        .greeting-title {
+            color: #222d3b;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.5;
+            letter-spacing: -0.5px;
+        }
+
+        .greeting-description {
+            margin-top: 2px;
+            color: #667180;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.5;
+            letter-spacing: -0.5px;
+        }
+
+        .greeting-highlight {
+            color: #3b8cff;
+            font-weight: 700;
+        }
+
+        /* =========================
+           검색창
+        ========================= */
+        .search-area {
+            position: relative;
+            margin-top: 23px;
+        }
+
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            left: 17px;
+            z-index: 2;
+            width: 21px;
+            height: 21px;
+            object-fit: contain;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .search-input {
+            display: block;
+            width: 100%;
+            height: 48px;
+            padding: 0 18px 0 54px;
+            border: 1px solid #c9d0da;
+            border-radius: 17px;
+            outline: none;
+            background-color: #ffffff;
+            color: #263242;
+            font-size: 14px;
+            caret-color: #4f8ef7;
+        }
+
+        .search-input::placeholder {
+            color: #a5afbd;
+            opacity: 1;
+        }
+
+        .search-input:focus {
+            border-color: #4f8ef7;
+            box-shadow: 0 0 0 2px rgba(79, 142, 247, 0.1);
+        }
+
+        /* =========================
+           진료과 카테고리
+        ========================= */
+        .category-list {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 24px;
+        }
+
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 54px;
+            cursor: pointer;
+        }
+
+        .category-icon-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+            background-color: #f0f6ff;
+        }
+
+        .category-item:last-child .category-icon-box {
+            background-color: #dce1e8;
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .category-name {
+            margin-top: 7px;
+            color: #5c6674;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.2;
+            white-space: nowrap;
+            letter-spacing: -0.4px;
+        }
+
+        /* =========================
+           공통 섹션 제목
+        ========================= */
+        .section {
+            margin-top: 22px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            color: #202b39;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.6px;
+        }
+
+        .section-more {
+            display: flex;
+            align-items: center;
+            min-height: 30px;
+            color: #667180;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .next-icon {
+            width: 12px;
+            height: 12px;
+            margin-left: 5px;
+            object-fit: contain;
+        }
+
+        /* =========================
+           실시간 대기 현황 카드
+        ========================= */
+        .waiting-card {
+            display: flex;
+            width: 100%;
+            min-height: 101px;
+            padding: 18px 15px 14px;
+            border: 1px solid #9daaba;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .waiting-hospital-info {
+            width: 46%;
+            padding-right: 13px;
+            border-right: 1px solid #e0e4e9;
+        }
+
+        .waiting-location {
+            display: inline-flex;
+            align-items: center;
+            height: 19px;
+            padding: 0 6px;
+            border-radius: 3px;
+            background-color: #eef1f4;
+            color: #364151;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .waiting-hospital-name {
+            margin-top: 5px;
+            color: #283342;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.4px;
+        }
+
+        .waiting-message {
+            margin-top: 4px;
+            color: #86909d;
+            font-size: 10px;
+            line-height: 1.3;
+            letter-spacing: -0.3px;
+        }
+
+        .waiting-status-info {
+            flex: 1;
+            padding-left: 15px;
+        }
+
+        .waiting-labels {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #8b95a2;
+            font-size: 10px;
+        }
+
+        .waiting-values {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 6px;
+        }
+
+        .my-order {
+            display: flex;
+            align-items: center;
+            color: #252f3e;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .order-dot {
+            width: 10px;
+            height: 10px;
+            margin-right: 4px;
+            border: 3px solid #4f8ef7;
+            border-radius: 50%;
+            background-color: #ffffff;
+        }
+
+        .order-number {
+            margin-right: 1px;
+            font-size: 19px;
+            font-weight: 800;
+        }
+
+        .waiting-time {
+            color: #101821;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .waiting-detail-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 23px;
+            margin-top: 6px;
+            border-radius: 3px;
+            background-color: #5594f7;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* =========================
+           추천 병원 카드
+        ========================= */
+        .hospital-card {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            min-height: 90px;
+            padding: 12px 8px 12px 12px;
+            border: 1px solid #9daaba;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .hospital-image {
+            flex-shrink: 0;
+            width: 53px;
+            height: 62px;
+            object-fit: contain;
+        }
+
+        .hospital-information {
+            min-width: 0;
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .hospital-name {
+            overflow: hidden;
+            color: #273242;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.4;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .hospital-distance {
+            margin-top: 2px;
+            color: #65707e;
+            font-size: 11px;
+        }
+
+        .hospital-tags {
+            display: flex;
+            gap: 4px;
+            margin-top: 5px;
+        }
+
+        .hospital-tag {
+            display: inline-flex;
+            align-items: center;
+            min-height: 18px;
+            padding: 0 5px;
+            border-radius: 2px;
+            background-color: #f0f1f3;
+            color: #3f4855;
+            font-size: 10px;
+            white-space: nowrap;
+        }
+
+        .hospital-register-button {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            width: 59px;
+            height: 32px;
+            margin-left: 5px;
+            border-radius: 9px;
+            background-color: #eef5ff;
+            color: #4f8ef7;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* =========================
+           예방접종 배너
+        ========================= */
+        .vaccine-banner {
+            position: relative;
+            width: 100%;
+            min-height: 90px;
+            margin-top: 8px;
+            padding: 10px 135px 10px 24px;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #e2faf7;
+        }
+
+        .vaccine-title {
+            color: #24303f;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.4px;
+        }
+
+        .vaccine-description {
+            margin-top: 1px;
+            color: #4c5967;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.3;
+            white-space: nowrap;
+        }
+
+        .vaccine-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 25px;
+            margin-top: 8px;
+            padding: 0 8px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #4fd4c4;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .vaccine-button-arrow {
+            margin-left: 5px;
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .vaccine-image {
+            position: absolute;
+            right: 12px;
+            bottom: 5px;
+            width: 105px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        /* =========================
+           하단 공통 탭바
+        ========================= */
+        .bottom-tabbar {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            display: flex;
+            width: 100%;
+            height: 70px;
+            border-top: 1px solid #e5e8ed;
+            background-color: #ffffff;
+            box-shadow: 0 -2px 8px rgba(25, 42, 70, 0.03);
+        }
+
+        .tab-item {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            color: #4d5866;
+        }
+
+        .tab-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .tab-name {
+            margin-top: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1;
+            white-space: nowrap;
+            letter-spacing: -0.4px;
+        }
+
+        .tab-item.active {
+            color: #4f8ef7;
+        }
+
+        /* 눌림 효과 */
+        .category-item:active,
+        .section-more:active,
+        .waiting-detail-button:active,
+        .hospital-register-button:active,
+        .vaccine-button:active,
+        .tab-item:active {
+            opacity: 0.65;
+        }
+        /* =========================
+   슬라이드 메뉴
+========================= */
+
+/* 메뉴가 열린 동안 본문 스크롤 방지 */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* 전체 메뉴 배경 */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 500;
+
+    width: 100%;
+    height: 100svh;
+
+    visibility: hidden;
+    overflow: hidden;
+
+    background-color: rgba(0, 0, 0, 0);
+
+    transition:
+        visibility 0s linear 0.35s,
+        background-color 0.35s ease;
+}
+
+/* 메뉴가 열렸을 때 */
+.menu-overlay.open {
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.68);
+
+    transition:
+        visibility 0s linear 0s,
+        background-color 0.35s ease;
+}
+
+/* 왼쪽에서 등장하는 메뉴 패널 */
+.side-menu {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 81%;
+    height: 100svh;
+
+    overflow: hidden;
+
+    border-radius: 0 17px 17px 0;
+
+    background-color: #ffffff;
+
+    transform: translateX(-100%);
+
+    transition: transform 0.35s cubic-bezier(0.22, 0.8, 0.32, 1);
+}
+
+/* 메뉴가 열린 상태 */
+.menu-overlay.open .side-menu {
+    transform: translateX(0);
+}
+
+/* 메뉴 내부 스크롤 영역 */
+.side-menu-scroll {
+    width: 100%;
+    height: 100%;
+    padding: 47px 24px 40px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    scrollbar-width: none;
+    overscroll-behavior: contain;
+}
+
+.side-menu-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* 메뉴 바깥 닫기 버튼 */
+.menu-close-button {
+    position: absolute;
+    top: 39px;
+    right: 10px;
+    z-index: 510;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    cursor: pointer;
+}
+
+.menu-close-button img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+
+    /* 어두운 배경 위에서 잘 보이게 */
+    filter: brightness(0) invert(1);
+}
+
+/* =========================
+   사용자 프로필
+========================= */
+
+.menu-profile {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.menu-profile-image {
+    flex: 0 0 auto;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+.menu-profile-information {
+    min-width: 0;
+    margin-left: 17px;
+}
+
+.menu-profile-name {
+    color: #202a38;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+}
+
+.menu-profile-phone {
+    margin-top: 3px;
+
+    color: #536071;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+/* 진료내역 보기 버튼 */
+.medical-history-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 49px;
+
+    margin-top: 25px;
+
+    border-radius: 10px;
+
+    background-color: #526fbb;
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+/* =========================
+   메뉴 구분선과 공통 섹션
+========================= */
+
+.menu-divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 35px 0 0;
+
+    background-color: #ebedf1;
+}
+
+.menu-section {
+    width: 100%;
+    padding-top: 16px;
+}
+
+.menu-section-title {
+    color: #20242b;
+
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.4px;
+}
+
+/* =========================
+   바로가기 / 진료예약 카드
+========================= */
+
+.menu-shortcut-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+
+    width: 100%;
+    margin-top: 15px;
+}
+
+.menu-shortcut-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    height: 70px;
+
+    border: 1px solid #e3e6eb;
+    border-radius: 8px;
+
+    background-color: #ffffff;
+
+    cursor: pointer;
+}
+
+.menu-shortcut-icon {
+    width: 25px;
+    height: 25px;
+
+    object-fit: contain;
+}
+
+.menu-shortcut-name {
+    margin-top: 7px;
+
+    overflow: hidden;
+
+    color: #66707f;
+
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.2;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* =========================
+   서비스 목록
+========================= */
+
+.service-list {
+    width: 100%;
+    margin-top: 13px;
+    list-style: none;
+}
+
+.service-item {
+    width: 100%;
+}
+
+.service-link,
+.service-button {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 48px;
+
+    color: #737c89;
+
+    cursor: pointer;
+}
+
+.service-button {
+    border: 0;
+    background-color: transparent;
+    text-align: left;
+}
+
+.service-icon {
+    flex: 0 0 auto;
+
+    width: 24px;
+    height: 24px;
+
+    object-fit: contain;
+}
+
+.service-name {
+    margin-left: 15px;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.service-arrow {
+    width: 18px;
+    height: 18px;
+
+    margin-left: auto;
+
+    object-fit: contain;
+}
+
+/* 눌림 효과 */
+.medical-history-button:active,
+.menu-shortcut-item:active,
+.service-link:active,
+.service-button:active,
+.menu-close-button:active {
+    opacity: 0.65;
+}
+    </style>
+</head>
+
+<body>
+
+    <main class="app">
+
+        <!-- 스크롤 가능한 본문 -->
+        <div class="app-content">
+
+            <!-- 상단 로고 및 알림 -->
+            <header class="top-header">
+
+                <img
+                    src="./images/homeLogo.svg"
+                    alt="Q-Link"
+                    class="brand-logo"
+                >
+
+                <button
+    type="button"
+    class="notification-button"
+    id="menuOpenButton"
+    aria-label="전체 메뉴 열기"
+    aria-controls="sideMenu"
+    aria-expanded="false"
+>
+    <img
+        src="./icons/hamberger.svg"
+        alt=""
+        class="notification-icon"
+    >
+</button>
+
+            </header>
+
+            <!-- 사용자 인사말 -->
+            <section class="greeting">
+
+                <h1 class="greeting-title">
+                    안녕하세요, 김서연님
+                </h1>
+
+                <p class="greeting-description">
+                    오늘도
+                    <span class="greeting-highlight">건강한 하루</span>
+                    되세요!
+                </p>
+
+            </section>
+
+            <!-- 검색창 -->
+            <form
+                class="search-area"
+                action="./검색결과화면"
+                method="get"
+            >
+
+                <!-- 검색 아이콘 경로는 직접 수정 -->
+                <img
+                    src="./icons/homesearch.svg"
+                    alt="돋보기아이콘"
+                    class="search-icon"
+                >
+
+                <label for="hospitalSearch" hidden>
+                    병원, 진료과, 의사명 검색
+                </label>
+
+                <input
+                    type="search"
+                    id="hospitalSearch"
+                    name="keyword"
+                    class="search-input"
+                    placeholder="병원, 진료과 의사명을 검색해보세요."
+                >
+
+            </form>
+
+            <!-- 진료과 카테고리 -->
+            <nav
+                class="category-list"
+                aria-label="진료과 선택"
+            >
+
+                <a
+                    href="./내과화면"
+                    class="category-item"
+                >
+                    <span class="category-icon-box">
+                        <img
+                            src="./icons/homeicons_1.svg"
+                            alt="내과아이콘"
+                            class="category-icon"
+                        >
+                    </span>
+                    <span class="category-name">내과</span>
+                </a>
+
+                <a
+                    href="./소아과화면"
+                    class="category-item"
+                >
+                    <span class="category-icon-box">
+                        <img
+                            src="./icons/homeicons_2.svg"
+                            alt="소아과아이콘"
+                            class="category-icon"
+                        >
+                    </span>
+                    <span class="category-name">소아과</span>
+                </a>
+
+                <a
+                    href="./정형외과화면"
+                    class="category-item"
+                >
+                    <span class="category-icon-box">
+                        <img
+                            src="./icons/homeicons_3.svg"
+                            alt="정형외과아이콘"
+                            class="category-icon"
+                        >
+                    </span>
+                    <span class="category-name">정형외과</span>
+                </a>
+
+                <a
+                    href="./치과화면"
+                    class="category-item"
+                >
+                    <span class="category-icon-box">
+                        <img
+                            src="./icons/homeicons_4.svg"
+                            alt="치과아이콘"
+                            class="category-icon"
+                        >
+                    </span>
+                    <span class="category-name">치과</span>
+                </a>
+
+                <a
+                    href="./피부과화면"
+                    class="category-item"
+                >
+                    <span class="category-icon-box">
+                        <img
+                            src="./icons/homeicons_5.svg"
+                            alt="피부과아이콘"
+                            class="category-icon"
+                        >
+                    </span>
+                    <span class="category-name">피부과</span>
+                </a>
+
+                <a
+                    href="./전체진료과화면"
+                    class="category-item"
+                >
+                    <span class="category-icon-box">
+                        <img
+                            src="./icons/homeicons_6.svg"
+                            alt="전체보기아이콘"
+                            class="category-icon"
+                        >
+                    </span>
+                    <span class="category-name">전체보기</span>
+                </a>
+
+            </nav>
+
+            <!-- 실시간 대기 현황 -->
+            <section class="section waiting-section">
+
+                <div class="section-header">
+
+                    <h2 class="section-title">
+                        실시간 대기 현황
+                    </h2>
+
+                    <a
+                        href="./wait.html"
+                        class="section-more"
+                    >
+                        내 대기 확인
+
+                        <!-- next 아이콘 경로는 직접 수정 -->
+                        <img
+                            src="./icons/homenext.svg"
+                            alt="내 대기 확인 이동 화살표"
+                            class="next-icon"
+                        >
+                    </a>
+
+                </div>
+
+                <article class="waiting-card">
+
+                    <div class="waiting-hospital-info">
+
+                        <span class="waiting-location">
+                            서울 강남구
+                        </span>
+
+                        <h3 class="waiting-hospital-name">
+                            김큐링내과의원
+                        </h3>
+
+                        <p class="waiting-message">
+                            오늘도 건강한 하루 되세요!
+                        </p>
+
+                    </div>
+
+                    <div class="waiting-status-info">
+
+                        <div class="waiting-labels">
+                            <span>내 순서</span>
+                            <span>예상 대기 시간</span>
+                        </div>
+
+                        <div class="waiting-values">
+
+                            <p class="my-order">
+                                <span class="order-dot"></span>
+                                <strong class="order-number">12</strong>
+                                번째
+                            </p>
+
+                            <strong class="waiting-time">
+                                10:30
+                            </strong>
+
+                        </div>
+
+                        <a
+                            href="./wait.html"
+                            class="waiting-detail-button"
+                        >
+                            대기 현황 보기
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- 추천 병원 -->
+            <section class="section hospital-section">
+
+                <div class="section-header">
+
+                    <h2 class="section-title">
+                        추천 병원
+                    </h2>
+
+                    <a
+                        href="./추천병원전체화면"
+                        class="section-more"
+                    >
+                        더보기
+
+                        <!-- next 아이콘 경로는 직접 수정 -->
+                        <img
+                            src="./icons/homenext.svg"
+                            alt="추천 병원 더보기 이동 화살표"
+                            class="next-icon"
+                        >
+                    </a>
+
+                </div>
+
+                <!-- 병원 정보 카드 -->
+                <article class="hospital-card">
+
+                    <!-- 사용자가 삽입할 병원 이미지 -->
+                    <img
+                        src="./images/homebannerimg_hospital.svg"
+                        alt="큐링크 종합병원"
+                        class="hospital-image"
+                    >
+
+                    <div class="hospital-information">
+
+                        <h3 class="hospital-name">
+                            큐링크 종합병원
+                        </h3>
+
+                        <p class="hospital-distance">
+                            내과 | 2.3km
+                        </p>
+
+                        <div class="hospital-tags">
+                            <span class="hospital-tag">대기 12명</span>
+                            <span class="hospital-tag">예상 대기 시간 25분</span>
+                            <span class="hospital-tag">접수가능</span>
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="./병원접수화면"
+                        class="hospital-register-button"
+                    >
+                        접수하기
+                    </a>
+
+                </article>
+
+                <!-- 예방접종 배너 -->
+                <article class="vaccine-banner">
+
+                    <h3 class="vaccine-title">
+                        독감 예방접종
+                    </h3>
+
+                    <p class="vaccine-description">
+                        지금 접수 가능해요!
+                    </p>
+
+                    <a
+                        href="./예방접종접수화면"
+                        class="vaccine-button"
+                    >
+                        접수하기
+                        <span class="vaccine-button-arrow">›</span>
+                    </a>
+
+                    <!-- 사용자가 삽입할 주사기·백신 이미지 -->
+                    <img
+                        src="./images/homrbannerimg.svg"
+                        alt="주사기와 백신"
+                        class="vaccine-image"
+                    >
+
+                </article>
+
+            </section>
+
+        </div>
+
+        <!-- 하단 공통 탭바 -->
+        <nav
+            class="bottom-tabbar"
+            aria-label="하단 메뉴"
+        >
+
+            <!-- 홈 -->
+            <a
+                href="./home.html"
+                class="tab-item active"
+            >
+                <img
+                    src="./icons/tabbaricons_home(blue).svg"
+                    alt="홈 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">홈</span>
+            </a>
+
+            <!-- 검색 -->
+            <a
+                href="./search.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_search.svg"
+                    alt="검색 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">검색</span>
+            </a>
+
+            <!-- 대기현황 -->
+            <a
+                href="./wait.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_wait.svg"
+                    alt="대기현황화면"
+                    class="tab-icon"
+                >
+                <span class="tab-name">대기현황</span>
+            </a>
+
+            <!-- 접수내역 -->
+            <a
+                href="./list.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_list.svg"
+                    alt="접수내역화면"
+                    class="tab-icon"
+                >
+                <span class="tab-name">접수 내역</span>
+            </a>
+
+            <!-- 마이페이지 -->
+            <a
+                href="./mypage.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_my.svg"
+                    alt="마이페이지"
+                    class="tab-icon"
+                >
+                <span class="tab-name">마이페이지</span>
+            </a>
+
+        </nav>
+        <!-- =========================
+     햄버거 슬라이드 메뉴
+========================= -->
+<div
+    class="menu-overlay"
+    id="menuOverlay"
+    aria-hidden="true"
+>
+    <!-- 왼쪽 메뉴 패널 -->
+    <aside
+        class="side-menu"
+        id="sideMenu"
+        aria-label="전체 메뉴"
+        tabindex="-1"
+    >
+        <div class="side-menu-scroll">
+
+            <!-- 사용자 프로필 -->
+            <section class="menu-profile">
+                <img
+                    src="./icons/menuicons_profile.svg"
+                    alt="김서연님 프로필"
+                    class="menu-profile-image"
+                >
+
+                <div class="menu-profile-information">
+                    <h2 class="menu-profile-name">
+                        김서연님 (만29세)
+                    </h2>
+
+                    <p class="menu-profile-phone">
+                        010-1234-5678
+                    </p>
+                </div>
+            </section>
+
+            <!-- 진료내역 보기 -->
+            <a
+                href="./list.html"
+                class="medical-history-button"
+            >
+                진료내역 보기
+            </a>
+
+            <div class="menu-divider"></div>
+
+            <!-- 바로가기 -->
+            <section class="menu-section">
+                <h3 class="menu-section-title">
+                    바로가기
+                </h3>
+
+                <div class="menu-shortcut-list">
+
+                    <a
+                        href="./home.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_home.svg"
+                            alt="홈 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">홈</span>
+                    </a>
+
+                    <a
+                        href="./search.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_search.svg"
+                            alt="검색 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">검색</span>
+                    </a>
+
+                    <a
+                        href="./wait.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_wait.svg"
+                            alt="대기현황 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">대기현황</span>
+                    </a>
+
+                    <a
+                        href="./list.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_list.svg"
+                            alt="접수내역 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">접수내역</span>
+                    </a>
+
+                </div>
+            </section>
+
+            <div class="menu-divider"></div>
+
+            <!-- 진료 / 예약 -->
+            <section class="menu-section">
+                <h3 class="menu-section-title">
+                    진료 / 예약
+                </h3>
+
+                <div class="menu-shortcut-list">
+
+                    <a
+                        href="./test-result.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_paperandpen.svg"
+                            alt="검사결과 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">검사결과</span>
+                    </a>
+
+                    <a
+                        href="./prescription.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_paper.svg"
+                            alt="처방전 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">처방전</span>
+                    </a>
+
+                    <a
+                        href="./qr-code.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_QRcord.svg"
+                            alt="QR코드 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">QR코드</span>
+                    </a>
+
+                    <a
+                        href="./document-history.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_check.svg"
+                            alt="문진내역 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">문진내역</span>
+                    </a>
+
+                </div>
+            </section>
+
+            <div class="menu-divider"></div>
+
+            <!-- 서비스 -->
+            <section class="menu-section">
+                <h3 class="menu-section-title">
+                    서비스
+                </h3>
+
+                <ul class="service-list">
+
+                    <li class="service-item">
+                        <a
+                            href="./notice.html"
+                            class="service-link"
+                        >
+                            <img
+                                src="./icons/menuicons_speaker.svg"
+                                alt="공지사항 아이콘"
+                                class="service-icon"
+                            >
+
+                            <span class="service-name">
+                                공지사항
+                            </span>
+
+                            <img
+                                src="./icons/menuicons_next.svg"
+                                alt="오른쪽 화살표 이동 아이콘"
+                                class="service-arrow"
+                            >
+                        </a>
+                    </li>
+
+                    <li class="service-item">
+                        <a
+                            href="./customer-service.html"
+                            class="service-link"
+                        >
+                            <img
+                                src="./icons/menuicons_headset.svg"
+                                alt="고객센터 아이콘"
+                                class="service-icon"
+                            >
+
+                            <span class="service-name">
+                                고객센터
+                            </span>
+
+                            <img
+                                src="./icons/menuicons_next.svg"
+                                alt="오른쪽 화살표 이동 아이콘"
+                                class="service-arrow"
+                            >
+                        </a>
+                    </li>
+
+                    <li class="service-item">
+                        <a
+                            href="./setting.html"
+                            class="service-link"
+                        >
+                            <img
+                                src="./icons/menuicons_settings.svg"
+                                alt="설정 아이콘"
+                                class="service-icon"
+                            >
+
+                            <span class="service-name">
+                                설정
+                            </span>
+
+                            <img
+                                src="./icons/menuicons_next.svg"
+                                alt="오른쪽 화살표 이동 아이콘"
+                                class="service-arrow"
+                            >
+                        </a>
+                    </li>
+
+                    <li class="service-item">
+                        <button
+                            type="button"
+                            class="service-button"
+                            id="logoutButton"
+                        >
+                            <img
+                                src="./icons/menuicons_logout.svg"
+                                alt="로그아웃 아이콘"
+                                class="service-icon"
+                            >
+
+                            <span class="service-name">
+                                로그아웃
+                            </span>
+
+                            <img
+                                src="./icons/menuicons_next.svg"
+                                alt="오른쪽 화살표 이동 아이콘"
+                                class="service-arrow"
+                            >
+                        </button>
+                    </li>
+
+                </ul>
+            </section>
+
+        </div>
+    </aside>
+
+   
+    
+</div>
+
+    </main>
+    <script>
+    "use strict";
+
+const menuOpenButton =
+    document.getElementById("menuOpenButton");
+
+const menuOverlay =
+    document.getElementById("menuOverlay");
+
+const sideMenu =
+    document.getElementById("sideMenu");
+
+function openMenu() {
+    menuOverlay.classList.add("open");
+
+    menuOverlay.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    menuOpenButton.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+    document.body.classList.add("menu-open");
+}
+
+function closeMenu() {
+    menuOverlay.classList.remove("open");
+
+    menuOverlay.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    menuOpenButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    document.body.classList.remove("menu-open");
+}
+
+/* 메뉴 열기 */
+menuOpenButton.addEventListener(
+    "click",
+    openMenu
+);
+
+/* 어두운 바깥 영역 클릭 시 닫기 */
+menuOverlay.addEventListener(
+    "click",
+    function (event) {
+        if (event.target === menuOverlay) {
+            closeMenu();
+        }
+    }
+);
+
+/* 메뉴 안쪽 클릭은 닫히지 않게 */
+sideMenu.addEventListener(
+    "click",
+    function (event) {
+        event.stopPropagation();
+    }
+);
+
+/* ESC 키로 닫기 */
+document.addEventListener(
+    "keydown",
+    function (event) {
+        if (
+            event.key === "Escape" &&
+            menuOverlay.classList.contains("open")
+        ) {
+            closeMenu();
+        }
+    }
+);
+
+    /* 로그아웃 예시 */
+    logoutButton.addEventListener(
+        "click",
+        function () {
+            const logoutConfirmed =
+                window.confirm("로그아웃하시겠습니까?");
+
+            if (!logoutConfirmed) {
+                return;
+            }
+
+            window.location.href = "./login.html";
+        }
+    );
+</script>
+
+</body>
+</html>
