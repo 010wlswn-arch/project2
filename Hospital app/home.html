@@ -8,9 +8,14 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     >
 
-    <title>Q-Link 홈</title>
+<title>Q-Link 홈</title>
 
-    <style>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+>
+
+<style>
         /* =========================
            기본 초기화
         ========================= */
@@ -473,68 +478,6 @@
             font-size: 12px;
             font-weight: 500;
         }
-
-        /* =========================
-           예방접종 배너
-        ========================= */
-        .vaccine-banner {
-            position: relative;
-            width: 100%;
-            min-height: 90px;
-            margin-top: 8px;
-            padding: 10px 135px 10px 24px;
-            overflow: hidden;
-            border-radius: 8px;
-            background-color: #e2faf7;
-        }
-
-        .vaccine-title {
-            color: #24303f;
-            font-size: 15px;
-            font-weight: 700;
-            line-height: 1.3;
-            letter-spacing: -0.4px;
-        }
-
-        .vaccine-description {
-            margin-top: 1px;
-            color: #4c5967;
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 1.3;
-            white-space: nowrap;
-        }
-
-        .vaccine-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            height: 25px;
-            margin-top: 8px;
-            padding: 0 8px;
-            border-radius: 5px;
-            background-color: #ffffff;
-            color: #4fd4c4;
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .vaccine-button-arrow {
-            margin-left: 5px;
-            font-size: 19px;
-            font-weight: 600;
-            line-height: 1;
-        }
-
-        .vaccine-image {
-            position: absolute;
-            right: 12px;
-            bottom: 5px;
-            width: 105px;
-            height: 80px;
-            object-fit: contain;
-        }
-
         /* =========================
            하단 공통 탭바
         ========================= */
@@ -586,7 +529,6 @@
         .section-more:active,
         .waiting-detail-button:active,
         .hospital-register-button:active,
-        .vaccine-button:active,
         .tab-item:active {
             opacity: 0.65;
         }
@@ -959,7 +901,7 @@ body.menu-open {
     width: 100%;
     height: 90px;
     border-radius: 8px;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 /* 페이지네이션 */
@@ -1313,6 +1255,7 @@ body.menu-open {
                 <!-- =========================
      홈 메인 배너 슬라이드
 ========================= -->
+<!-- 홈 메인 배너 슬라이드 -->
 <section
     class="home-banner-section"
     aria-label="건강 서비스 안내"
@@ -1322,7 +1265,10 @@ body.menu-open {
         <div class="swiper-wrapper">
 
             <div class="swiper-slide">
-                <a href="./vaccination.html" class="full-banner-link">
+                <a
+                    href="./vaccination.html"
+                    class="full-banner-link"
+                >
                     <img
                         src="./images/banner1.png"
                         alt="독감 예방접종 지금 접수 가능"
@@ -1332,7 +1278,10 @@ body.menu-open {
             </div>
 
             <div class="swiper-slide">
-                <a href="./health-checkup.html" class="full-banner-link">
+                <a
+                    href="./health-checkup.html"
+                    class="full-banner-link"
+                >
                     <img
                         src="./images/banner2.png"
                         alt="건강검진 예약 안내"
@@ -1342,7 +1291,10 @@ body.menu-open {
             </div>
 
             <div class="swiper-slide">
-                <a href="./medicine-reminder.html" class="full-banner-link">
+                <a
+                    href="./medicine-reminder.html"
+                    class="full-banner-link"
+                >
                     <img
                         src="./images/bannerimage3.png"
                         alt="복약 알림 서비스 안내"
@@ -1353,13 +1305,12 @@ body.menu-open {
 
         </div>
 
-        <div class="swiper-pagination home-banner-pagination"></div>
+        <div
+            class="swiper-pagination home-banner-pagination"
+        ></div>
 
     </div>
 </section>
-
-            </section>
-
         </div>
 
         <!-- 하단 공통 탭바 -->
@@ -1714,8 +1665,14 @@ body.menu-open {
 </div>
 
     </main>
-    <script>
-    "use strict";
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+"use strict";
+
+/* =========================
+   요소 선택
+========================= */
 
 const menuOpenButton =
     document.getElementById("menuOpenButton");
@@ -1726,68 +1683,96 @@ const menuOverlay =
 const sideMenu =
     document.getElementById("sideMenu");
 
+const logoutButton =
+    document.getElementById("logoutButton");
+
+
+/* =========================
+   메뉴 열기
+========================= */
+
 function openMenu() {
+    if (!menuOverlay) {
+        return;
+    }
+
     menuOverlay.classList.add("open");
+    menuOverlay.setAttribute("aria-hidden", "false");
 
-    menuOverlay.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-    menuOpenButton.setAttribute(
-        "aria-expanded",
-        "true"
-    );
+    if (menuOpenButton) {
+        menuOpenButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+    }
 
     document.body.classList.add("menu-open");
 }
 
+
+/* =========================
+   메뉴 닫기
+========================= */
+
 function closeMenu() {
+    if (!menuOverlay) {
+        return;
+    }
+
     menuOverlay.classList.remove("open");
+    menuOverlay.setAttribute("aria-hidden", "true");
 
-    menuOverlay.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-    menuOpenButton.setAttribute(
-        "aria-expanded",
-        "false"
-    );
+    if (menuOpenButton) {
+        menuOpenButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+    }
 
     document.body.classList.remove("menu-open");
 }
 
-/* 메뉴 열기 */
-menuOpenButton.addEventListener(
-    "click",
-    openMenu
-);
 
-/* 어두운 바깥 영역 클릭 시 닫기 */
-menuOverlay.addEventListener(
-    "click",
-    function (event) {
-        if (event.target === menuOverlay) {
-            closeMenu();
+/* 햄버거 버튼 */
+if (menuOpenButton) {
+    menuOpenButton.addEventListener(
+        "click",
+        openMenu
+    );
+}
+
+
+/* 어두운 배경 클릭 시 닫기 */
+if (menuOverlay) {
+    menuOverlay.addEventListener(
+        "click",
+        function (event) {
+            if (event.target === menuOverlay) {
+                closeMenu();
+            }
         }
-    }
-);
+    );
+}
 
-/* 메뉴 안쪽 클릭은 닫히지 않게 */
-sideMenu.addEventListener(
-    "click",
-    function (event) {
-        event.stopPropagation();
-    }
-);
 
-/* ESC 키로 닫기 */
+/* 메뉴 안쪽 클릭 시 닫히지 않게 */
+if (sideMenu) {
+    sideMenu.addEventListener(
+        "click",
+        function (event) {
+            event.stopPropagation();
+        }
+    );
+}
+
+
+/* ESC 키로 메뉴 닫기 */
 document.addEventListener(
     "keydown",
     function (event) {
         if (
             event.key === "Escape" &&
+            menuOverlay &&
             menuOverlay.classList.contains("open")
         ) {
             closeMenu();
@@ -1795,131 +1780,77 @@ document.addEventListener(
     }
 );
 
-    /* 로그아웃 예시 */
+
+/* 로그아웃 */
+if (logoutButton) {
     logoutButton.addEventListener(
         "click",
         function () {
             const logoutConfirmed =
-                window.confirm("로그아웃하시겠습니까?");
+                window.confirm(
+                    "로그아웃하시겠습니까?"
+                );
 
             if (!logoutConfirmed) {
                 return;
             }
 
-            window.location.href = "./login.html";
+            window.location.href =
+                "./login.html";
         }
     );
-    /* =========================
-   홈 메인 배너 Swiper
-========================= */
-
-<!-- Swiper CSS (head 안에 넣는 것이 원칙이지만 임시 테스트용) -->
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
-
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script>
-"use strict";
-
-/* =========================
-   메뉴
-========================= */
-
-const menuOpenButton = document.getElementById("menuOpenButton");
-const menuOverlay = document.getElementById("menuOverlay");
-const sideMenu = document.getElementById("sideMenu");
-const logoutButton = document.getElementById("logoutButton");
-
-function openMenu() {
-    menuOverlay.classList.add("open");
-    menuOverlay.setAttribute("aria-hidden", "false");
-    menuOpenButton.setAttribute("aria-expanded", "true");
-    document.body.classList.add("menu-open");
 }
 
-function closeMenu() {
-    menuOverlay.classList.remove("open");
-    menuOverlay.setAttribute("aria-hidden", "true");
-    menuOpenButton.setAttribute("aria-expanded", "false");
-    document.body.classList.remove("menu-open");
-}
-
-if (menuOpenButton) {
-    menuOpenButton.addEventListener("click", openMenu);
-}
-
-if (menuOverlay) {
-    menuOverlay.addEventListener("click", function (event) {
-        if (event.target === menuOverlay) {
-            closeMenu();
-        }
-    });
-}
-
-if (sideMenu) {
-    sideMenu.addEventListener("click", function (event) {
-        event.stopPropagation();
-    });
-}
-
-document.addEventListener("keydown", function (event) {
-    if (
-        event.key === "Escape" &&
-        menuOverlay.classList.contains("open")
-    ) {
-        closeMenu();
-    }
-});
-
-/* =========================
-   로그아웃
-========================= */
-
-if (logoutButton) {
-    logoutButton.addEventListener("click", function () {
-
-        const logoutConfirmed =
-            confirm("로그아웃하시겠습니까?");
-
-        if (!logoutConfirmed) return;
-
-        location.href = "./login.html";
-    });
-}
 
 /* =========================
    홈 배너 Swiper
 ========================= */
 
-window.addEventListener("load", function () {
+window.addEventListener(
+    "load",
+    function () {
+        const bannerSwiperElement =
+            document.querySelector(
+                ".home-banner-swiper"
+            );
 
-    new Swiper(".home-banner-swiper", {
-
-        loop: true,
-
-        speed: 600,
-
-        slidesPerView: 1,
-
-        spaceBetween: 0,
-
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false
-        },
-
-        pagination: {
-            el: ".home-banner-pagination",
-            clickable: true
+        if (!bannerSwiperElement) {
+            console.error(
+                "배너 Swiper 요소를 찾을 수 없습니다."
+            );
+            return;
         }
 
-    });
+        if (typeof Swiper === "undefined") {
+            console.error(
+                "Swiper 라이브러리가 로드되지 않았습니다."
+            );
+            return;
+        }
 
-});
+        new Swiper(
+            ".home-banner-swiper",
+            {
+                direction: "horizontal",
+                loop: true,
+                speed: 600,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                allowTouchMove: true,
+
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false
+                },
+
+                pagination: {
+                    el: ".home-banner-pagination",
+                    clickable: true
+                }
+            }
+        );
+    }
+);
 </script>
 </body>
 </html>
