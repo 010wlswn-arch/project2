@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Q-Link 마이페이지</title>
+
+    <style>
+        /* =========================
+           기본 초기화
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+            font-family:
+                "SUIT",
+                "Pretendard",
+                -apple-system,
+                BlinkMacSystemFont,
+                "Apple SD Gothic Neo",
+                sans-serif;
+            background-color: #ffffff;
+            color: #273343;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        img {
+            display: block;
+        }
+
+        /* =========================
+           모바일 앱 전체 화면
+        ========================= */
+        .app {
+            position: relative;
+            width: 100%;
+            height: 100svh;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        /* 하단 탭바를 제외한 본문 */
+        .app-content {
+            width: 100%;
+            height: calc(100svh - 70px);
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .app-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* =========================
+           사용자 프로필 영역
+        ========================= */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 88px 16px 15px;
+        }
+
+        .profile-image {
+            flex-shrink: 0;
+            width: 59px;
+            height: 59px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-information {
+            min-width: 0;
+            margin-left: 13px;
+        }
+
+        .profile-name {
+            color: #17202d;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: -0.5px;
+        }
+
+        .profile-phone {
+            margin-top: 3px;
+            color: #485464;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* =========================
+           상단 빠른 메뉴
+        ========================= */
+        .quick-menu {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+            padding: 3px 17px 15px;
+            border-bottom: 1px solid #d6dce4;
+        }
+
+        .quick-menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60px;
+            color: #435061;
+        }
+
+        .quick-menu-icon {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .quick-menu-name {
+            margin-top: 7px;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.2;
+            white-space: nowrap;
+            letter-spacing: -0.4px;
+        }
+
+        /* =========================
+           마이페이지 메뉴 목록
+        ========================= */
+        .mypage-menu {
+            width: 100%;
+            padding: 23px 16px 0;
+        }
+
+        .mypage-menu-item {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            min-height: 48px;
+        }
+
+        .menu-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .menu-name {
+            flex: 1;
+            margin-left: 23px;
+            color: #6f7b89;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .next-icon {
+            flex-shrink: 0;
+            width: 15px;
+            height: 15px;
+            object-fit: contain;
+        }
+
+        /* =========================
+           로그아웃 버튼
+        ========================= */
+        .logout-area {
+            width: 100%;
+            padding: 68px 16px 30px;
+        }
+
+        .logout-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 49px;
+            border: 1px solid #5594f7;
+            border-radius: 8px;
+            background-color: #ffffff;
+            color: #5594f7;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        /* =========================
+           하단 공통 탭바
+        ========================= */
+        .bottom-tabbar {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            display: flex;
+            width: 100%;
+            height: 70px;
+            border-top: 1px solid #e5e8ed;
+            background-color: #ffffff;
+            box-shadow: 0 -2px 8px rgba(25, 42, 70, 0.03);
+        }
+
+        .tab-item {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            color: #4d5866;
+        }
+
+        .tab-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .tab-name {
+            margin-top: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1;
+            white-space: nowrap;
+            letter-spacing: -0.4px;
+        }
+
+        /* 현재 마이페이지 탭 */
+        .tab-item.active {
+            color: #4f8ef7;
+        }
+
+        /* 눌림 효과 */
+        .quick-menu-item:active,
+        .mypage-menu-item:active,
+        .logout-button:active,
+        .tab-item:active {
+            opacity: 0.65;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="app">
+
+        <!-- 마이페이지 본문 -->
+        <div class="app-content">
+
+            <!-- 사용자 프로필 -->
+            <section class="profile-section">
+
+                <img
+                    src="./icons/mypageicons_profile.svg"
+                    alt="김서연님 프로필 사진"
+                    class="profile-image"
+                >
+
+                <div class="profile-information">
+
+                    <h1 class="profile-name">
+                        김서연님 (만29세)
+                    </h1>
+
+                    <p class="profile-phone">
+                        010-1234-5678
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- 상단 빠른 메뉴 -->
+            <nav
+                class="quick-menu"
+                aria-label="마이페이지 빠른 메뉴"
+            >
+
+                <!-- 내 정보 -->
+                <a
+                    href="./이동경로"
+                    class="quick-menu-item"
+                >
+                    <img
+                        src="./icons/mypageicons_myinfo.svg"
+                        alt="내 정보 아이콘"
+                        class="quick-menu-icon"
+                    >
+                    <span class="quick-menu-name">내 정보</span>
+                </a>
+
+                <!-- 가족 관리 -->
+                <a
+                    href="./이동경로"
+                    class="quick-menu-item"
+                >
+                    <img
+                        src="./icons/mypageicons_family.svg"
+                        alt="가족 관리 아이콘"
+                        class="quick-menu-icon"
+                    >
+                    <span class="quick-menu-name">가족 관리</span>
+                </a>
+
+                <!-- 결제 내역 -->
+                <a
+                    href="./이동경로"
+                    class="quick-menu-item"
+                >
+                    <img
+                        src="./icons/mypageicons_wallet.svg"
+                        alt="결제 내역 아이콘"
+                        class="quick-menu-icon"
+                    >
+                    <span class="quick-menu-name">결제 내역</span>
+                </a>
+
+                <!-- 설정 -->
+                <a
+                    href="./이동경로"
+                    class="quick-menu-item"
+                >
+                    <img
+                        src="./icons/mypageicons_settings.svg"
+                        alt="설정 아이콘"
+                        class="quick-menu-icon"
+                    >
+                    <span class="quick-menu-name">설정</span>
+                </a>
+
+            </nav>
+
+            <!-- 마이페이지 메뉴 목록 -->
+            <nav
+                class="mypage-menu"
+                aria-label="마이페이지 상세 메뉴"
+            >
+
+                <!-- 진료 내역 -->
+                <a
+                    href="./이동경로"
+                    class="mypage-menu-item"
+                >
+                    <img
+                        src="./icons/mypageicons_1.svg"
+                        alt="진료 내역 아이콘"
+                        class="menu-icon"
+                    >
+
+                    <span class="menu-name">
+                        진료 내역
+                    </span>
+
+                    <img
+                        src="./icons/homenext.svg"
+                        alt="진료 내역 이동 화살표"
+                        class="next-icon"
+                    >
+                </a>
+
+                <!-- 접수 내역 -->
+                <a
+                    href="./list.html"
+                    class="mypage-menu-item"
+                >
+                    <img
+                        src="./icons/mypageicons_2.svg"
+                        alt="접수 내역 아이콘"
+                        class="menu-icon"
+                    >
+
+                    <span class="menu-name">
+                        접수 내역
+                    </span>
+
+                    <img
+                        src="./icons/homenext.svg"
+                        alt="접수 내역 이동 화살표"
+                        class="next-icon"
+                    >
+                </a>
+
+                <!-- 찜한 병원 -->
+                <a
+                    href="./이동경로"
+                    class="mypage-menu-item"
+                >
+                    <img
+                        src="./icons/mypageicons_3.svg"
+                        alt="찜한 병원 아이콘"
+                        class="menu-icon"
+                    >
+
+                    <span class="menu-name">
+                        찜한 병원
+                    </span>
+
+                    <img
+                        src="./icons/homenext.svg"
+                        alt="찜한 병원 이동 화살표"
+                        class="next-icon"
+                    >
+                </a>
+
+                <!-- 문의 내역 -->
+                <a
+                    href="./이동경로"
+                    class="mypage-menu-item"
+                >
+                    <img
+                        src="./icons/mypageicons_4.svg"
+                        alt="문의 내역 아이콘"
+                        class="menu-icon"
+                    >
+
+                    <span class="menu-name">
+                        문의 내역
+                    </span>
+
+                    <img
+                        src="./icons/homenext.svg"
+                        alt="문의 내역 이동 화살표"
+                        class="next-icon"
+                    >
+                </a>
+
+                <!-- 자주 묻는 질문 -->
+                <a
+                    href="./이동경로"
+                    class="mypage-menu-item"
+                >
+                    <img
+                        src="./icons/mypageicons_5.svg"
+                        alt="자주 묻는 질문 아이콘"
+                        class="menu-icon"
+                    >
+
+                    <span class="menu-name">
+                        자주 묻는 질문
+                    </span>
+
+                    <img
+                        src="./icons/homenext.svg"
+                        alt="자주 묻는 질문 이동 화살표"
+                        class="next-icon"
+                    >
+                </a>
+
+                <!-- 공지사항 -->
+                <a
+                    href="./이동경로"
+                    class="mypage-menu-item"
+                >
+                    <img
+                        src="./icons/mypageicons_6.svg"
+                        alt="공지사항 아이콘"
+                        class="menu-icon"
+                    >
+
+                    <span class="menu-name">
+                        공지사항
+                    </span>
+
+                    <img
+                        src="./icons/homenext.svg"
+                        alt="공지사항 이동 화살표"
+                        class="next-icon"
+                    >
+                </a>
+
+            </nav>
+
+            <!-- 로그아웃 -->
+            <div class="logout-area">
+
+                <a
+                    href="./login.html"
+                    class="logout-button"
+                >
+                    로그아웃
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- 하단 공통 탭바 -->
+        <nav
+            class="bottom-tabbar"
+            aria-label="하단 메뉴"
+        >
+
+            <!-- 홈 -->
+            <a
+                href="./home.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_home.svg"
+                    alt="홈 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">홈</span>
+            </a>
+
+            <!-- 검색 -->
+            <a
+                href="./search.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_search.svg"
+                    alt="검색 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">검색</span>
+            </a>
+
+            <!-- 대기현황 -->
+            <a
+                href="./wait.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_wait.svg"
+                    alt="대기현황 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">대기현황</span>
+            </a>
+
+            <!-- 접수 내역 -->
+            <a
+                href="./list.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_list.svg"
+                    alt="접수 내역 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">접수 내역</span>
+            </a>
+
+            <!-- 마이페이지: 현재 활성화 -->
+            <a
+                href="./mypage.html"
+                class="tab-item active"
+            >
+                <img
+                    src="./icons/tabbaricons_my(blue).svg"
+                    alt="마이페이지 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">마이페이지</span>
+            </a>
+
+        </nav>
+
+    </main>
+
+</body>
+</html>

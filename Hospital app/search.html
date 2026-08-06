@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Q-Link 진료과 검색</title>
+
+    <style>
+        /* =========================
+           기본 초기화
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+            font-family:
+                "SUIT",
+                "Pretendard",
+                -apple-system,
+                BlinkMacSystemFont,
+                "Apple SD Gothic Neo",
+                sans-serif;
+            background-color: #ffffff;
+            color: #273343;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        img {
+            display: block;
+        }
+
+        /* =========================
+           모바일 앱 전체
+        ========================= */
+        .app {
+            position: relative;
+            width: 100%;
+            height: 100svh;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        /* 탭바를 제외한 본문 */
+        .app-content {
+            width: 100%;
+            height: calc(100svh - 70px);
+            padding: 39px 16px 20px;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .app-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* =========================
+           상단 헤더
+        ========================= */
+        .top-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .brand-logo {
+            width: 91px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .notification-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+        }
+
+        .notification-icon {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+        }
+
+        /* =========================
+           제목
+        ========================= */
+        .page-title {
+            margin-top: 10px;
+            color: #202b39;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: -0.8px;
+        }
+
+        /* =========================
+           검색창
+        ========================= */
+        .search-form {
+            position: relative;
+            width: 100%;
+            margin-top: 14px;
+        }
+
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            left: 17px;
+            z-index: 2;
+            width: 21px;
+            height: 21px;
+            object-fit: contain;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .search-input {
+            display: block;
+            width: 100%;
+            height: 48px;
+            padding: 0 18px 0 54px;
+            border: 1px solid #c8d0db;
+            border-radius: 17px;
+            outline: none;
+            background-color: #ffffff;
+            color: #273343;
+            font-size: 14px;
+            caret-color: #4f8ef7;
+        }
+
+        .search-input::placeholder {
+            color: #a5afbd;
+            opacity: 1;
+        }
+
+        .search-input:focus {
+            border-color: #4f8ef7;
+            box-shadow: 0 0 0 2px rgba(79, 142, 247, 0.1);
+        }
+
+        /* =========================
+           진료과 목록
+        ========================= */
+        .department-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 20px;
+            row-gap: 34px;
+            width: 100%;
+            margin-top: 28px;
+            padding: 0 20px;
+        }
+
+        .department-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-width: 0;
+        }
+
+        .department-icon-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #f0f6ff;
+        }
+
+        .department-icon {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .department-name {
+            margin-top: 9px;
+            color: #303b49;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.3;
+            text-align: center;
+            white-space: nowrap;
+            letter-spacing: -0.5px;
+        }
+
+        /* =========================
+           예방접종 배너
+        ========================= */
+        .vaccine-banner {
+            position: relative;
+            width: 100%;
+            min-height: 90px;
+            margin-top: 29px;
+            padding: 10px 135px 10px 24px;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #e2faf7;
+        }
+
+        .vaccine-title {
+            color: #24303f;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.4px;
+        }
+
+        .vaccine-description {
+            margin-top: 1px;
+            color: #4c5967;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.3;
+            white-space: nowrap;
+        }
+
+        .vaccine-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 25px;
+            margin-top: 8px;
+            padding: 0 8px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #4fd4c4;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .vaccine-arrow {
+            margin-left: 5px;
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .vaccine-image {
+            position: absolute;
+            right: 12px;
+            bottom: 5px;
+            width: 105px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        /* =========================
+           하단 공통 탭바
+        ========================= */
+        .bottom-tabbar {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            display: flex;
+            width: 100%;
+            height: 70px;
+            border-top: 1px solid #e5e8ed;
+            background-color: #ffffff;
+            box-shadow: 0 -2px 8px rgba(25, 42, 70, 0.03);
+        }
+
+        .tab-item {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            color: #4d5866;
+        }
+
+        .tab-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .tab-name {
+            margin-top: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1;
+            white-space: nowrap;
+            letter-spacing: -0.4px;
+        }
+
+        .tab-item.active {
+            color: #4f8ef7;
+        }
+
+        /* 눌림 효과 */
+        .department-item:active,
+        .vaccine-button:active,
+        .tab-item:active {
+            opacity: 0.65;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="app">
+
+        <!-- 본문 -->
+        <div class="app-content">
+
+            <!-- 상단 로고와 알림 -->
+            <header class="top-header">
+
+                <!-- 로고 클릭 시 홈 화면 이동 -->
+                <a
+                    href="./home.html"
+                    class="brand-link"
+                    aria-label="Q-Link 홈 화면으로 이동"
+                >
+
+                <img
+                    src="./images/homeLogo.svg"
+                    alt="Q-Link 로고"
+                    class="brand-logo"
+                ></a>
+                <a
+                    href="./알림화면"
+                    class="notification-button"
+                    aria-label="알림 화면으로 이동"
+                >
+                    <img
+                        src="./icons/homebell.svg"
+                        alt="알림 아이콘"
+                        class="notification-icon"
+                    >
+                </a>
+
+            </header>
+
+            <!-- 화면 제목 -->
+            <h1 class="page-title">
+                진료과를 선택해주세요
+            </h1>
+
+            <!-- 검색창 -->
+            <form
+                class="search-form"
+                action="./검색결과화면"
+                method="get"
+            >
+
+                <img
+                    src="./icons/homesearch.svg"
+                    alt="검색 돋보기 아이콘"
+                    class="search-icon"
+                >
+
+                <label for="departmentSearch" hidden>
+                    진료과 또는 전문의 검색
+                </label>
+
+                <input
+                    type="search"
+                    id="departmentSearch"
+                    name="keyword"
+                    class="search-input"
+                    placeholder="진료과, 전문의명을 검색해주세요."
+                >
+
+            </form>
+
+            <!-- 진료과 목록 -->
+            <nav
+                class="department-list"
+                aria-label="진료과 선택"
+            >
+
+                <!-- 내과 -->
+                <a
+                    href="./hospitalapp.html"
+                    class="department-item"
+                >
+                    <span class="department-icon-box">
+                        <img
+                            src="./icons/searchicons_1.svg"
+                            alt="내과 아이콘"
+                            class="department-icon"
+                        >
+                    </span>
+                    <span class="department-name">내과</span>
+                </a>
+
+                <!-- 이비인후과 -->
+                <a
+                    href="./hospitalapp.html"
+                    class="department-item"
+                >
+                    <span class="department-icon-box">
+                        <img
+                            src="./icons/searchicons_2.svg"
+                            alt="이비인후과 아이콘"
+                            class="department-icon"
+                        >
+                    </span>
+                    <span class="department-name">이비인후과</span>
+                </a>
+
+                <!-- 치과 -->
+                <a
+                    href="./hospitalapp.html"
+                    class="department-item"
+                >
+                    <span class="department-icon-box">
+                        <img
+                            src="./icons/searchicons_3.svg"
+                            alt="치과 아이콘"
+                            class="department-icon"
+                        >
+                    </span>
+                    <span class="department-name">치과</span>
+                </a>
+
+                <!-- 피부과 -->
+                <a
+                    href="./hospitalapp.html"
+                    class="department-item"
+                >
+                    <span class="department-icon-box">
+                        <img
+                            src="./icons/searchicons_4.svg"
+                            alt="피부과 아이콘"
+                            class="department-icon"
+                        >
+                    </span>
+                    <span class="department-name">피부과</span>
+                </a>
+
+                <!-- 정형외과 -->
+                <a
+                    href="./hospitalapp.html"
+                    class="department-item"
+                >
+                    <span class="department-icon-box">
+                        <img
+                            src="./icons/searchicons_5.svg"
+                            alt="정형외과 아이콘"
+                            class="department-icon"
+                        >
+                    </span>
+                    <span class="department-name">정형외과</span>
+                </a>
+
+                <!-- 소아과 -->
+                <a
+                    href="./hospitalapp.html"
+                    class="department-item"
+                >
+                    <span class="department-icon-box">
+                        <img
+                            src="./icons/searchicons_6.svg"
+                            alt="소아과 아이콘"
+                            class="department-icon"
+                        >
+                    </span>
+                    <span class="department-name">소아과</span>
+                </a>
+
+                <!-- 안과 -->
+                <a
+                    href="./hospitalapp.html"
+                    class="department-item"
+                >
+                    <span class="department-icon-box">
+                        <img
+                            src="./icons/searchicons_7.svg"
+                            alt="안과 아이콘"
+                            class="department-icon"
+                        >
+                    </span>
+                    <span class="department-name">안과</span>
+                </a>
+
+                <!-- 산부인과 -->
+                <a
+                    href="./hospitalapp.html"
+                    class="department-item"
+                >
+                    <span class="department-icon-box">
+                        <img
+                            src="./icons/searchicons_8.svg"
+                            alt="산부인과 아이콘"
+                            class="department-icon"
+                        >
+                    </span>
+                    <span class="department-name">산부인과</span>
+                </a>
+
+                <!-- 가정의학과 -->
+                <a
+                    href="./hospitalapp.html"
+                    class="department-item"
+                >
+                    <span class="department-icon-box">
+                        <img
+                            src="./icons/searchicons_9.svg"
+                            alt="가정의학과 아이콘"
+                            class="department-icon"
+                        >
+                    </span>
+                    <span class="department-name">가정의학과</span>
+                </a>
+
+            </nav>
+
+            <!-- 독감 예방접종 배너 -->
+            <article class="vaccine-banner">
+
+                <h2 class="vaccine-title">
+                    독감 예방접종
+                </h2>
+
+                <p class="vaccine-description">
+                    지금 접수 가능해요!
+                </p>
+
+                <a
+                    href="./예방접종접수화면"
+                    class="vaccine-button"
+                >
+                    접수하기
+                    <span class="vaccine-arrow">›</span>
+                </a>
+
+                <img
+                    src="./images/homrbannerimg.svg"
+                    alt="주사기와 백신 이미지"
+                    class="vaccine-image"
+                >
+
+            </article>
+
+        </div>
+
+        <!-- 하단 공통 탭바 -->
+        <nav
+            class="bottom-tabbar"
+            aria-label="하단 메뉴"
+        >
+
+            <!-- 홈 -->
+            <a
+                href="./home.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_home.svg"
+                    alt="홈 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">홈</span>
+            </a>
+
+            <!-- 검색 -->
+            <a
+                href="./search.html"
+                class="tab-item active"
+            >
+                <img
+                    src="./icons/tabbaricons_search(blue).svg"
+                    alt="검색 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">검색</span>
+            </a>
+
+            <!-- 대기현황 -->
+            <a
+                href="./wait.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_wait.svg"
+                    alt="대기현황 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">대기현황</span>
+            </a>
+
+            <!-- 접수내역 -->
+            <a
+                href="./list.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_list.svg"
+                    alt="접수 내역 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">접수 내역</span>
+            </a>
+
+            <!-- 마이페이지 -->
+            <a
+                href="./mypage.html"
+                class="tab-item"
+            >
+                <img
+                    src="./icons/tabbaricons_my.svg"
+                    alt="마이페이지 화면 아이콘"
+                    class="tab-icon"
+                >
+                <span class="tab-name">마이페이지</span>
+            </a>
+
+        </nav>
+
+    </main>
+
+</body>
+</html>

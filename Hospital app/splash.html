@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- 모바일 앱 전용 화면 설정 -->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Q-Link Splash</title>
+
+    <style>
+        /* 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: "Pretendard", "SUIT", Arial, sans-serif;
+            background-color: #ffffff;
+        }
+
+        /* 전체 스플래시 화면 */
+        .splash {
+            position: relative;
+            width: 100%;
+            height: 100svh;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    180deg,
+                    #f5faff 0%,
+                    #ffffff 26%,
+                    #ffffff 65%,
+                    #f3faff 100%
+                );
+        }
+
+        /* 중앙 콘텐츠 */
+        .splash-content {
+            position: absolute;
+            top: 34%;
+            left: 50%;
+            z-index: 10;
+            width: 100%;
+            padding: 0 20px;
+            text-align: center;
+            transform: translateX(-50%);
+        }
+
+        /* 로고 이미지 */
+        .logo-image {
+            display: block;
+            width: 135px;
+            height: auto;
+            margin: 0 auto;
+            object-fit: contain;
+        }
+
+
+        /* 슬로건 */
+        .slogan {
+            margin-top: 34px;
+            color: #7d8794;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.45;
+            letter-spacing: -0.7px;
+        }
+
+        /* 배경 장식 원 공통 */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: #eff7ff;
+        }
+
+        /* 왼쪽 위 큰 원 */
+        .circle-left-top {
+            top: 69px;
+            left: -31px;
+            width: 64px;
+            height: 64px;
+        }
+
+        /* 오른쪽 위 큰 원 */
+        .circle-right-top {
+            top: 10px;
+            right: -28px;
+            width: 73px;
+            height: 73px;
+        }
+
+        /* 오른쪽 중간 작은 원 */
+        .circle-right-middle {
+            top: 198px;
+            right: 3px;
+            width: 19px;
+            height: 19px;
+        }
+
+        /* 왼쪽 아래 작은 원 */
+        .circle-left-bottom {
+            bottom: 333px;
+            left: 9px;
+            width: 25px;
+            height: 25px;
+        }
+
+        /* 하단 물결 영역 */
+        .wave-area {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 36%;
+            overflow: hidden;
+        }
+
+        /* 뒤쪽 물결 */
+        .wave-back {
+            position: absolute;
+            top: 22px;
+            left: -27%;
+            width: 155%;
+            height: 190px;
+            border-radius: 50% 50% 0 0;
+            background-color: rgba(232, 245, 255, 0.9);
+            transform: rotate(8deg);
+        }
+
+        /* 앞쪽 물결 */
+        .wave-front {
+            position: absolute;
+            top: 67px;
+            left: -18%;
+            width: 145%;
+            height: 210px;
+            border-radius: 50% 50% 0 0;
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(221, 241, 255, 0.95) 0%,
+                    rgba(241, 249, 255, 0.95) 100%
+                );
+            transform: rotate(-10deg);
+        }
+
+        /* 하단 남는 영역을 같은 배경으로 채움 */
+        .wave-fill {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 170px;
+            background:
+                linear-gradient(
+                    180deg,
+                    #e8f6ff 0%,
+                    #f4faff 100%
+                );
+        }
+    </style>
+</head>
+
+<body>
+    <main class="splash">
+
+        <!-- 배경 장식 원 -->
+        <span class="circle circle-left-top"></span>
+        <span class="circle circle-right-top"></span>
+        <span class="circle circle-right-middle"></span>
+        <span class="circle circle-left-bottom"></span>
+
+        <!-- 중앙 로고 및 문구 -->
+        <section class="splash-content">
+
+            <!-- 삽입하는 이미지는 로고만 사용 -->
+            <img
+                src="./images/Logo.svg"
+                alt="Q-Link 로고"
+                class="logo-image"
+            >
+            <p class="slogan">
+                기다림은 줄이고,<br>
+                안심은 더하고.
+            </p>
+
+        </section>
+
+        <!-- 하단 물결 배경 -->
+        <div class="wave-area" aria-hidden="true">
+            <div class="wave-fill"></div>
+            <div class="wave-back"></div>
+            <div class="wave-front"></div>
+        </div>
+
+    </main>
+    <script>
+    // 3초 후 온보딩 1 화면으로 이동
+    setTimeout(function () {
+        window.location.href = "./onboard1.html";
+    }, 3000);
+</script>
+</body>
+</html>
