@@ -590,6 +590,331 @@
         .tab-item:active {
             opacity: 0.65;
         }
+        /* =========================
+   슬라이드 메뉴
+========================= */
+
+/* 메뉴가 열린 동안 본문 스크롤 방지 */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* 전체 메뉴 배경 */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 500;
+
+    width: 100%;
+    height: 100svh;
+
+    visibility: hidden;
+    overflow: hidden;
+
+    background-color: rgba(0, 0, 0, 0);
+
+    transition:
+        visibility 0s linear 0.35s,
+        background-color 0.35s ease;
+}
+
+/* 메뉴가 열렸을 때 */
+.menu-overlay.open {
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.68);
+
+    transition:
+        visibility 0s linear 0s,
+        background-color 0.35s ease;
+}
+
+/* 왼쪽에서 등장하는 메뉴 패널 */
+.side-menu {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 81%;
+    height: 100svh;
+
+    overflow: hidden;
+
+    border-radius: 0 17px 17px 0;
+
+    background-color: #ffffff;
+
+    transform: translateX(-100%);
+
+    transition: transform 0.35s cubic-bezier(0.22, 0.8, 0.32, 1);
+}
+
+/* 메뉴가 열린 상태 */
+.menu-overlay.open .side-menu {
+    transform: translateX(0);
+}
+
+/* 메뉴 내부 스크롤 영역 */
+.side-menu-scroll {
+    width: 100%;
+    height: 100%;
+    padding: 47px 24px 40px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    scrollbar-width: none;
+    overscroll-behavior: contain;
+}
+
+.side-menu-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* 메뉴 바깥 닫기 버튼 */
+.menu-close-button {
+    position: absolute;
+    top: 39px;
+    right: 10px;
+    z-index: 510;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    cursor: pointer;
+}
+
+.menu-close-button img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+
+    /* 어두운 배경 위에서 잘 보이게 */
+    filter: brightness(0) invert(1);
+}
+
+/* =========================
+   사용자 프로필
+========================= */
+
+.menu-profile {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.menu-profile-image {
+    flex: 0 0 auto;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+.menu-profile-information {
+    min-width: 0;
+    margin-left: 17px;
+}
+
+.menu-profile-name {
+    color: #202a38;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+}
+
+.menu-profile-phone {
+    margin-top: 3px;
+
+    color: #536071;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+/* 진료내역 보기 버튼 */
+.medical-history-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 49px;
+
+    margin-top: 25px;
+
+    border-radius: 10px;
+
+    background-color: #526fbb;
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+/* =========================
+   메뉴 구분선과 공통 섹션
+========================= */
+
+.menu-divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 35px 0 0;
+
+    background-color: #ebedf1;
+}
+
+.menu-section {
+    width: 100%;
+    padding-top: 16px;
+}
+
+.menu-section-title {
+    color: #20242b;
+
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.4px;
+}
+
+/* =========================
+   바로가기 / 진료예약 카드
+========================= */
+
+.menu-shortcut-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+
+    width: 100%;
+    margin-top: 15px;
+}
+
+.menu-shortcut-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    height: 70px;
+
+    border: 1px solid #e3e6eb;
+    border-radius: 8px;
+
+    background-color: #ffffff;
+
+    cursor: pointer;
+}
+
+.menu-shortcut-icon {
+    width: 25px;
+    height: 25px;
+
+    object-fit: contain;
+}
+
+.menu-shortcut-name {
+    margin-top: 7px;
+
+    overflow: hidden;
+
+    color: #66707f;
+
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.2;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* =========================
+   서비스 목록
+========================= */
+
+.service-list {
+    width: 100%;
+    margin-top: 13px;
+    list-style: none;
+}
+
+.service-item {
+    width: 100%;
+}
+
+.service-link,
+.service-button {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 48px;
+
+    color: #737c89;
+
+    cursor: pointer;
+}
+
+.service-button {
+    border: 0;
+    background-color: transparent;
+    text-align: left;
+}
+
+.service-icon {
+    flex: 0 0 auto;
+
+    width: 24px;
+    height: 24px;
+
+    object-fit: contain;
+}
+
+.service-name {
+    margin-left: 15px;
+
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.service-arrow {
+    width: 18px;
+    height: 18px;
+
+    margin-left: auto;
+
+    object-fit: contain;
+}
+
+/* 눌림 효과 */
+.medical-history-button:active,
+.menu-shortcut-item:active,
+.service-link:active,
+.service-button:active,
+.menu-close-button:active {
+    opacity: 0.65;
+}
     </style>
 </head>
 
@@ -609,17 +934,20 @@
                     class="brand-logo"
                 >
 
-                <a
-                    href="./알림화면"
-                    class="notification-button"
-                    aria-label="알림 화면으로 이동"
-                >
-                    <img
-                        src="./icons/homebell.svg"
-                        alt="알림종모양아이콘"
-                        class="notification-icon"
-                    >
-                </a>
+                <button
+    type="button"
+    class="notification-button"
+    id="menuOpenButton"
+    aria-label="전체 메뉴 열기"
+    aria-controls="sideMenu"
+    aria-expanded="false"
+>
+    <img
+        src="./icons/hamberger.svg"
+        alt=""
+        class="notification-icon"
+    >
+</button>
 
             </header>
 
@@ -1001,8 +1329,382 @@
             </a>
 
         </nav>
+        <!-- =========================
+     햄버거 슬라이드 메뉴
+========================= -->
+<div
+    class="menu-overlay"
+    id="menuOverlay"
+    aria-hidden="true"
+>
+    <!-- 왼쪽 메뉴 패널 -->
+    <aside
+        class="side-menu"
+        id="sideMenu"
+        aria-label="전체 메뉴"
+        tabindex="-1"
+    >
+        <div class="side-menu-scroll">
+
+            <!-- 사용자 프로필 -->
+            <section class="menu-profile">
+                <img
+                    src="./icons/menuicons_profile.svg"
+                    alt="김서연님 프로필"
+                    class="menu-profile-image"
+                >
+
+                <div class="menu-profile-information">
+                    <h2 class="menu-profile-name">
+                        김서연님 (만29세)
+                    </h2>
+
+                    <p class="menu-profile-phone">
+                        010-1234-5678
+                    </p>
+                </div>
+            </section>
+
+            <!-- 진료내역 보기 -->
+            <a
+                href="./list.html"
+                class="medical-history-button"
+            >
+                진료내역 보기
+            </a>
+
+            <div class="menu-divider"></div>
+
+            <!-- 바로가기 -->
+            <section class="menu-section">
+                <h3 class="menu-section-title">
+                    바로가기
+                </h3>
+
+                <div class="menu-shortcut-list">
+
+                    <a
+                        href="./home.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_home.svg"
+                            alt="홈 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">홈</span>
+                    </a>
+
+                    <a
+                        href="./search.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_search.svg"
+                            alt="검색 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">검색</span>
+                    </a>
+
+                    <a
+                        href="./wait.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_wait.svg"
+                            alt="대기현황 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">대기현황</span>
+                    </a>
+
+                    <a
+                        href="./list.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_list.svg"
+                            alt="접수내역 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">접수내역</span>
+                    </a>
+
+                </div>
+            </section>
+
+            <div class="menu-divider"></div>
+
+            <!-- 진료 / 예약 -->
+            <section class="menu-section">
+                <h3 class="menu-section-title">
+                    진료 / 예약
+                </h3>
+
+                <div class="menu-shortcut-list">
+
+                    <a
+                        href="./test-result.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_paperandpen.svg"
+                            alt="검사결과 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">검사결과</span>
+                    </a>
+
+                    <a
+                        href="./prescription.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_paper.svg"
+                            alt="처방전 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">처방전</span>
+                    </a>
+
+                    <a
+                        href="./qr-code.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_QRcord.svg"
+                            alt="QR코드 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">QR코드</span>
+                    </a>
+
+                    <a
+                        href="./document-history.html"
+                        class="menu-shortcut-item"
+                    >
+                        <img
+                            src="./icons/menuicons_check.svg"
+                            alt="문진내역 아이콘"
+                            class="menu-shortcut-icon"
+                        >
+                        <span class="menu-shortcut-name">문진내역</span>
+                    </a>
+
+                </div>
+            </section>
+
+            <div class="menu-divider"></div>
+
+            <!-- 서비스 -->
+            <section class="menu-section">
+                <h3 class="menu-section-title">
+                    서비스
+                </h3>
+
+                <ul class="service-list">
+
+                    <li class="service-item">
+                        <a
+                            href="./notice.html"
+                            class="service-link"
+                        >
+                            <img
+                                src="./icons/menuicons_speaker.svg"
+                                alt="공지사항 아이콘"
+                                class="service-icon"
+                            >
+
+                            <span class="service-name">
+                                공지사항
+                            </span>
+
+                            <img
+                                src="./icons/menuicons_next.svg"
+                                alt="오른쪽 화살표 이동 아이콘"
+                                class="service-arrow"
+                            >
+                        </a>
+                    </li>
+
+                    <li class="service-item">
+                        <a
+                            href="./customer-service.html"
+                            class="service-link"
+                        >
+                            <img
+                                src="./icons/menuicons_headset.svg"
+                                alt="고객센터 아이콘"
+                                class="service-icon"
+                            >
+
+                            <span class="service-name">
+                                고객센터
+                            </span>
+
+                            <img
+                                src="./icons/menuicons_next.svg"
+                                alt="오른쪽 화살표 이동 아이콘"
+                                class="service-arrow"
+                            >
+                        </a>
+                    </li>
+
+                    <li class="service-item">
+                        <a
+                            href="./setting.html"
+                            class="service-link"
+                        >
+                            <img
+                                src="./icons/menuicons_settings.svg"
+                                alt="설정 아이콘"
+                                class="service-icon"
+                            >
+
+                            <span class="service-name">
+                                설정
+                            </span>
+
+                            <img
+                                src="./icons/menuicons_next.svg"
+                                alt="오른쪽 화살표 이동 아이콘"
+                                class="service-arrow"
+                            >
+                        </a>
+                    </li>
+
+                    <li class="service-item">
+                        <button
+                            type="button"
+                            class="service-button"
+                            id="logoutButton"
+                        >
+                            <img
+                                src="./icons/menuicons_logout.svg"
+                                alt="로그아웃 아이콘"
+                                class="service-icon"
+                            >
+
+                            <span class="service-name">
+                                로그아웃
+                            </span>
+
+                            <img
+                                src="./icons/menuicons_next.svg"
+                                alt="오른쪽 화살표 이동 아이콘"
+                                class="service-arrow"
+                            >
+                        </button>
+                    </li>
+
+                </ul>
+            </section>
+
+        </div>
+    </aside>
+
+   
+    
+</div>
 
     </main>
+    <script>
+    "use strict";
+
+const menuOpenButton =
+    document.getElementById("menuOpenButton");
+
+const menuOverlay =
+    document.getElementById("menuOverlay");
+
+const sideMenu =
+    document.getElementById("sideMenu");
+
+function openMenu() {
+    menuOverlay.classList.add("open");
+
+    menuOverlay.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    menuOpenButton.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+    document.body.classList.add("menu-open");
+}
+
+function closeMenu() {
+    menuOverlay.classList.remove("open");
+
+    menuOverlay.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    menuOpenButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    document.body.classList.remove("menu-open");
+}
+
+/* 메뉴 열기 */
+menuOpenButton.addEventListener(
+    "click",
+    openMenu
+);
+
+/* 어두운 바깥 영역 클릭 시 닫기 */
+menuOverlay.addEventListener(
+    "click",
+    function (event) {
+        if (event.target === menuOverlay) {
+            closeMenu();
+        }
+    }
+);
+
+/* 메뉴 안쪽 클릭은 닫히지 않게 */
+sideMenu.addEventListener(
+    "click",
+    function (event) {
+        event.stopPropagation();
+    }
+);
+
+/* ESC 키로 닫기 */
+document.addEventListener(
+    "keydown",
+    function (event) {
+        if (
+            event.key === "Escape" &&
+            menuOverlay.classList.contains("open")
+        ) {
+            closeMenu();
+        }
+    }
+);
+
+    /* 로그아웃 예시 */
+    logoutButton.addEventListener(
+        "click",
+        function () {
+            const logoutConfirmed =
+                window.confirm("로그아웃하시겠습니까?");
+
+            if (!logoutConfirmed) {
+                return;
+            }
+
+            window.location.href = "./login.html";
+        }
+    );
+</script>
 
 </body>
 </html>
