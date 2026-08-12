@@ -22,7 +22,6 @@ form.addEventListener("submit", (e) => {
     })
     .catch((error) => {
       console.error("Error!", error.message);
-
       msg.innerHTML = "전송에 실패했습니다.";
     });
 });
