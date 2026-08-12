@@ -9,21 +9,34 @@ form.addEventListener("submit", (e) => {
 
   msg.innerHTML = "전송 중...";
 
+  const formData = new FormData(form);
+
+  console.log("Name:", formData.get("Name"));
+  console.log("Email:", formData.get("Email"));
+  console.log("Message:", formData.get("Message"));
+
   fetch(scriptURL, {
     method: "POST",
-    body: new FormData(form),
+    body: formData,
   })
     .then((response) => {
+      console.log("응답 상태:", response.status);
+
+      return response.text();
+    })
+    .then((data) => {
+      console.log("Apps Script 응답:", data);
+
       msg.innerHTML = "Message sent successfully";
+
+      form.reset();
 
       setTimeout(function () {
         msg.innerHTML = "";
       }, 5000);
-
-      form.reset();
     })
     .catch((error) => {
-      console.error("Error!", error);
+      console.error("전송 오류:", error);
       msg.innerHTML = "전송에 실패했습니다.";
     });
 });
