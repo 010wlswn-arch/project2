@@ -1,42 +1,40 @@
-const scriptURL =
-  "https://script.google.com/macros/s/AKfycbz_kZvyKc9vRNrzWRw0EF-U0kUfsiCA0Bn8axqlNDqI5tXOob51BIUnrIdJWN3XSf0eNw/exec";
+document.addEventListener("DOMContentLoaded", function () {
 
-const form = document.forms["submit-to-google-sheet"];
-const msg = document.getElementById("msg");
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycbz_kZvyKc9vRNrzWRw0EF-U0kUfsiCA0Bn8axqlNDqI5tXOob51BIUnrIdJWN3XSf0eNw/exec";
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+  const form = document.querySelector('form[name="submit-to-google-sheet"]');
+  const msg = document.getElementById("msg");
 
-  msg.innerHTML = "전송 중...";
+  if (!form) {
+    console.error("폼을 찾을 수 없습니다.");
+    return;
+  }
 
-  const formData = new FormData(form);
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  console.log("Name:", formData.get("Name"));
-  console.log("Email:", formData.get("Email"));
-  console.log("Message:", formData.get("Message"));
+    msg.innerHTML = "전송 중...";
 
-  fetch(scriptURL, {
-    method: "POST",
-    body: formData,
-  })
-    .then((response) => {
-      console.log("응답 상태:", response.status);
+    const formData = new FormData(form);
 
-      return response.text();
+    fetch(scriptURL, {
+      method: "POST",
+      body: formData,
     })
-    .then((data) => {
-      console.log("Apps Script 응답:", data);
+      .then((response) => {
+        msg.innerHTML = "Message sent successfully";
 
-      msg.innerHTML = "Message sent successfully";
+        form.reset();
 
-      form.reset();
+        setTimeout(function () {
+          msg.innerHTML = "";
+        }, 5000);
+      })
+      .catch((error) => {
+        console.error("Error!", error);
+        msg.innerHTML = "전송에 실패했습니다.";
+      });
+  });
 
-      setTimeout(function () {
-        msg.innerHTML = "";
-      }, 5000);
-    })
-    .catch((error) => {
-      console.error("전송 오류:", error);
-      msg.innerHTML = "전송에 실패했습니다.";
-    });
 });
