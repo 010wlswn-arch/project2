@@ -7,6 +7,8 @@ const msg = document.getElementById("msg");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  msg.innerHTML = "전송 중...";
+
   fetch(scriptURL, {
     method: "POST",
     body: new FormData(form),
@@ -21,7 +23,7 @@ form.addEventListener("submit", (e) => {
       form.reset();
     })
     .catch((error) => {
-      console.error("Error!", error.message);
+      console.error("Error!", error);
       msg.innerHTML = "전송에 실패했습니다.";
     });
 });
