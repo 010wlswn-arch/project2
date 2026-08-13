@@ -1,0 +1,139 @@
+@charset "utf-8";
+body{
+    font-family: "맑은 고딕", "malgun gothic", sans-serif;
+}
+*{margin: 0; padding: 0; box-sizing: border-box;}
+div{
+    width: 200px;
+    height: 200px;
+    /* border: 1px solid #000; */
+}
+.parent{
+    width: 1000px;
+    height: 1000px;
+    background: #87ceea;
+    margin: 0 auto;
+    position: relative;
+}
+.parent div{
+    width: 200px;
+    height: 200px;
+    /* border: 1px solid #000; */
+}
+/* 왼쪽 위 */
+.parent .box1{
+    background: #81007f;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* 오른쪽 위 */
+.parent .box2{
+    background: #81007f;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+/* 왼쪽 아래 */
+.parent .box3{
+    background: #81007f;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+/* 오른쪽 아래 */
+.parent .box4{
+    background: #81007f;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+
+/* =========================
+   노란색 박스 4개
+========================= */
+
+/* 왼쪽 위 */
+.parent .box5{
+    background: yellow;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}
+
+/* 오른쪽 위 */
+.parent .box6{
+    background: yellow;
+    position: absolute;
+    right: 100px;
+    top: 100px;
+}
+
+/* 왼쪽 아래 */
+.parent .box7{
+    background: yellow;
+    position: absolute;
+    left: 100px;
+    bottom: 100px;
+}
+
+/* 오른쪽 아래 */
+.parent .box8{
+    background: yellow;
+    position: absolute;
+    right: 100px;
+    bottom: 100px;
+}
+
+
+/* =========================
+   빨간색 박스 4개
+========================= */
+
+/* 왼쪽 위 */
+.parent .box9{
+    background: red;
+    position: absolute;
+    left: 200px;
+    top: 200px;
+}
+
+/* 오른쪽 위 */
+.parent .box10{
+    background: red;
+    position: absolute;
+    right: 200px;
+    top: 200px;
+}
+
+/* 왼쪽 아래 */
+.parent .box11{
+    background: red;
+    position: absolute;
+    left: 200px;
+    bottom: 200px;
+}
+
+/* 오른쪽 아래 */
+.parent .box12{
+    background: red;
+    position: absolute;
+    right: 200px;
+    bottom: 200px;
+}
+
+
+/* =========================
+   가운데 검정색
+========================= */
+
+.parent .box13{
+    background: #000;
+    position: absolute;
+    left: 400px;
+    top: 400px;
+}
