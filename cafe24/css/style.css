@@ -1,0 +1,1887 @@
+@charset "utf-8";
+
+/* =========================
+   기본 초기화
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    width: 100%;
+    height: 80px;
+    background-color: #fff;
+}
+
+
+/* 가운데 영역 */
+
+.header .inner {
+    width: 1280px;
+    height: 80px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    flex-shrink: 0;
+}
+
+.logo a {
+    display: block;
+}
+
+.logo img {
+    width: auto;
+    height: 45px;
+}
+
+
+/* =========================
+   메뉴
+========================= */
+
+.gnb {
+    margin-left: 110px;
+}
+
+.gnb ul {
+    display: flex;
+    align-items: center;
+    gap: 65px;
+}
+
+.gnb ul li a {
+    display: block;
+
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+
+    white-space: nowrap;
+
+    transition: color 0.2s;
+}
+
+
+/* 메뉴 hover */
+
+.gnb ul li a:hover {
+    font-weight: 700;
+    color: #4b2e1f;
+}
+
+
+/* =========================
+   매장 찾기 버튼
+========================= */
+
+.store-btn {
+    margin-left: auto;
+
+     height: 40px;
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    background-color: #4b2e1f;
+    color: #fff;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.store-btn img {
+    width: 17px;
+    height: 17px;
+    object-fit: contain;
+}
+
+.store-btn:hover {
+    background-color: #6b4936;
+    font-weight: 700;
+}
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+    width: 100%;
+    height: 520px;
+
+    background-image: url("../images/background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+/* =========================
+   HERO INNER
+========================= */
+
+.hero .hero-inner {
+    width: 1280px;
+    height: 100%;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.hero-content {
+    width: 600px;
+}
+
+
+/* =========================
+   HERO LABEL
+========================= */
+
+.hero-label {
+    display: inline-block;
+
+    padding: 8px 22px;
+    margin-bottom: 22px;
+
+    background-color: #fff;
+    border-radius: 20px;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    color: #e88a29;
+}
+
+
+/* =========================
+   HERO TITLE
+========================= */
+
+.hero-title {
+    margin-bottom: 38px;
+
+    font-size: 64px;
+    line-height: 1.12;
+    font-weight: 700;
+
+    color: #4b3024;
+}
+
+.hero-title strong {
+    color: #e88421;
+    font-weight: 700;
+}
+
+
+/* =========================
+   HERO DESCRIPTION
+========================= */
+
+.hero-desc {
+    margin-bottom: 58px;
+
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: 500;
+
+    color: #222;
+}
+
+
+/* =========================
+   HERO BUTTONS
+========================= */
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+
+/* =========================
+   HERO BUTTON COMMON
+========================= */
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+
+/* =========================
+   HERO BUTTON COMMON
+========================= */
+
+.hero-btn {
+    width: auto;
+    height: 42px;
+    padding: 0 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    flex: none;
+
+    border-radius: 6px;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    transition: 0.2s;
+}
+
+.hero-btn img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   STORE BUTTON
+========================= */
+
+.hero-btn.store {
+    background-color: #e88421;
+    color: #fff;
+}
+
+.hero-btn.store:hover {
+    background-color: #d67516;
+    font-weight: 700;
+}
+
+
+/* =========================
+   GUIDE BUTTON
+========================= */
+
+.hero-btn.guide {
+    width: auto;
+
+    border: 1px solid #8d715f;
+    background-color: transparent;
+    color: #654b3b;
+}
+
+.hero-btn.guide:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    font-weight: 700;
+}
+/* =========================
+   INTRO SECTION
+========================= */
+
+.intro {
+    width: 100%;
+    height: 520px;
+    background-color: #fffdf9;
+}
+
+
+/* =========================
+   INTRO INNER
+========================= */
+
+.intro .intro-inner {
+    width: 1280px;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 65px;
+}
+
+
+/* =========================
+   INTRO TITLE AREA
+========================= */
+
+.intro-title-area {
+    text-align: center;
+}
+
+
+/* =========================
+   INTRO MAIN ICON
+========================= */
+
+.intro-main-icon {
+    width: 52px;
+    height: 52px;
+
+    object-fit: contain;
+
+    margin: 0 auto 25px;
+}
+
+
+/* =========================
+   INTRO TITLE
+========================= */
+
+.intro-title {
+    margin-bottom: 22px;
+
+    font-size: 40px;
+    font-weight: 700;
+    color: #3f2a20;
+
+    line-height: 1.2;
+}
+
+
+/* =========================
+   INTRO DESCRIPTION
+========================= */
+
+.intro-desc {
+    font-size: 16px;
+    font-weight: 400;
+
+    line-height: 1.7;
+
+    color: #776c65;
+}
+
+
+/* =========================
+   INTRO FEATURE AREA
+========================= */
+
+.intro-features {
+    width: 820px;
+
+    margin: 75px auto 0;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================
+   INTRO FEATURE ITEM
+========================= */
+
+.intro-feature {
+    position: relative;
+
+    width: 25%;
+
+    text-align: center;
+}
+
+
+/* =========================
+   INTRO FEATURE DIVIDER
+========================= */
+
+.intro-feature:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 1px;
+    height: 115px;
+
+    background-color: #e5ddd6;
+}
+
+
+/* =========================
+   INTRO FEATURE ICON
+========================= */
+
+.intro-feature img {
+    width: 48px;
+    height: 48px;
+
+    object-fit: contain;
+
+    margin: 0 auto 20px;
+}
+
+
+/* =========================
+   INTRO FEATURE TEXT
+========================= */
+
+.intro-feature p {
+    font-size: 16px;
+    font-weight: 400;
+
+    line-height: 1.5;
+
+    color: #62554d;
+}
+/* =========================
+   MENU SECTION
+========================= */
+
+.menu-section {
+    width: 100%;
+    padding: 70px 0 75px;
+
+    background-color: #fff;
+}
+
+
+/* =========================
+   MENU INNER
+========================= */
+
+.menu-inner {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+
+/* =========================
+   MENU TITLE AREA
+========================= */
+
+.menu-title-area {
+    position: relative;
+
+    margin-bottom: 45px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   MENU TITLE
+========================= */
+
+.menu-title {
+    font-size: 40px;
+    font-weight: 700;
+
+    color: #3f2a20;
+
+    line-height: 1.2;
+}
+
+
+/* =========================
+   MENU MORE
+========================= */
+
+.menu-more {
+    position: absolute;
+
+    right: 0;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 13px;
+    font-weight: 400;
+
+    color: #6f625b;
+
+    transition: color 0.2s ease;
+}
+
+
+/* 전체 메뉴 보기 hover */
+
+.menu-more:hover {
+    color: #e88421;
+}
+
+
+/* =========================
+   MENU CARD AREA
+========================= */
+
+.menu-list {
+    display: flex;
+    justify-content: center;
+
+    gap: 20px;
+}
+
+
+/* =========================
+   MENU CARD
+========================= */
+
+.menu-card {
+    position: relative;
+
+    width: 240px;
+    height: 365px;
+
+    padding: 20px;
+
+    border: 1px solid #ded5ce;
+    border-radius: 6px;
+
+    background-color: #fff;
+
+    text-align: center;
+
+    transition: 0.2s ease;
+}
+
+
+/* 메뉴 카드 hover */
+
+.menu-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #c9b5a6;
+}
+
+.menu-card:hover .menu-img {
+    transform: scale(1.1);
+}
+
+
+/* =========================
+   MENU IMAGE
+========================= */
+
+.menu-img {
+    width: 180px;
+    height: 200px;
+
+    object-fit: cover;
+
+    margin: 0 auto 20px;
+}
+
+
+/* =========================
+   MENU INFO
+========================= */
+
+.menu-info h3 {
+    margin-bottom: 12px;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    color: #54453c;
+}
+
+
+/* =========================
+   MENU DESCRIPTION
+========================= */
+
+.menu-desc {
+    margin-bottom: 15px;
+
+    font-size: 13px;
+    font-weight: 400;
+
+    color: #80746d;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   MENU PRICE
+========================= */
+
+.menu-price {
+    font-size: 16px;
+    font-weight: 700;
+
+    color: #382a23;
+}
+
+
+/* =========================
+   MENU BADGE
+========================= */
+
+.menu-badge {
+    position: absolute;
+
+    top: -9px;
+    left: -10px;
+
+    padding: 5px 8px;
+
+    border-radius: 15px;
+
+    background-color: #e88421;
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    z-index: 1;
+}
+
+
+/* =========================
+   BEST BADGE
+========================= */
+
+.menu-badge.best {
+    background-color: #d98228;
+}
+
+
+/* =========================
+   NEW BADGE
+========================= */
+
+.menu-badge.new {
+    background-color: #e88421;
+}
+/* =========================
+   GUIDE SECTION
+========================= */
+
+.guide {
+    width: 100%;
+    background-color: #fff;
+}
+
+
+/* =========================
+   GUIDE INNER
+========================= */
+
+.guide-inner {
+    width: 1280px;
+    height: 408px;
+
+    margin: 0 auto;
+    padding-top: 90px;
+
+    background-color: #f5e6cf;
+}
+
+
+/* =========================
+   GUIDE TITLE AREA
+========================= */
+
+.guide-title-area {
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+
+/* =========================
+   GUIDE TITLE
+========================= */
+
+.guide-title {
+    font-size: 40px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    color: #4b3024;
+}
+
+
+/* =========================
+   GUIDE CARD AREA
+========================= */
+
+.guide-list {
+    width: 1280px;
+
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 28px;
+}
+
+
+
+/* =========================
+   GUIDE CARD
+========================= */
+
+.guide-card {
+    position: relative;
+
+    width: 227px;
+    height: 118px;
+
+    padding: 20px 18px;
+
+    display: flex;
+    align-items: center;
+
+    background-color: #fff;
+
+    border-radius: 6px;
+}
+
+
+/* =========================
+   GUIDE NUMBER
+========================= */
+
+.guide-number {
+    width: 18px;
+    height: 18px;
+
+    margin-right: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background-color: #4b3024;
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   GUIDE ICON
+========================= */
+
+.guide-icon {
+    width: 52px;
+    height: 52px;
+
+    margin-right: 14px;
+
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   GUIDE INFO
+========================= */
+
+.guide-info {
+    flex: 1;
+}
+
+
+/* =========================
+   GUIDE CARD TITLE
+========================= */
+
+.guide-info h3 {
+    margin-bottom: 8px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    color: #4b3024;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   GUIDE CARD TEXT
+========================= */
+
+.guide-info p {
+    font-size: 13px;
+    font-weight: 400;
+
+    line-height: 1.5;
+
+    color: #75675e;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   GUIDE ARROW
+========================= */
+
+.guide-card:not(:last-child)::after {
+    content: "➜";
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+}
+/* =========================
+   BENEFIT SECTION
+========================= */
+
+.benefit {
+    width: 100%;
+
+    background-color: #fffdf9;
+}
+
+
+/* =========================
+   BENEFIT INNER
+========================= */
+
+.benefit-inner {
+    width: 1280px;
+    height: 509px;
+
+    margin: 0 auto;
+
+    padding-top: 85px;
+}
+
+
+/* =========================
+   BENEFIT TITLE AREA
+========================= */
+
+.benefit-title-area {
+    margin-bottom: 70px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   BENEFIT TITLE
+========================= */
+
+.benefit-title {
+    font-size: 40px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    color: #4b3024;
+}
+
+
+/* =========================
+   BENEFIT CARD AREA
+========================= */
+
+.benefit-list {
+    width: 1280px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: stretch;
+}
+
+
+/* =========================
+   BENEFIT CARD
+========================= */
+
+.benefit-card {
+    position: relative;
+
+    width: 256px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   BENEFIT CARD DIVIDER
+========================= */
+
+.benefit-card:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 1px;
+    height: 220px;
+
+    background-color: #eadfd5;
+}
+
+
+/* =========================
+   BENEFIT ICON BOX
+========================= */
+
+.benefit-icon-box {
+    width: 78px;
+    height: 78px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e8d3c0;
+    border-radius: 50%;
+}
+
+
+/* =========================
+   BENEFIT ICON
+========================= */
+
+.benefit-icon {
+    width: 44px;
+    height: 44px;
+
+    object-fit: contain;
+}
+
+
+/* =========================
+   BENEFIT CARD TITLE
+========================= */
+
+.benefit-card h3 {
+    margin-bottom: 18px;
+
+    font-size: 24px;
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    color: #4b3024;
+}
+
+
+/* =========================
+   BENEFIT CARD TEXT
+========================= */
+
+.benefit-card p {
+    font-size: 16px;
+    font-weight: 400;
+
+    line-height: 1.6;
+
+    color: #776a62;
+}
+/* =========================
+   INFO SECTION
+========================= */
+
+.info {
+    width: 100%;
+    background-color: #f6e7cf;
+}
+
+
+/* =========================
+   INFO INNER
+========================= */
+
+.info-inner {
+    width: 1280px;
+    height: 661px;
+
+    margin: 0 auto;
+
+    padding-top: 95px;
+}
+
+
+/* =========================
+   INFO TITLE AREA
+========================= */
+
+.info-title-area {
+    margin-bottom: 60px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   INFO TITLE
+========================= */
+
+.info-title {
+    font-size: 40px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    color: #4b3024;
+}
+
+
+/* =========================
+   INFO CONTENT AREA
+========================= */
+
+.info-content {
+    width: 100%;
+
+    display: flex;
+    align-items: stretch;
+
+    gap: 20px;
+}
+
+
+/* =========================
+   STORE INFO CARD
+========================= */
+
+.store-card {
+    width: 256px;
+    height: 375px;
+
+    flex-shrink: 0;
+
+    padding: 45px 25px;
+
+    background-color: #fff;
+
+    border-radius: 6px;
+}
+
+
+/* =========================
+   STORE TITLE
+========================= */
+
+
+.store-title-box {
+    width: 100%;
+
+    margin-bottom: 28px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.store-title-box h3 {
+    font-size: 20px;
+    font-weight: 700;
+
+    color: #4b3024;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   STORE BADGE
+========================= */
+
+.store-badge {
+    padding: 4px 6px;
+
+    flex-shrink: 0;
+
+    border-radius: 4px;
+
+    background-color: #f6eadb;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    color: #e88421;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   STORE DETAIL
+========================= */
+
+.store-detail {
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+.store-detail img {
+    width: 18px;
+    height: 18px;
+
+    flex-shrink: 0;
+
+    object-fit: contain;
+}
+
+.store-detail p {
+    font-size: 16px;
+    font-weight: 400;
+
+    line-height: 1.5;
+
+    color: #695d55;
+}
+
+
+/* =========================
+   STORE BUTTON AREA
+========================= */
+
+.store-buttons {
+    margin-top: 30px;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+/* =========================
+   STORE BUTTON COMMON
+========================= */
+
+.store-buttons a {
+    height: 40px;
+
+    padding: 0 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 5px;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    transition: 0.2s ease;
+}
+
+
+/* =========================
+   FIND BUTTON
+========================= */
+
+.store-find-btn {
+    background-color: #4b3024;
+    color: #fff;
+}
+
+.store-find-btn:hover {
+    background-color: #6b4936;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   DETAIL BUTTON
+========================= */
+
+.store-detail-btn {
+    border: 1px solid #8d715f;
+
+    background-color: #fff;
+
+    color: #4b3024;
+}
+
+.store-detail-btn:hover {
+    background-color: #f5eee9;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   MAP AREA
+========================= */
+
+.map-area {
+    flex: 1;
+
+    height: 375px;
+
+    overflow: hidden;
+
+    border-radius: 2px;
+
+    background-color: #ddd;
+}
+
+
+/* =========================
+   KAKAO MAP
+========================= */
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+/* =========================
+   QNA SECTION
+========================= */
+
+.qna {
+    width: 100%;
+    background-color: #fffdf9;
+}
+
+
+/* =========================
+   QNA INNER
+========================= */
+
+.qna-inner {
+    width: 1280px;
+    height: 404px;
+
+    margin: 0 auto;
+
+    padding-top: 80px;
+}
+
+
+/* =========================
+   QNA TITLE AREA
+========================= */
+
+.qna-title-area {
+    position: relative;
+
+    margin-bottom: 50px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   QNA TITLE
+========================= */
+
+.qna-title {
+    font-size: 40px;
+    font-weight: 700;
+
+    color: #4b3024;
+
+    line-height: 1.2;
+}
+
+
+/* =========================
+   QNA MORE
+========================= */
+
+.qna-more {
+    position: absolute;
+
+    right: 0;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 16px;
+    font-weight: 400;
+
+    color: #75675e;
+
+    transition: color 0.2s ease;
+}
+
+
+/* =========================
+   QNA MORE HOVER
+========================= */
+
+.qna-more:hover {
+    color: #e88421;
+}
+
+
+/* =========================
+   QNA CARD AREA
+========================= */
+
+.qna-list {
+    width: 1280px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 20px;
+}
+
+
+/* =========================
+   QNA CARD
+========================= */
+
+.qna-card {
+    width: 413px;
+    height: 52px;
+
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 1px solid #dfd4ca;
+
+    border-radius: 6px;
+
+    background-color: #fff;
+
+    color: #4b3024;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+/* =========================
+   QNA CARD HOVER
+========================= */
+
+.qna-card:hover {
+    border-color: #b99e89;
+
+    background-color: #faf5ef;
+}
+
+
+/* =========================
+   QNA ARROW
+========================= */
+
+.qna-arrow {
+    font-size: 18px;
+
+    color: #5f4a3d;
+
+    flex-shrink: 0;
+}
+/* =========================
+   QNA ITEM
+========================= */
+
+.qna-item {
+    width: 413px;
+}
+
+
+/* =========================
+   QNA ANSWER
+========================= */
+
+.qna-answer {
+    max-height: 0;
+
+    overflow: hidden;
+
+    padding: 0 20px;
+
+    border-left: 1px solid #dfd4ca;
+    border-right: 1px solid #dfd4ca;
+
+    background-color: #fff;
+
+    transition:
+        max-height 0.3s ease,
+        padding 0.3s ease;
+}
+
+
+/* 답변 글씨 */
+
+.qna-answer p {
+    font-size: 16px;
+    font-weight: 400;
+
+    line-height: 1.6;
+
+    color: #75675e;
+}
+
+
+/* =========================
+   QNA OPEN
+========================= */
+
+.qna-item.active .qna-answer {
+    max-height: 150px;
+
+    padding: 15px 20px 20px;
+
+    border-bottom: 1px solid #dfd4ca;
+
+    border-radius: 0 0 6px 6px;
+}
+
+
+/* 열렸을 때 질문 카드 */
+
+.qna-item.active .qna-card {
+    border-radius: 6px 6px 0 0;
+}
+
+
+/* =========================
+   QNA ARROW
+========================= */
+
+.qna-arrow {
+    display: inline-block;
+
+    font-size: 18px;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* 열리면 화살표 회전 */
+
+.qna-item.active .qna-arrow {
+    transform: rotate(180deg);
+}
+/* =========================
+   BANNER SECTION
+========================= */
+
+.banner {
+    width: 100%;
+
+    /* 배너 위아래 여백 */
+    padding: 80px 0;
+
+    background-color: #fff;
+}
+
+/* =========================
+   BANNER INNER
+========================= */
+
+.banner-inner {
+    position: relative;
+
+    width: 1280px;
+    height: 300px;
+
+    margin: 0 auto;
+
+    background-image: url("../images/banner\ background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    color: #fff;
+}
+
+
+/* =========================
+   BANNER CONTENT
+========================= */
+
+.banner-content {
+    position: absolute;
+
+    left: 365px;
+    top: 90px;
+}
+
+
+/* =========================
+   BANNER TITLE
+========================= */
+
+.banner-title {
+    margin-bottom: 18px;
+
+    font-size: 40px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    color: #fff;
+}
+
+
+/* =========================
+   BANNER DESCRIPTION
+========================= */
+
+.banner-desc {
+    font-size: 24px;
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, 0.75);
+}
+
+
+/* =========================
+   BANNER BUTTON AREA
+========================= */
+
+.banner-buttons {
+    position: absolute;
+
+    right: 45px;
+    bottom: 45px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+/* =========================
+   BANNER BUTTON COMMON
+========================= */
+
+.banner-btn {
+    height: 40px;
+
+    padding: 0 18px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border-radius: 5px;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    transition: 0.2s ease;
+}
+
+.banner-btn img {
+    width: 16px;
+    height: 16px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   BANNER STORE BUTTON
+========================= */
+
+.banner-store-btn {
+    background-color: #e88421;
+
+    color: #fff;
+}
+
+.banner-store-btn:hover {
+    background-color: #d67516;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   BANNER GUIDE BUTTON
+========================= */
+
+.banner-guide-btn {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    background-color: transparent;
+
+    color: #fff;
+}
+
+.banner-guide-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+
+    font-weight: 700;
+}
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    width: 100%;
+    height: 407px;
+
+    background-color: #4b2e1f;
+
+    color: #fff;
+}
+
+
+/* =========================
+   FOOTER INNER
+========================= */
+
+.footer-inner {
+    width: 1920px;
+    height: 407px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================
+   FOOTER TOP
+========================= */
+
+.footer-top {
+    height: 325px;
+
+    padding: 60px 340px 45px;
+
+    display: flex;
+    align-items: flex-start;
+}
+
+
+/* =========================
+   FOOTER BRAND AREA
+========================= */
+
+.footer-brand {
+    width: 360px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   FOOTER LOGO
+========================= */
+
+.footer-logo {
+    display: inline-block;
+
+    margin-bottom: 25px;
+}
+
+.footer-logo img {
+    width: 150px;
+    height: auto;
+}
+
+
+/* =========================
+   FOOTER DESCRIPTION
+========================= */
+
+.footer-desc {
+    margin-bottom: 25px;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    line-height: 1.6;
+
+    color: rgba(255, 255, 255, 0.75);
+}
+
+
+/* =========================
+   FOOTER SNS
+========================= */
+
+.footer-sns {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+}
+
+.footer-sns a {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+
+    transition: 0.2s ease;
+}
+
+.footer-sns a:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.footer-sns img {
+    width: 18px;
+    height: 18px;
+
+    object-fit: contain;
+}
+
+
+/* =========================
+   FOOTER MENU AREA
+========================= */
+
+.footer-menu-area {
+    flex: 1;
+
+    display: flex;
+}
+
+
+/* =========================
+   FOOTER MENU
+========================= */
+
+.footer-menu {
+    width: 230px;
+    min-height: 215px;
+
+    padding-left: 75px;
+
+    border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+
+/* =========================
+   FOOTER MENU TITLE
+========================= */
+
+.footer-menu h3 {
+    margin-bottom: 25px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    color: #fff;
+}
+
+
+/* =========================
+   FOOTER MENU LIST
+========================= */
+
+.footer-menu ul li {
+    margin-bottom: 15px;
+}
+
+.footer-menu ul li a {
+    font-size: 13px;
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    transition: 0.2s ease;
+}
+
+
+/* =========================
+   FOOTER MENU HOVER
+========================= */
+
+.footer-menu ul li a:hover {
+    color: #fff;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   FOOTER BOTTOM
+========================= */
+
+.footer-bottom {
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+
+/* =========================
+   FOOTER COPYRIGHT
+========================= */
+
+.footer-bottom p {
+    font-size: 13px;
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, 0.75);
+}
