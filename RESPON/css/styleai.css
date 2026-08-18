@@ -1,0 +1,153 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   PC
+   1200px 이상
+========================= */
+
+.container {
+    width: 100%;
+    height: 180px;
+
+    display: flex;
+}
+
+.box1 {
+    width: 17%;
+    height: 100%;
+    background-color: blue;
+}
+
+.box2 {
+    width: 64%;
+    height: 100%;
+    background-color: red;
+}
+
+.box3 {
+    width: 19%;
+    height: 100%;
+    background-color: #009944;
+}
+
+
+/* =========================
+   Notebook
+   1024px ~ 1199px
+========================= */
+
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+
+    .container {
+        height: 250px;
+
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .box1 {
+        width: 24%;
+        height: 75%;
+    }
+
+    .box2 {
+        width: 76%;
+        height: 75%;
+    }
+
+    .box3 {
+        width: 100%;
+        height: 25%;
+    }
+
+}
+
+
+/* =========================
+   Tablet
+   768px ~ 1023px
+========================= */
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .container {
+        height: 310px;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 빨강을 가장 위로 */
+    .box2 {
+        order: 1;
+
+        width: 100%;
+        height: 60%;
+    }
+
+    /* 파랑 */
+    .box1 {
+        order: 2;
+
+        width: 100%;
+        height: 20%;
+    }
+
+    /* 초록 */
+    .box3 {
+        order: 3;
+
+        width: 100%;
+        height: 20%;
+    }
+
+}
+
+
+/* =========================
+   Mobile
+   320px ~ 767px
+========================= */
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+
+    .container {
+        width: 100%;
+        height: 500px;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 빨강 */
+    .box2 {
+        order: 1;
+
+        width: 100%;
+        height: 48%;
+    }
+
+    /* 파랑 */
+    .box1 {
+        order: 2;
+
+        width: 100%;
+        height: 26%;
+    }
+
+    /* 초록 */
+    .box3 {
+        order: 3;
+
+        width: 100%;
+        height: 26%;
+    }
+
+}
