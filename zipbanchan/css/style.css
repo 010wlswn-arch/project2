@@ -842,6 +842,7 @@ img {
 .menu-card:hover .menu-img > img {
     transform: scale(1.08);
 }
+
 /* =========================
    RECOMMEND 섹션
 ========================= */
@@ -920,7 +921,7 @@ img {
 }
 
 
-/* 활성화 탭 */
+/* 활성 탭 */
 .recommend-tabs button.active {
     background-color: #176b2c;
 
@@ -928,7 +929,7 @@ img {
 }
 
 
-/* 탭 마우스 호버 */
+/* 탭 HOVER */
 .recommend-tabs button:hover {
     background-color: #176b2c;
 
@@ -971,8 +972,6 @@ img {
     transition: transform 0.4s ease;
 }
 
-
-/* 대표 이미지 호버 */
 .recommend-main-img:hover img {
     transform: scale(1.08);
 }
@@ -1037,9 +1036,8 @@ img {
 .recommend-list {
     display: grid;
 
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
 
-    /* intro/menu와 같은 카드 간격 */
     column-gap: 16px;
 }
 
@@ -1049,22 +1047,18 @@ img {
 ========================= */
 
 .recommend-card {
+    min-width: 0;
+
     transition: transform 0.3s ease;
 }
 
-.recommend-card a {
-    display: block;
-}
-
-
-/* intro/menu와 같은 위로 올라가는 효과 */
 .recommend-card:hover {
     transform: translateY(-5px);
 }
 
 
 /* =========================
-   추천 상품 이미지
+   상품 이미지 영역
 ========================= */
 
 .recommend-card-img {
@@ -1078,7 +1072,20 @@ img {
     background-color: #f5f5f5;
 }
 
-.recommend-card-img > img {
+
+/* 상품 이미지 링크 */
+.recommend-product-img-link {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+/* 상품 이미지 */
+.recommend-product-img-link > img {
     display: block;
 
     width: 100%;
@@ -1090,14 +1097,15 @@ img {
 }
 
 
-/* intro/menu와 같은 이미지 확대 효과 */
-.recommend-card:hover .recommend-card-img > img {
+/* 이미지 확대 HOVER */
+.recommend-card:hover
+.recommend-product-img-link > img {
     transform: scale(1.08);
 }
 
 
 /* =========================
-   장바구니 아이콘
+   장바구니 버튼
 ========================= */
 
 .recommend-cart {
@@ -1130,6 +1138,8 @@ img {
 }
 
 .recommend-cart img {
+    display: block;
+
     width: 17px;
     height: 17px;
 
@@ -1137,7 +1147,7 @@ img {
 }
 
 
-/* 장바구니 아이콘 호버 */
+/* 장바구니 HOVER */
 .recommend-cart:hover {
     background-color: #f28c28;
 
@@ -1151,6 +1161,12 @@ img {
 
 .recommend-card-info {
     padding-top: 10px;
+}
+
+.recommend-product-info-link {
+    display: block;
+
+    width: 100%;
 }
 
 
@@ -1182,6 +1198,7 @@ img {
     white-space: nowrap;
 
     overflow: hidden;
+
     text-overflow: ellipsis;
 }
 
@@ -1197,6 +1214,7 @@ img {
     white-space: nowrap;
 
     overflow: hidden;
+
     text-overflow: ellipsis;
 }
 
@@ -1243,8 +1261,6 @@ img {
         color 0.3s ease;
 }
 
-
-/* CTA 버튼 호버 */
 .recommend-btn:hover {
     background-color: #176b2c;
 
@@ -1746,14 +1762,35 @@ img {
 
     color: #b5b5b5;
 }
-/* =========================================================
-   모바일 반응형
-   breakpoint : 320px ~ 767px
-========================================================= */
+
+/* =========================
+   접근성 숨김 텍스트
+========================= */
+.blind {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* =========================
+   모바일 전용 요소 기본 숨김
+========================= */
 .mobile-menu-btn,
 .mobile-menu {
     display: none;
 }
+
+/* =========================================================
+   모바일 반응형
+   breakpoint : 320px ~ 767px
+========================================================= */
+
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
 
@@ -1952,7 +1989,6 @@ img {
 
         color: #666;
     }
-
 
 
     /* =====================================================
@@ -2323,168 +2359,183 @@ img {
 
 
     /* =====================================================
-       RECOMMEND 섹션
-    ===================================================== */
+   모바일 RECOMMEND
+===================================================== */
 
-    .recommend {
-        width: 100%;
-        height: auto;
-    }
+.recommend {
+    width: 100%;
+    height: auto;
+}
 
-    .recommend-inner {
-        width: 100%;
-        height: auto;
+.recommend-inner {
+    width: 100%;
+    height: auto;
 
-        padding: 50px 20px;
-    }
-
-
-    /* 타이틀 */
-    .recommend-title {
-        margin-bottom: 25px;
-    }
-
-    .recommend-title h2 {
-        font-size: 26px;
-
-        line-height: 1.3;
-    }
+    padding: 50px 20px;
+}
 
 
-    /* 추천 탭 */
-    .recommend-tabs {
-        justify-content: flex-start;
+/* 타이틀 */
+.recommend-title {
+    margin-bottom: 25px;
+}
 
-        gap: 8px;
+.recommend-title h2 {
+    font-size: 26px;
 
-        margin-bottom: 25px;
-
-        overflow-x: auto;
-
-        white-space: nowrap;
-
-        scrollbar-width: none;
-    }
-
-    .recommend-tabs::-webkit-scrollbar {
-        display: none;
-    }
-
-    .recommend-tabs button {
-        flex-shrink: 0;
-
-        padding: 9px 16px;
-
-        font-size: 13px;
-    }
+    line-height: 1.3;
+}
 
 
-    /* 메인 콘텐츠 세로 배치 */
-    .recommend-content {
-        display: block;
-    }
+/* 추천 탭 */
+.recommend-tabs {
+    justify-content: flex-start;
+
+    gap: 8px;
+
+    margin-bottom: 25px;
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+
+    scrollbar-width: none;
+}
+
+.recommend-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.recommend-tabs button {
+    flex-shrink: 0;
+
+    padding: 9px 16px;
+
+    font-size: 13px;
+}
 
 
-    /* 왼쪽 대표 이미지 */
-    .recommend-main-img {
-        width: 100%;
-        height: auto;
-
-        aspect-ratio: 1 / 1;
-
-        margin-bottom: 16px;
-    }
+/* 콘텐츠 세로 배치 */
+.recommend-content {
+    display: block;
+}
 
 
-    /* 오른쪽 */
-    .recommend-right {
-        width: 100%;
-    }
+/* 대표 이미지 */
+.recommend-main-img {
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 1 / 1;
+
+    margin-bottom: 16px;
+}
 
 
-    /* 추천자 소개 */
-    .recommend-user {
-        width: 100%;
-        height: auto;
-
-        min-height: 120px;
-
-        padding: 20px;
-
-        margin-bottom: 16px;
-    }
-
-    .recommend-user-text h3 {
-        margin-bottom: 10px;
-
-        font-size: 18px;
-    }
-
-    .recommend-user-text p {
-        font-size: 13px;
-    }
-
-    .recommend-character img {
-        width: 65px;
-    }
+/* 오른쪽 */
+.recommend-right {
+    width: 100%;
+}
 
 
-    /* 추천 상품 */
-    .recommend-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+/* 추천자 */
+.recommend-user {
+    width: 100%;
+    height: auto;
 
-        column-gap: 16px;
-        row-gap: 25px;
-    }
+    min-height: 120px;
 
-    .recommend-card-img {
-        width: 100%;
-        height: auto;
+    padding: 20px;
 
-        aspect-ratio: 1 / 1;
-    }
+    margin-bottom: 16px;
+}
 
-    .recommend-card-info h4 {
-        font-size: 14px;
-    }
+.recommend-user-text h3 {
+    margin-bottom: 10px;
 
-    .recommend-card-info p {
-        font-size: 11px;
-    }
+    font-size: 18px;
+}
 
-    .recommend-card-info strong {
-        font-size: 16px;
-    }
+.recommend-user-text p {
+    font-size: 13px;
+}
 
-    .recommend-badge {
-        font-size: 10px;
-    }
+.recommend-character img {
+    width: 65px;
+}
 
 
-    /* 장바구니 버튼 */
-    .recommend-cart {
-        width: 30px;
-        height: 30px;
-    }
+/* 상품 2열 */
+.recommend-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    .recommend-cart img {
-        width: 15px;
-        height: 15px;
-    }
+    column-gap: 16px;
+    row-gap: 25px;
+}
 
 
-    /* 추천 CTA */
-    .recommend-btn-wrap {
-        margin-top: 30px;
-    }
+/* 상품 이미지 */
+.recommend-card-img {
+    width: 100%;
+    height: auto;
 
-    .recommend-btn {
-        width: 100%;
-        height: 46px;
+    aspect-ratio: 1 / 1;
+}
 
-        font-size: 14px;
-    }
+.recommend-product-img-link {
+    width: 100%;
+    height: 100%;
+}
 
+.recommend-product-img-link > img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* 상품 정보 */
+.recommend-card-info h4 {
+    font-size: 14px;
+}
+
+.recommend-card-info p {
+    font-size: 11px;
+}
+
+.recommend-card-info strong {
+    font-size: 16px;
+}
+
+.recommend-badge {
+    font-size: 10px;
+}
+
+
+/* 장바구니 */
+.recommend-cart {
+    width: 30px;
+    height: 30px;
+}
+
+.recommend-cart img {
+    width: 15px;
+    height: 15px;
+}
+
+
+/* CTA */
+.recommend-btn-wrap {
+    margin-top: 30px;
+}
+
+.recommend-btn {
+    width: 100%;
+    height: 46px;
+
+    font-size: 14px;
+}
 
 
     /* =====================================================
