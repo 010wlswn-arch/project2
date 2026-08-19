@@ -28,16 +28,35 @@ let box5 = document.querySelector(".box5");
 // =============================
 
 btn1.addEventListener("click", function () {
-    box1.style.opacity = "1";
-});
 
+    // 자리 다시 만들기
+    box1.style.display = "block";
+
+    // 투명 상태로 시작
+    box1.style.opacity = "0";
+
+    // 브라우저가 display:block을 먼저 적용한 뒤
+    // opacity를 1로 바꾸게 함
+    setTimeout(function () {
+        box1.style.opacity = "1";
+    }, 50);
+
+});
 
 // =============================
 // fadeOut
 // =============================
 
 btn2.addEventListener("click", function () {
+
+    // 먼저 서서히 투명하게
     box1.style.opacity = "0";
+
+    // 0.5초 후 박스 자리까지 제거
+    setTimeout(function () {
+        box1.style.display = "none";
+    }, 500);
+
 });
 
 
