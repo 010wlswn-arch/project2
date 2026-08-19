@@ -1,0 +1,105 @@
+@charset "utf-8";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 8px;
+}
+
+/* 제목 */
+h1 {
+    font-size: 32px;
+    margin: 10px 0 20px;
+}
+
+/* 설명 목록 */
+ol {
+    margin-bottom: 18px;
+}
+
+li {
+    line-height: 1.4;
+}
+
+/* 버튼 영역 */
+.button-wrap {
+    margin-bottom: 15px;
+}
+
+button {
+    margin-right: 4px;
+}
+
+/* 구분선 */
+hr {
+    margin-bottom: 10px;
+}
+
+/* 박스 부모 */
+.box-wrap {
+    display: flex;
+    gap: 22px;
+    width: fit-content;
+    border: 5px solid #ccc;
+}
+
+/* 아래쪽 박스 영역 */
+.box-wrap.second {
+    margin-top: 50px;
+}
+
+/* 공통 박스 */
+.box {
+    width: 200px;
+    height: 200px;
+    padding: 4px;
+}
+
+/* 첫 번째 박스 */
+.box1 {
+    background-color: red;
+}
+
+/* 두 번째 박스 */
+.box2 {
+    background-color: green;
+}
+.box-empty {
+    background-color: #fff;
+}
+
+/* 세 번째 박스 */
+.box3 {
+    background-color: #ffcc00;
+}
+
+/* 네 번째 박스 */
+.box4 {
+    background-color: #bfff00;
+}
+
+/* 다섯 번째 박스 */
+.box5 {
+    background-color: #19bce5;
+}
+/* fade 애니메이션 */
+.box1,
+.box2 {
+    transition: opacity 0.5s;
+}
+
+/* slide 애니메이션 */
+.box3,
+.box4 {
+    transition: height 0.5s;
+    overflow: hidden;
+}
+
+/* Animation 박스 */
+
+.box5 {
+    background-color: #12bfe7;
+    transition: transform 0.5s;
+}
