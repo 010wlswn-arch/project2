@@ -4,25 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>영상삽입</title>
-    <link rel="stylesheet" href="./01_movie/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <h1>숏폼 동영상 삽입</h1>
+    
     <div class="wrap">
-    <div class="area">
-        <video autoplay muted loop controls>
-            <source src="./01_movie/movi/Q-Link 병원 대기 APP 광고 홍보영상.mp4" type="video/mp4">
-        </video></div>
-        <div class="area2">
-         <video autoplay muted loop controls>
-            <source src="./01_movie/movi/251215081957594.mp4" type="video/mp4">
-        </video>
-        </div>
-        <!-- 유투브 영상 삽입 -->
-         <div class="youtube">
-            <iframe width="1331" height="749" src="https://www.youtube.com/embed/sQ88s9UY1eo" title="[롯데그룹 광고] 롯데의 변화엔 한계가 없다 | ‘롯데의 Transform’ 편(30s)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-         </div>
+        <div class="area">
+            <!-- <video src="./movi/251215081957594.mp4" autoplay muted loop controls></video> -->
+            
+            <!-- 웹표준으로 개발할때 -->
+            <video autoplay muted loop>
+                <source src="./movi/Q-Link 병원 대기 APP 광고 홍보영상.mp4" type="video/mp4">
+            </video>
 
+        </div>
+
+        <div class="area2">
+            <video autoplay muted loop>
+                <source src="./movi/251215081957594.mp4" type="video/mp4">
+            </video>
+        </div>
     </div>
+
+    <!-- 유튜브 영상 삽입 -->
+     <div class="youtube">
+        <iframe src="https://www.youtube.com/embed/sQ88s9UY1eo?si=usxtR5k71gidiqTx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+     </div>
+
+    <script src="./js/script.js"></script>
 </body>
 </html>
