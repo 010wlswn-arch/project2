@@ -1,0 +1,401 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+
+/* =========================
+   Reset
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    color: #333;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+img {
+    display: block;
+}
+
+
+/* =========================
+   Header
+========================= */
+
+header {
+    width: 1100px;
+    height: 66px;
+
+    background: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+    /* 시안처럼 메인 이미지 위에 배치 */
+    position: absolute;
+
+    top: 38px;
+
+    left: 50%;
+    margin-left: -550px;
+
+    z-index: 1000;
+}
+
+
+/* =========================
+   Logo
+========================= */
+
+header .logo {
+    flex-shrink: 0;
+}
+
+header .logo img {
+    width: 115px;
+    height: auto;
+}
+
+
+/* =========================
+   GNB
+========================= */
+
+header .gnb {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 0;
+}
+
+
+/* 각각의 주메뉴 */
+
+header .gnb > li {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    padding: 0 31px;
+}
+
+
+/* 메뉴 사이 세로선 */
+
+header .gnb > li::before {
+    content: "";
+
+    width: 1px;
+    height: 27px;
+
+    background: #c8c8c8;
+
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+
+/* 첫번째 메뉴 왼쪽 선 제거 */
+
+header .gnb > li.first::before {
+    display: none;
+}
+
+
+/* 주메뉴 글자 */
+
+header .gnb > li > a {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    font-size: 18px;
+    font-weight: 500;
+
+    color: #555;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   주메뉴 Hover
+========================= */
+
+header .gnb > li:hover > a {
+    color: #1777c9;
+}
+
+
+/* 시안처럼 글자 아래 파란 밑줄 */
+
+header .gnb > li > a::after {
+    content: "";
+
+    width: 0;
+    height: 2px;
+
+    background: #1777c9;
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 18px;
+
+    transform: translateX(-50%);
+
+    transition: 0.2s;
+}
+
+
+header .gnb > li:hover > a::after {
+    width: 100%;
+}
+
+
+/* =========================
+   ENG
+========================= */
+
+header .eng {
+    font-size: 12px;
+    font-weight: 400;
+
+    color: #999;
+
+    border: 1px solid #dedede;
+
+    padding: 3px 5px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   2차 메뉴
+========================= */
+
+header .gnb > li > .depth2 {
+
+    /* 요청한 크기 */
+    width: 206px;
+
+    background: #fff;
+
+    /* 주메뉴 li 가운데 정렬 */
+    position: absolute;
+
+    top: 66px;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    border: 1px solid #ddd;
+    border-top: none;
+
+    padding: 6px 0;
+
+    /* 기본적으로 숨김 */
+    display: none;
+}
+
+
+/* 주메뉴 Hover → 2차 메뉴 표시 */
+
+header .gnb > li:hover > .depth2 {
+    display: block;
+}
+
+
+/* 2차 메뉴 li */
+
+header .gnb > li > .depth2 > li {
+    width: 100%;
+
+    position: relative;
+}
+
+
+/* 2차 메뉴 링크 */
+
+header .gnb > li > .depth2 > li > a {
+
+    width: 100%;
+    min-height: 42px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 8px 8px;
+
+    font-size: 15px;
+    font-weight: 400;
+
+    color: #555;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   2차 메뉴 Hover
+========================= */
+
+header .gnb > li > .depth2 > li:hover > a {
+
+    background: #2585cc;
+
+    color: #fff;
+
+    text-decoration: underline;
+}
+
+
+/* hover 시 작은 화살표 */
+
+header .gnb > li > .depth2 > li:hover > a::before {
+
+    content: "›";
+
+    margin-right: 7px;
+
+    color: #fff;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+
+/* =========================
+   Main
+========================= */
+
+main {
+    width: 100%;
+}
+
+
+/* =========================
+   Main Visual
+========================= */
+
+main .visual {
+
+    width: 100%;
+
+    /*
+       원본 배경 이미지가
+       1920 × 960px
+    */
+    height: 960px;
+
+    background:
+        url("../images/main.jpg")
+        no-repeat
+        center top;
+
+    background-size: cover;
+
+    position: relative;
+}
+
+
+/* =========================
+   Visual Text
+========================= */
+
+.visual-text {
+
+    width: 1100px;
+
+    position: absolute;
+
+    left: 50%;
+    top: 235px;
+
+    transform: translateX(-50%);
+}
+
+
+.visual-text h2 {
+
+    font-size: 29px;
+    font-weight: 700;
+
+    color: #222;
+
+    margin-bottom: 3px;
+}
+
+
+.visual-title {
+
+    font-size: 29px;
+    font-weight: 400;
+
+    color: #222;
+
+    line-height: 1.45;
+}
+
+
+.visual-desc {
+
+    margin-top: 20px;
+
+    font-size: 17px;
+    line-height: 1.5;
+
+    color: #555;
+}
+
+
+.visual-btn {
+
+    display: inline-block;
+
+    margin-top: 18px;
+
+    padding: 8px 10px;
+
+    border: 1px solid #555;
+
+    font-size: 15px;
+
+    color: #333;
+}
