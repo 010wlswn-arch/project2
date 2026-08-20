@@ -1,0 +1,546 @@
+@charset "utf-8";
+
+/* =========================
+   NOTO SANS KR 웹폰트
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+}
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    color: #222;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+}
+
+button {
+    border: 0;
+    background: none;
+    font: inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    width: 100%;
+    height: 111px;
+
+    background: #fff;
+
+    position: relative;
+
+    z-index: 1000;
+}
+
+
+/* =========================
+   HEADER INNER
+========================= */
+
+.header-inner {
+    width: 1140px;
+    height: 111px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    width: 190px;
+
+    flex-shrink: 0;
+}
+
+
+.logo a {
+    display: block;
+}
+
+
+.logo img {
+    width: 130px;
+    height: auto;
+}
+
+
+/* =========================
+   NAV
+========================= */
+
+.nav {
+    width: calc(100% - 190px);
+    height: 100%;
+}
+
+
+/* =========================
+   GNB
+========================= */
+
+.gnb {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+}
+
+
+/* 주메뉴 각각 */
+
+.gnb > li {
+    width: calc(100% / 6);
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+
+/* =========================
+   주메뉴 글자
+========================= */
+
+.gnb > li > a {
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #111;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   주메뉴 HOVER
+========================= */
+
+/*
+    기본값에서는 밑줄 없음
+*/
+
+.gnb > li > a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: #ff5a00;
+
+    /* 기본 숨김 */
+    opacity: 0;
+}
+
+
+
+/*
+    마우스 올렸을 때만
+    주황색 border-bottom처럼 표시
+*/
+
+.gnb > li:hover > a::after {
+    opacity: 1;
+}
+/* 2차 메뉴에 마우스를 올렸을 때 JS로 유지 */
+.gnb > li.active > a::after {
+    opacity: 1;
+}
+
+/* =========================
+   전체 2단 메뉴
+========================= */
+
+.depth2 {
+    width: 100%;
+    height: 306px;
+
+    background: #fff;
+
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #dcdcdc; /* ← 추가 */
+
+    position: absolute;
+    left: 0;
+    top: 111px;
+
+    overflow: hidden;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-25px);
+
+    pointer-events: none;
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease,
+        visibility 0.35s;
+}
+
+
+/* =========================
+   주메뉴 영역 HOVER
+   → 전체 2단 메뉴 열림
+========================= */
+
+.header:hover .depth2 {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+
+    pointer-events: auto;
+}
+
+
+/* =========================
+   DEPTH2 INNER
+========================= */
+
+.depth2-inner {
+    width: 1140px;
+    height: 306px;
+
+    margin: 0 auto;
+
+    display: flex;
+}
+
+
+/* =========================
+   로고 아래 빈 공간
+========================= */
+
+.depth2-logo-space {
+    width: 190px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   각각의 2단 메뉴
+========================= */
+
+.depth2-menu {
+    width: calc((1140px - 190px) / 6);
+
+    padding-top: 28px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   2단 메뉴 LI
+========================= */
+
+.depth2-menu > li {
+    width: 100%;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   2단 메뉴 글자
+========================= */
+.depth2-menu {
+    width: calc((1140px - 190px) / 6);
+    padding-top: 24px;
+    text-align: center;
+}
+
+.depth2-menu > li {
+    width: 100%;
+    margin-bottom: 14px;
+}
+
+.depth2-menu > li:last-child {
+    margin-bottom: 0;
+}
+
+/* =========================
+   2단 메뉴 HOVER
+========================= */
+
+/*
+    마우스 올렸을 때
+    글씨만 진하게
+*/
+
+.depth2-menu > li:hover > a {
+    color: #111;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    width: 100%;
+}
+/* =========================
+   MAIN SLIDE
+========================= */
+
+.main-slide {
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+}
+
+
+/* =========================
+   SWIPER
+========================= */
+
+.mainSwiper {
+    width: 100%;
+    height: 600px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* =========================
+   SLIDE 공통
+========================= */
+
+.mainSwiper .swiper-slide {
+    width: 100%;
+    height: 600px;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    position: relative;
+}
+
+
+/* =========================
+   SLIDE 배경 이미지
+========================= */
+
+/* 첫 번째 슬라이드 */
+.slide01 {
+    background-image: url("../images/slide1.jpg");
+}
+
+
+/* 두 번째 슬라이드 */
+.slide02 {
+    background-image: url("../images/slide2.jpg");
+}
+
+
+/* 세 번째 슬라이드 */
+.slide03 {
+    background-image: url("../images/slide3.jpg");
+}
+
+
+/* 네 번째 슬라이드 */
+.slide04 {
+    background-image: url("../images/slide4.jpg");
+}
+
+
+/* =========================
+   SLIDE INNER
+========================= */
+
+.slide-inner {
+    width: 1140px;
+    height: 600px;
+
+    margin: 0 auto;
+
+    position: relative;
+}
+
+
+/* =========================
+   SLIDE TEXT
+========================= */
+
+.slide-text {
+    position: absolute;
+
+    left: 30px;
+    top: 190px;
+
+    color: #fff;
+}
+
+
+/* 작은 제목 */
+.slide-text .small-title {
+    margin-bottom: 28px;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+/* 큰 제목 */
+.slide-text h2 {
+    font-size: 40px;
+    font-weight: 500;
+
+    line-height: 1.45;
+}
+
+
+/* =========================
+   자세히보기 버튼
+========================= */
+
+.detail-btn {
+    display: inline-flex;
+    align-items: center;
+
+    margin-top: 28px;
+
+    padding: 12px 22px;
+
+    background: rgba(255,255,255,0.85);
+
+    border-radius: 30px;
+
+    color: #555;
+
+    font-size: 16px;
+}
+
+
+.detail-btn span {
+    margin-left: 10px;
+
+    font-size: 20px;
+}
+
+
+/* =========================
+   이전 / 다음 버튼
+========================= */
+
+.mainSwiper .swiper-button-prev,
+.mainSwiper .swiper-button-next {
+    width: 50px;
+    height: 70px;
+
+    color: #fff;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+
+/* Swiper 기본 화살표 크기 */
+.mainSwiper .swiper-button-prev::after,
+.mainSwiper .swiper-button-next::after {
+    font-size: 38px;
+    font-weight: 300;
+}
+
+
+/* 이전 버튼 위치 */
+.mainSwiper .swiper-button-prev {
+    left: calc(50% - 570px - 90px);
+}
+
+
+/* 다음 버튼 위치 */
+.mainSwiper .swiper-button-next {
+    right: calc(50% - 570px - 90px);
+}
+
+
+/* =========================
+   페이지 번호
+========================= */
+
+.mainSwiper .swiper-pagination {
+    width: auto;
+
+    left: 50%;
+    bottom: 28px;
+
+    transform: translateX(-50%);
+
+    color: #fff;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+/* swiper fraction 기본 스타일 정리 */
+.mainSwiper .swiper-pagination-current,
+.mainSwiper .swiper-pagination-total {
+    color: #fff;
+}
+
