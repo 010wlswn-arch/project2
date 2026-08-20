@@ -222,10 +222,7 @@ header .gnb > li > .depth2 {
 
     text-align: center;
 
-    border: 1px solid #ddd;
     border-top: none;
-
-    padding: 6px 0;
 
     /* 기본적으로 숨김 */
     display: none;
@@ -259,8 +256,6 @@ header .gnb > li > .depth2 > li > a {
     justify-content: center;
     align-items: center;
 
-    padding: 8px 8px;
-
     font-size: 15px;
     font-weight: 400;
 
@@ -279,8 +274,6 @@ header .gnb > li > .depth2 > li:hover > a {
     background: #2585cc;
 
     color: #fff;
-
-    text-decoration: underline;
 }
 
 
