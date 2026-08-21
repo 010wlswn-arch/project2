@@ -13,6 +13,7 @@ $(".first").click(function(){
     $(".popup").show()
 })
 
+
     // 닫기 버튼 클릭하면 팝업창 숨기기
     $("button").click(function(){
         $(".popup").hide()

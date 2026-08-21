@@ -171,7 +171,7 @@ header nav .gnb> li>.depth2 li:hover{
     height: 200px;
     position: relative;
 }
-.contents .banner h3{
+.contents .banner h2{
     width: 60%;
     position: absolute;
     left: 50%;
@@ -180,6 +180,7 @@ header nav .gnb> li>.depth2 li:hover{
     transform: translate(-50%, -50%);
     text-align: center;
     border: 1px solid #fff;
+    font-size: 18px;
 }
 .list2{
     display: none;
@@ -189,7 +190,7 @@ header nav .gnb> li>.depth2 li:hover{
     height: 200px;
     position: relative;
 }
-.contents .go h3{
+.contents .go h2{
         width: 60%;
     position: absolute;
     left: 50%;
@@ -198,6 +199,7 @@ header nav .gnb> li>.depth2 li:hover{
     transform: translate(-50%, -50%);
     text-align: center;
     border: 1px solid #fff;
+    font-size: 18px;
 }
 
 footer{
