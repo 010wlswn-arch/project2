@@ -1271,8 +1271,8 @@ img {
     cursor: pointer;
 
     /* 처음에는 숨김 */
-    /* opacity: 0;
-    visibility: hidden; */
+    opacity: 0;
+    visibility: hidden;
 
     /* 등장 애니메이션 */
     transition: 0.3s;
