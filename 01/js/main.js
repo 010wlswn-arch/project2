@@ -17,7 +17,7 @@ $(".first").click(function(){
     // 닫기 버튼 클릭하면 팝업창 숨기기
     $("button").click(function(){
         $(".popup").hide()
-    })})
+    })
 
     // 상하슬라이드
     setInterval(function(){
@@ -40,4 +40,5 @@ $(".first").click(function(){
     // 선택된번째 같은 번째를 보임
     $(".wrap").eq(num).show()
 
+})
 })
