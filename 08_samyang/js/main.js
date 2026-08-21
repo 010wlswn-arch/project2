@@ -140,3 +140,134 @@ $(function () {
     });
 
 });
+/* =========================
+   팝업 요소 불러오기
+========================= */
+
+const popupWrap = document.getElementById("popupWrap");
+const popupCloseBtn = document.getElementById("popupCloseBtn");
+const bottomCloseBtn = document.getElementById("bottomCloseBtn");
+const todayClose = document.getElementById("todayClose");
+
+
+/* =========================
+   페이지 로딩 시 팝업 확인
+========================= */
+
+window.addEventListener("DOMContentLoaded", function () {
+
+    /*
+        localStorage에 저장된
+        오늘 하루 닫기 날짜를 가져옴
+    */
+    const popupCloseDate =
+        localStorage.getItem("popupCloseDate");
+
+    /*
+        현재 날짜를 YYYY-MM-DD 형식으로 생성
+    */
+    const today =
+        new Date().toLocaleDateString("sv-SE");
+
+    /*
+        오늘 하루 닫기를 하지 않았거나
+        저장된 날짜가 오늘과 다르면 팝업 표시
+    */
+    if (popupCloseDate !== today) {
+        popupWrap.style.display = "flex";
+    }
+
+});
+
+
+/* =========================
+   팝업 닫기 함수
+========================= */
+
+function closePopup() {
+
+    /*
+        체크박스가 체크되어 있으면
+        오늘 날짜를 localStorage에 저장
+    */
+    if (todayClose.checked) {
+
+        const today =
+            new Date().toLocaleDateString("sv-SE");
+
+        localStorage.setItem(
+            "popupCloseDate",
+            today
+        );
+    }
+
+    /* 팝업 닫기 */
+    popupWrap.style.display = "none";
+
+}
+
+
+/* =========================
+   X 버튼 클릭
+========================= */
+
+popupCloseBtn.addEventListener(
+    "click",
+    closePopup
+);
+
+
+/* =========================
+   하단 닫기 버튼 클릭
+========================= */
+
+bottomCloseBtn.addEventListener(
+    "click",
+    closePopup
+);
+/* =========================
+   TOP 버튼
+========================= */
+
+const topBtn = document.getElementById("topBtn");
+
+
+/* =========================
+   스크롤 시 버튼 표시
+========================= */
+
+window.addEventListener("scroll", function () {
+
+    /*
+        화면을 300px 이상 내렸을 때
+        TOP 버튼 표시
+    */
+    if (window.scrollY > 300) {
+
+        topBtn.classList.add("show");
+
+    } else {
+
+        topBtn.classList.remove("show");
+
+    }
+
+});
+
+
+/* =========================
+   TOP 버튼 클릭
+========================= */
+
+topBtn.addEventListener("click", function () {
+
+    /*
+        페이지 맨 위로
+        부드럽게 스크롤
+    */
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});

@@ -910,16 +910,65 @@
 
     </div>
 </footer>
+<!-- =========================
+     팝업 영역
+========================= -->
+<div class="popup-wrap" id="popupWrap">
 
+    <div class="popup">
 
+        <!-- 팝업 닫기 버튼 -->
+        <button
+            type="button"
+            class="popup-close"
+            id="popupCloseBtn"
+            aria-label="팝업 닫기"
+        >
+            ×
+        </button>
+
+        <!-- 팝업 이미지 -->
+        <div class="popup-image">
+            <img
+                src="./images/popup.jpg"
+                alt="이벤트 프로모션 안내"
+            >
+        </div>
+
+        <!-- 팝업 하단 -->
+        <div class="popup-bottom">
+
+            <!-- 오늘 하루 열지 않음 -->
+            <label class="today-close">
+                <input
+                    type="checkbox"
+                    id="todayClose"
+                >
+                오늘 하루 이 창을 열지 않음
+            </label>
+
+            <!-- 일반 닫기 -->
+            <button
+                type="button"
+                class="bottom-close"
+                id="bottomCloseBtn"
+            >
+                [닫기]
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 <!-- =========================
-     FIXED CHAT BUTTON
-========================== -->
-<a href="#" class="chat-button" aria-label="상담하기">
-    <span>●</span>
-</a>
-
+     TOP 버튼
+========================= -->
+<button type="button" class="top-btn" id="topBtn" aria-label="맨 위로 이동">
+    <span class="top-arrow">▲</span>
+    <span class="top-text">TOP</span>
+</button>
 <!-- jQuery 먼저 -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
