@@ -22,6 +22,7 @@ li{
     margin-top: -200px;
     padding: 24px;
     display: none;
+    z-index: 102;
 }
 .popup h2{
     text-align: center;
