@@ -543,4 +543,941 @@ main {
 .mainSwiper .swiper-pagination-total {
     color: #fff;
 }
+html,
+body {
+    width: 100%;
+}
 
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+
+    color: #333;
+}
+
+
+ul,
+li {
+    list-style: none;
+}
+
+
+a {
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+img {
+    display: block;
+}
+
+
+/* =========================
+   BRAND SECTION
+========================= */
+
+.brand-section {
+    width: 100%;
+    height: 950px;
+
+    background: #fff;
+}
+
+
+/* =========================
+   INNER
+========================= */
+
+.brand-section .inner {
+    width: 1140px;
+    height: 850px;
+
+    margin: 0 auto;
+
+    padding-top: 90px;
+
+    position: relative;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.brand-section h2 {
+    font-size: 50px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-align: center;
+
+    color: #333;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.brand-section .brand-desc {
+    margin-top: 25px;
+
+    font-size: 23px;
+    font-weight: 400;
+
+    text-align: center;
+
+    color: #222;
+}
+
+
+/* =========================
+   TAB MENU
+========================= */
+
+.brand-section .tab {
+    margin-top: 43px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+}
+
+
+/* =========================
+   TAB BUTTON
+========================= */
+
+.brand-section .tab li a {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 140px;
+    height: 40px;
+
+    border: 1px solid #666;
+
+    border-radius: 999px;
+
+    font-size: 20px;
+    font-weight: 500;
+
+    color: #555;
+
+    background: #fff;
+
+    transition: 0.2s;
+}
+
+
+/* =========================
+   ACTIVE TAB
+========================= */
+
+.brand-section .tab li.on a {
+    border-color: #ff6400;
+
+    background: #ff6400;
+
+    color: #fff;
+}
+
+
+/* =========================
+   TAB CONTENTS
+========================= */
+
+.tab-contents {
+    width: 100%;
+
+    margin-top: 65px;
+}
+
+
+/* 기본 콘텐츠 숨김 */
+.tab-content {
+    display: none;
+}
+
+
+/* 선택된 콘텐츠만 표시 */
+.tab-content.on {
+    display: block;
+}
+
+
+/* =========================
+   PRODUCT LIST
+========================= */
+
+.product-list {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    gap: 70px;
+}
+
+
+/* 제품 2개일 때 조금 더 넓게 배치 */
+#tab01 .product-list,
+#tab06 .product-list {
+    gap: 280px;
+}
+
+
+/* 제품 3개 */
+#tab04 .product-list {
+    gap: 120px;
+}
+
+
+/* =========================
+   PRODUCT ITEM
+========================= */
+
+.product-item {
+    width: 200px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
+
+.product-item img {
+    width: 180px;
+    height: 180px;
+
+    margin: 0 auto;
+
+    object-fit: contain;
+}
+
+
+/* =========================
+   PRODUCT NAME
+========================= */
+
+.product-item h3 {
+    margin-top: 25px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    line-height: 1.4;
+
+    color: #444;
+
+    text-align: center;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   MORE BUTTON AREA
+========================= */
+
+.more-wrap {
+    width: 100%;
+
+    position: absolute;
+
+    left: 0;
+    bottom: 50px;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+/* =========================
+   MORE BUTTON
+========================= */
+
+.more-btn {
+    width: 165px;
+    height: 50px;
+
+    border: 1px solid #ff6400;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+
+    font-size: 24px;
+    font-weight: 500;
+
+    color: #ff6400;
+
+    background: #fff;
+}
+
+
+/* more 화살표 */
+.more-btn span {
+    font-size: 27px;
+
+    font-weight: 400;
+}
+/* =========================
+   MOVIE SECTION
+========================= */
+
+.movie-section {
+    width: 100%;
+    height: 630px;
+
+    background: #000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   MOVIE INNER
+========================= */
+
+.movie-inner {
+    width: 1140px;
+    height: 630px;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    background: #000;
+}
+
+
+/* =========================
+   MOVIE
+========================= */
+
+.movie-video {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    border: 0;
+    outline: 0;
+}
+/* =========================
+   COMMUNITY SECTION
+========================= */
+
+.community-section {
+    width: 100%;
+    height: 1190px;
+
+    background: #fff;
+}
+
+
+/* =========================
+   COMMUNITY INNER
+========================= */
+
+.community-inner {
+    width: 1140px;
+    height: 1190px;
+
+    margin: 0 auto;
+
+    padding-top: 150px;
+}
+
+
+/* =========================
+   COMMUNITY TITLE
+========================= */
+
+.community-title {
+    text-align: center;
+}
+
+
+/* 제목 */
+
+.community-title h2 {
+    font-size: 50px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    color: #333;
+}
+
+
+/* 설명 */
+
+.community-title p {
+    margin-top: 28px;
+
+    font-size: 23px;
+    font-weight: 400;
+
+    line-height: 1.55;
+
+    color: #222;
+}
+
+
+/* =========================
+   COMMUNITY GRID
+========================= */
+
+.community-grid {
+    width: 1140px;
+
+    margin-top: 150px;
+
+    display: grid;
+
+    /*
+        왼쪽 페이스북 : 300px
+        가운데 : 460px
+        오른쪽 : 300px
+    */
+    grid-template-columns: 300px 460px 300px;
+
+    /*
+        위쪽 큰 박스 : 410px
+        아래쪽 박스 : 200px
+    */
+    grid-template-rows: 200px 200px 200px;
+
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+
+
+/* =========================
+   FACEBOOK BOX
+========================= */
+
+.facebook-box {
+    width: 300px;
+    height: 640px;
+
+    grid-column: 1;
+    grid-row: 1 / 4;
+
+    border: 1px solid #ff6400;
+
+    background: #fff;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   FACEBOOK HEADER
+========================= */
+
+.facebook-header {
+    width: 100%;
+    height: 82px;
+
+    padding: 12px;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* 페이스북 로고 */
+
+.facebook-logo {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #aaa;
+}
+
+
+.facebook-logo img {
+    width: 32px;
+    height: 32px;
+
+    object-fit: contain;
+}
+
+
+/* 페이스북 이름 */
+
+.facebook-title {
+    margin-left: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.facebook-title strong {
+    font-size: 15px;
+    font-weight: 500;
+
+    color: #2458a6;
+}
+
+
+.facebook-title span {
+    margin-top: 3px;
+
+    font-size: 12px;
+
+    color: #555;
+}
+
+
+/* =========================
+   FACEBOOK SCROLL
+========================= */
+
+.facebook-scroll {
+    width: 100%;
+    height: 558px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background: #f7f7f7;
+}
+
+
+/* iframe */
+
+.facebook-scroll iframe {
+    display: block;
+
+    width: 100%;
+    min-height: 560px;
+}
+
+
+/* =========================
+   COMMUNITY BOX 공통
+========================= */
+
+.community-box {
+    border: 1px solid #555;
+
+    padding: 30px 38px;
+
+    background: #fff;
+
+    color: #111;
+
+    position: relative;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* =========================
+   COMMUNITY BOX TITLE
+========================= */
+
+.community-box h3 {
+    font-size: 26px;
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+
+/* =========================
+   COMMUNITY BOX TEXT
+========================= */
+
+.community-box p {
+    margin-top: 15px;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    line-height: 1.45;
+}
+
+
+/* =========================
+   자세히 보기 버튼
+========================= */
+
+.community-btn {
+    display: inline-flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 25px;
+
+    padding: 6px 15px;
+
+    background: #ff6400;
+
+    border-radius: 30px;
+
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    transition: 0.3s;
+}
+
+
+/* =========================
+   COMMUNITY BOX HOVER
+========================= */
+
+.community-box:hover {
+    background: #ff6400;
+
+    border-color: #ff6400;
+
+    color: #fff;
+}
+
+
+/* hover시 자세히보기 버튼 */
+
+.community-box:hover .community-btn {
+    background: #fff;
+
+    color: #ff6400;
+}
+
+
+/* =========================
+   홍보영상
+========================= */
+
+.video-box {
+    grid-column: 2;
+    grid-row: 1 / 3;
+
+    padding-top: 35px;
+}
+
+
+/* =========================
+   맛있는 나눔
+========================= */
+
+.share-box {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+
+/* =========================
+   공지사항
+========================= */
+
+.notice-box {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+
+/* =========================
+   고객 문의
+========================= */
+
+.customer-box {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+
+/* =========================
+   삼양식품 공식몰
+========================= */
+
+.mall-box {
+    grid-column: 3;
+    grid-row: 3;
+}
+
+
+/* =========================
+   FIXED CHAT BUTTON
+========================= */
+
+.chat-button {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    background: #ff6400;
+
+    /* 화면을 기준으로 고정 */
+    position: fixed;
+
+    right: 35px;
+    bottom: 30px;
+
+    z-index: 9999;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+
+    transition: 0.2s;
+}
+
+
+/* 채팅 아이콘을 임시로 원으로 표시 */
+
+.chat-button span {
+    width: 22px;
+    height: 22px;
+
+    border: 4px solid #fff;
+
+    border-radius: 50%;
+
+    color: transparent;
+}
+
+
+/* 채팅 버튼 hover */
+
+.chat-button:hover {
+    transform: scale(1.08);
+}
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+
+/* =========================
+   Footer
+========================= */
+
+.footer {
+    width: 100%;
+    height: 204px;
+    background-color: #f7f7f7;
+}
+
+
+/* =========================
+   Footer Inner
+========================= */
+
+.footer-inner {
+    width: 1140px;
+    height: 204px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+}
+
+
+/* =========================
+   Footer Logo
+========================= */
+
+.footer-logo {
+    width: 160px;
+}
+
+.footer-logo img {
+    display: block;
+    width: 120px;
+    height: auto;
+}
+
+
+/* =========================
+   회사 정보 영역
+========================= */
+
+.footer-info {
+    margin-left: 20px;
+}
+
+
+/* Footer 메뉴 */
+
+.footer-menu {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+}
+
+.footer-menu li:last-child {
+    font-weight: bold;
+}
+
+
+/* 회사 정보 */
+
+.company-info {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.6;
+}
+
+.copyright {
+    margin-top: 3px;
+}
+
+
+/* =========================
+   SNS
+========================= */
+
+.footer-sns {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    margin-left: auto;
+    margin-right: 40px;
+}
+
+.footer-sns img {
+    display: block;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+
+/* =========================
+   Family Site
+========================= */
+
+.family-site {
+    width: 200px;
+
+    /* 리스트 위치 기준 */
+    position: relative;
+}
+
+
+/* 패밀리 사이트 버튼 */
+
+.family-btn {
+    width: 200px;
+    height: 40px;
+
+    padding: 0 15px;
+
+    border: 1px solid #ccc;
+    background-color: #fff;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    cursor: pointer;
+
+    font-size: 12px;
+    text-align: left;
+}
+
+.family-btn .arrow {
+    font-size: 10px;
+}
+
+
+/* 패밀리 사이트 목록 */
+
+.family-list {
+    display: none;
+
+    position: absolute;
+
+    /* 버튼 위쪽으로 펼쳐짐 */
+    left: 0;
+    bottom: 40px;
+
+    width: 200px;
+
+    border: 1px solid #ccc;
+    background-color: #fff;
+
+    z-index: 10;
+}
+
+.family-list li {
+    border-bottom: 1px solid #eee;
+}
+
+.family-list li:last-child {
+    border-bottom: none;
+}
+
+.family-list li a {
+    display: block;
+
+    padding: 10px 15px;
+
+    font-size: 12px;
+}
+
+.family-list li a:hover {
+    background-color: #f3f3f3;
+}

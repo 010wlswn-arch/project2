@@ -88,3 +88,55 @@ depth2Menus.forEach(function (menu) {
     });
 
 });
+$(function () {
+
+    // =========================
+    // BRAND TAB 기능
+    // =========================
+
+    $(".tab li a").on("click", function (e) {
+
+        // a 태그의 기본 이동 방지
+        e.preventDefault();
+
+
+        // 클릭한 버튼의 data-tab 값 가져오기
+        const tabName = $(this).data("tab");
+
+
+        // =========================
+        // TAB 버튼 상태 변경
+        // =========================
+
+        // 기존 on 제거
+        $(".tab li").removeClass("on");
+
+        // 클릭한 li에 on 추가
+        $(this).parent("li").addClass("on");
+
+
+        // =========================
+        // TAB 콘텐츠 변경
+        // =========================
+
+        // 모든 콘텐츠 숨김
+        $(".tab-content").removeClass("on");
+
+        // 선택한 콘텐츠만 표시
+        $("#" + tabName).addClass("on");
+
+    });
+
+});
+// jQuery
+$(function () {
+
+    // Family Site 버튼을 클릭하면
+    $(".family-btn").click(function () {
+
+        // Family Site 목록을 열기 / 닫기
+        $(".family-list").slideToggle();
+
+    });
+
+});
