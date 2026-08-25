@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">오늘할일 앱 아이콘</title>
+  <rect width="512" height="512" rx="116" fill="#3478f6"/>
+  <circle cx="256" cy="256" r="144" fill="#ffffff"/>
+  <path d="M177 258l52 53 109-119" fill="none" stroke="#3478f6" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

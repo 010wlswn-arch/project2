@@ -1,0 +1,289 @@
+/* =========================
+   5단계: QA 및 출시 준비
+========================= */
+
+.release-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--green) 24%, var(--border));
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--green) 8%, var(--surface));
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.release-badge i {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--green) 14%, transparent);
+}
+
+.update-banner {
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top));
+  left: 50%;
+  z-index: 150;
+  width: min(620px, calc(100% - 32px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 13px 14px 13px 17px;
+  border: 1px solid color-mix(in srgb, var(--primary) 32%, var(--border));
+  border-radius: 15px;
+  background: color-mix(in srgb, var(--surface) 94%, var(--primary-soft));
+  box-shadow: var(--shadow);
+  color: var(--text);
+  transform: translateX(-50%);
+}
+
+.update-banner[hidden] {
+  display: none;
+}
+
+.update-banner span {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.update-banner strong {
+  display: block;
+}
+
+.update-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 7px;
+}
+
+.update-actions button {
+  min-height: 36px;
+  padding: 0 11px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.update-actions button:first-child {
+  background: var(--primary);
+  color: #fff;
+}
+
+.release-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.release-heading .card-title {
+  margin: 0;
+}
+
+.release-intro {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.health-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.health-item {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-soft);
+}
+
+.health-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.health-item strong {
+  font-size: 13px;
+}
+
+.health-value {
+  display: block;
+  margin-top: 8px;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.health-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.health-pill.success {
+  background: color-mix(in srgb, var(--green) 12%, var(--surface));
+  color: var(--green);
+}
+
+.health-pill.warning {
+  background: color-mix(in srgb, var(--yellow) 17%, var(--surface));
+  color: #856000;
+}
+
+.health-pill.error {
+  background: color-mix(in srgb, var(--red) 11%, var(--surface));
+  color: var(--red);
+}
+
+.release-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.release-checks span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.release-actions {
+  justify-content: flex-start;
+  margin-top: 16px;
+}
+
+.release-meta {
+  margin: 13px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+html[data-theme="dark"] .health-pill.warning {
+  color: #ffd074;
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .sidebar,
+  .bottom-nav,
+  .onboarding-backdrop,
+  .modal-backdrop {
+    backdrop-filter: none;
+  }
+}
+
+@media (hover: none) {
+  .task-card:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  .update-banner {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .update-actions button {
+    flex: 1;
+  }
+
+  .health-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .release-heading {
+    align-items: center;
+  }
+
+  .release-actions {
+    width: 100%;
+  }
+
+  .release-actions .small-button {
+    flex: 1;
+  }
+
+  .task-modal {
+    max-height: calc(92dvh - env(safe-area-inset-top));
+  }
+}
+
+@media (forced-colors: active) {
+  .brand-mark,
+  .task-check,
+  .floating-add,
+  .health-pill,
+  .release-checks span {
+    forced-color-adjust: auto;
+  }
+}
+
+@media print {
+  .sidebar,
+  .summary-panel,
+  .bottom-nav,
+  .floating-add,
+  .quick-add,
+  .filter-toolbar,
+  .header-actions,
+  .mobile-topbar {
+    display: none !important;
+  }
+
+  .app-shell {
+    display: block;
+    padding: 0;
+  }
+
+  .main-content {
+    max-width: none;
+    padding: 0;
+  }
+
+  .task-card,
+  .settings-card,
+  .chart-card,
+  .calendar-card {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}
