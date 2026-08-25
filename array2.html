@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열응용</title>
+</head>
+<body>
+    <script>
+         // 배열을 선언할때 사용하는 명령 배열변수= []
+        let girl = ["김세정","전소미","청하","주결경","김소혜","정채연","강미나","최유정","김도연","임나영","연정"]
+        // 솔로로 데뷔한 멤버를 새로운 배열에 저장
+let solo = [girl[0], girl[2], girl[1]];
+
+
+        // 배열에 기억된 값을 반복문을 사용하여 출력
+        for(let i=0;i<=10;i++){
+             document.write(`ioi 맴버는 ${girl[i]} 입니다<br>`)
+        }
+        // document.write(girl.length)
+
+        // for(let i=0;i<girl.length;i++){
+        //     document.write(` 맴버 중 솔로로 데뷔한 멤버는 ${girl[i]} 입니다<br>`)
+        // }
+        // IOI 멤버 배열
+
+// 솔로 데뷔 멤버 반복 출력
+for (let i = 0; i < solo.length; i++) {
+    document.write(`멤버 중 솔로로 데뷔한 멤버는 ${solo[i]}입니다.<br>`);
+}
+        
+
+
+    </script>
+</body>
+</html>
