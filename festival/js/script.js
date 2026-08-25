@@ -19,4 +19,6 @@ setInterval(function(){
 //    점점 보이게
    $(".slide li").eq(num).fadeIn()
 },3000)
+
+$(function)
     
