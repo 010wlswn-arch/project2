@@ -212,30 +212,14 @@ img {
 /* =========================
    상위 메뉴 밑줄
 ========================= */
-.gnb > li > .gnb-button::after {
-    content: "";
-
-    position: absolute;
-
-    /* 글자가 시작하는 왼쪽에 맞춤 */
-    left: 0;
-    bottom: 27px;
-
-    width: 50px;
-    height: 2px;
-
-    background-color: #00a6b4;
-
-    /* 중앙 이동 효과 제거 */
-    transform: none !important;
-
-    opacity: 0;
-    transition: opacity 0.2s ease;
+/* 상위 메뉴 기본 글자색 */
+.gnb > li > .gnb-button {
+    color: #111111;
 }
 
-/* 마우스를 올렸을 때 밑줄 표시 */
-.gnb > li:hover > .gnb-button::after {
-    opacity: 1;
+/* 마우스 호버 시 글자색만 민트색으로 변경 */
+.gnb > li:hover > .gnb-button {
+    color: #00a6b4;
 }
 
 /* =========================
