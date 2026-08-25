@@ -64,8 +64,8 @@
                     <a href="./lotte.html">
 
                         <img
-                            src="./images/imgi_152_comm_logo_mint.svg"
-                            alt="LOTTE EATZ"
+                            src="./images/imgi_126_comm_header_logo.svg"
+                            alt="LOTTE EATZ로고"
                         >
 
                     </a>
@@ -421,7 +421,7 @@
 
                             <!-- 재생 이미지 -->
                             <img
-                                src="./images/imgi_150_main_banner_play.svg"
+                                src="./images/play.svg"
                                 alt="재생 버튼"
                                 class="play-icon"
                             >
@@ -1421,91 +1421,388 @@
             </h2>
 
         </div>
+<!-- =========================
+     Hot Menu 탭 및 콘텐츠
+========================= -->
+<div class="hot-menu-tab-area">
 
-
-        <!-- =========================
-             Hot Menu 브랜드 탭
-        ========================= -->
-        <div
-            class="hot-menu-tabs"
-            role="tablist"
-            aria-label="브랜드 선택"
+    <!-- =========================
+         Hot Menu 탭 버튼
+    ========================= -->
+    <div
+        class="hot-menu-tabs"
+        role="tablist"
+        aria-label="브랜드별 이달의 핫메뉴"
+    >
+        <!-- 롯데리아 탭 -->
+        <button
+            type="button"
+            class="hot-menu-tab"
+            id="hot-tab-lotteria"
+            role="tab"
+            aria-selected="false"
+            aria-controls="hot-panel-lotteria"
+            tabindex="-1"
+            data-hot-tab="lotteria"
         >
+            롯데리아
+        </button>
 
-            <!-- 엔제리너스 탭 -->
-            <button
-                type="button"
-                class="hot-tab-button active"
-                role="tab"
-                aria-selected="true"
-                data-brand="angelinus"
-            >
-                엔제리너스
-            </button>
+        <!-- 플레:이팅 탭 -->
+        <button
+            type="button"
+            class="hot-menu-tab"
+            id="hot-tab-pleating"
+            role="tab"
+            aria-selected="false"
+            aria-controls="hot-panel-pleating"
+            tabindex="-1"
+            data-hot-tab="pleating"
+        >
+            플레:이팅
+        </button>
 
-            <!-- 플레:이팅 탭 -->
-            <button
-                type="button"
-                class="hot-tab-button"
-                role="tab"
-                aria-selected="false"
-                data-brand="plateating"
-            >
-                플레:이팅
-            </button>
+        <!-- 엔제리너스 탭: 첫 화면 -->
+        <button
+            type="button"
+            class="hot-menu-tab active"
+            id="hot-tab-angelinus"
+            role="tab"
+            aria-selected="true"
+            aria-controls="hot-panel-angelinus"
+            tabindex="0"
+            data-hot-tab="angelinus"
+        >
+            엔제리너스
+        </button>
 
-            <!-- 크리스피크림 도넛 탭 -->
-            <button
-                type="button"
-                class="hot-tab-button"
-                role="tab"
-                aria-selected="false"
-                data-brand="krispy"
-            >
-                크리스피크림 도넛
-            </button>
-
-            <!-- 롯데리아 탭 -->
-            <button
-                type="button"
-                class="hot-tab-button"
-                role="tab"
-                aria-selected="false"
-                data-brand="lotteria"
-            >
-                롯데리아
-            </button>
-
-        </div>
+        <!-- 크리스피크림 도넛 탭 -->
+        <button
+            type="button"
+            class="hot-menu-tab"
+            id="hot-tab-krispy"
+            role="tab"
+            aria-selected="false"
+            aria-controls="hot-panel-krispy"
+            tabindex="-1"
+            data-hot-tab="krispy"
+        >
+            크리스피크림 도넛
+        </button>
+    </div>
+    <!-- // Hot Menu 탭 버튼 -->
 
 
-        <!-- =========================
-             Hot Menu 콘텐츠
-        ========================= -->
+    <!-- =========================
+         롯데리아 탭 패널
+    ========================= -->
+    <div
+        class="hot-menu-panel"
+        id="hot-panel-lotteria"
+        role="tabpanel"
+        aria-labelledby="hot-tab-lotteria"
+        data-hot-panel="lotteria"
+        hidden
+    >
         <div class="hot-menu-content">
 
-            <!-- =========================
-                 왼쪽 브랜드 배너
-            ========================= -->
+            <!-- 롯데리아 브랜드 배너 -->
+            <a
+                href="#"
+                class="hot-brand-banner"
+                aria-label="롯데리아 메뉴 더보기"
+            >
+                <img
+                    src="./images/imgi_11_hot_lotteria.png"
+                    alt="롯데리아 인기 메뉴"
+                    class="hot-brand-image"
+                >
+
+                <span class="hot-brand-overlay"></span>
+
+                <span class="hot-brand-text">
+                    <strong>
+                        TASTE<br>
+                        THE FUN
+                    </strong>
+
+                    <span class="hot-brand-more">
+                        메뉴 더보기
+                        <span aria-hidden="true">›</span>
+                    </span>
+                </span>
+            </a>
+
+            <!-- 롯데리아 상품 목록 -->
+            <ul class="hot-product-list">
+
+                <!-- 롯데리아 상품 1 -->
+                <li class="hot-product-item">
+                    <a href="#" class="hot-product-link">
+                        <div class="hot-product-image">
+                            <span class="hot-product-tag new">NEW</span>
+                            <img
+                                src="./images/imgi_12_x240.png"
+                                alt="리아 투툼새우"
+                            >
+                        </div>
+
+                        <div class="hot-product-info">
+                            <h3>리아 투툼새우</h3>
+                            <strong>7,900원</strong>
+                        </div>
+                    </a>
+                </li>
+
+                <!-- 롯데리아 상품 2 -->
+                <li class="hot-product-item">
+                    <a href="#" class="hot-product-link">
+                        <div class="hot-product-image">
+                            <span class="hot-product-tag new">NEW</span>
+                            <img
+                                src="./images/imgi_13_x240.png"
+                                alt="리아 투툼새우 스파이시토마토"
+                            >
+                        </div>
+
+                        <div class="hot-product-info">
+                            <h3>리아 투툼새우<br>스파이시토마토</h3>
+                            <strong>7,900원</strong>
+                        </div>
+                    </a>
+                </li>
+
+                <!-- 롯데리아 상품 3 -->
+                <li class="hot-product-item">
+                    <a href="#" class="hot-product-link">
+                        <div class="hot-product-image">
+                            <span class="hot-product-tag best">BEST</span>
+                            <img
+                                src="./images/imgi_14_x240.png"
+                                alt="리아 불고기"
+                            >
+                        </div>
+
+                        <div class="hot-product-info">
+                            <h3>리아 불고기</h3>
+                            <strong>5,100원</strong>
+                        </div>
+                    </a>
+                </li>
+
+                <!-- 롯데리아 상품 4 -->
+                <li class="hot-product-item">
+                    <a href="#" class="hot-product-link">
+                        <div class="hot-product-image">
+                            <span class="hot-product-tag best">BEST</span>
+                            <img
+                                src="./images/imgi_15_x240.png"
+                                alt="양념감자"
+                            >
+                        </div>
+
+                        <div class="hot-product-info">
+                            <h3>양념감자</h3>
+                            <strong>2,700원</strong>
+                        </div>
+                    </a>
+                </li>
+
+                <!-- 롯데리아 상품 5 -->
+                <li class="hot-product-item">
+                    <a href="#" class="hot-product-link">
+                        <div class="hot-product-image">
+                            <span class="hot-product-tag best">BEST</span>
+                            <img
+                                src="./images/imgi_16_x240.png"
+                                alt="화이어윙 2조각"
+                            >
+                        </div>
+
+                        <div class="hot-product-info">
+                            <h3>화이어윙 2조각</h3>
+                            <strong>3,400원</strong>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+            <!-- // 롯데리아 상품 목록 -->
+
+        </div>
+    </div>
+    <!-- // 롯데리아 탭 패널 -->
+
+
+    <!-- =========================
+         플레:이팅 탭 패널
+    ========================= -->
+    <div
+        class="hot-menu-panel"
+        id="hot-panel-pleating"
+        role="tabpanel"
+        aria-labelledby="hot-tab-pleating"
+        data-hot-panel="pleating"
+        hidden
+    >
+        <div class="hot-menu-content">
+
+            <!-- 플레:이팅 브랜드 배너 -->
+            <a
+                href="#"
+                class="hot-brand-banner"
+                aria-label="플레:이팅 메뉴 더보기"
+            >
+                <img
+                    src="./images/imgi_25_hot_pleeating.png"
+                    alt="플레:이팅 인기 메뉴"
+                    class="hot-brand-image"
+                >
+
+                <span class="hot-brand-overlay"></span>
+
+                <span class="hot-brand-text">
+                    <strong>
+                        Design the<br>
+                        Taste!
+                    </strong>
+
+                    <span class="hot-brand-more">
+                        메뉴 더보기
+                        <span aria-hidden="true">›</span>
+                    </span>
+                </span>
+            </a>
+
+            <!-- 플레:이팅 상품 목록 -->
+            <ul class="hot-product-list">
+
+                <!-- 플레:이팅 상품 1 -->
+                <li class="hot-product-item">
+                    <a href="#" class="hot-product-link">
+                        <div class="hot-product-image">
+                            <img
+                                src="./images/imgi_26_x240.jpg"
+                                alt="돌솥비빔밥"
+                            >
+                        </div>
+
+                        <div class="hot-product-info">
+                            <h3>[31]돌솥비빔밥</h3>
+                            <strong>11,000원</strong>
+                        </div>
+                    </a>
+                </li>
+
+                <!-- 플레:이팅 상품 2 -->
+                <li class="hot-product-item">
+                    <a href="#" class="hot-product-link">
+                        <div class="hot-product-image">
+                            <img
+                                src="./images/imgi_27_x240.jpg"
+                                alt="도가니탕"
+                            >
+                        </div>
+
+                        <div class="hot-product-info">
+                            <h3>도가니탕</h3>
+                            <strong>15,000원</strong>
+                        </div>
+                    </a>
+                </li>
+
+                <!-- 플레:이팅 상품 3 -->
+                <li class="hot-product-item">
+                    <a href="#" class="hot-product-link">
+                        <div class="hot-product-image">
+                            <img
+                                src="./images/imgi_28_x240.jpg"
+                                alt="돈까스오므라이스"
+                            >
+                        </div>
+
+                        <div class="hot-product-info">
+                            <h3>돈까스오므라이스</h3>
+                            <strong>11,000원</strong>
+                        </div>
+                    </a>
+                </li>
+
+                <!-- 플레:이팅 상품 4 -->
+                <li class="hot-product-item">
+                    <a href="#" class="hot-product-link">
+                        <div class="hot-product-image">
+                            <img
+                                src="./images//imgi_29_x240.jpg"
+                                alt="추억의 왕돈까스"
+                            >
+                        </div>
+
+                        <div class="hot-product-info">
+                            <h3>추억의 왕돈까스</h3>
+                            <strong>13,500원</strong>
+                        </div>
+                    </a>
+                </li>
+
+                <!-- 플레:이팅 상품 5 -->
+                <li class="hot-product-item">
+                    <a href="#" class="hot-product-link">
+                        <div class="hot-product-image">
+                            <img
+                                src="./images/imgi_30_x240.jpg"
+                                alt="알밥세트"
+                            >
+                        </div>
+
+                        <div class="hot-product-info">
+                            <h3>알밥세트</h3>
+                            <strong>12,500원</strong>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+            <!-- // 플레:이팅 상품 목록 -->
+
+        </div>
+    </div>
+    <!-- // 플레:이팅 탭 패널 -->
+
+
+    <!-- =========================
+         엔제리너스 탭 패널
+    ========================= -->
+    <div
+        class="hot-menu-panel active"
+        id="hot-panel-angelinus"
+        role="tabpanel"
+        aria-labelledby="hot-tab-angelinus"
+        data-hot-panel="angelinus"
+    >
+        <!--
+            여기에 기존에 작성한
+            <div class="hot-menu-content">부터
+            닫는 </div>까지 그대로 넣으세요.
+        -->
+
+        <div class="hot-menu-content">
+
+            <!-- 기존 엔제리너스 브랜드 배너 -->
             <a
                 href="#"
                 class="hot-brand-banner"
                 aria-label="엔제리너스 메뉴 더보기"
             >
-
-                <!-- 브랜드 배너 이미지 -->
                 <img
                     src="./images/imgi_17_hot_angelinus.png"
-                    alt="브랜드 배너 이미지"
+                    alt="엔제리너스 인기 메뉴"
                     class="hot-brand-image"
                 >
 
-                <!-- 배너 검은색 투명 배경 -->
                 <span class="hot-brand-overlay"></span>
 
-                <!-- 브랜드 배너 글자 -->
                 <span class="hot-brand-text">
-
                     <strong>
                         ALWAYS<br>
                         AROUND US<br>
@@ -1514,262 +1811,194 @@
 
                     <span class="hot-brand-more">
                         메뉴 더보기
-
-                        <img
-                            src="./images/"
-                            alt=""
-                        >
+                        <span aria-hidden="true">›</span>
                     </span>
-
                 </span>
-
             </a>
 
-
-            <!-- =========================
-                 오른쪽 상품 목록
-            ========================= -->
+            <!-- 기존 엔제리너스 상품 목록 -->
             <ul class="hot-product-list">
 
-                <!-- =========================
-                     첫 번째 상품
-                ========================= -->
+                <!-- 엔제리너스 상품 1 -->
                 <li class="hot-product-item">
-
-                    <a
-                        href="#"
-                        class="hot-product-link"
-                        aria-label="NEW 텐션젤리레이드 6,600원"
-                    >
-
-                        <!-- 상품 이미지 영역 -->
+                    <a href="#" class="hot-product-link">
                         <div class="hot-product-image">
-
-                            <!-- 상품 상태 -->
-                            <span class="hot-product-tag new">
-                                NEW
-                            </span>
-
-                            <!-- 상품 이미지 -->
+                            <span class="hot-product-tag new">NEW</span>
                             <img
                                 src="./images/imgi_18_x240.png"
                                 alt="텐션젤리레이드"
                             >
-
                         </div>
 
-
-                        <!-- 상품 정보 -->
                         <div class="hot-product-info">
-
-                            <h3>
-                                텐션젤리레이드
-                            </h3>
-
-                            <strong>
-                                6,600원
-                            </strong>
-
+                            <h3>텐션젤리레이드</h3>
+                            <strong>6,600원</strong>
                         </div>
-
                     </a>
-
                 </li>
 
-
-                <!-- =========================
-                     두 번째 상품
-                ========================= -->
+                <!-- 엔제리너스 상품 2 -->
                 <li class="hot-product-item">
-
-                    <a
-                        href="#"
-                        class="hot-product-link"
-                        aria-label="NEW 텐션젤리아이스티 5,500원"
-                    >
-
-                        <!-- 상품 이미지 영역 -->
+                    <a href="#" class="hot-product-link">
                         <div class="hot-product-image">
-
-                            <!-- 상품 상태 -->
-                            <span class="hot-product-tag new">
-                                NEW
-                            </span>
-
-                            <!-- 상품 이미지 -->
+                            <span class="hot-product-tag new">NEW</span>
                             <img
                                 src="./images/imgi_19_x240.png"
                                 alt="텐션젤리아이스티"
                             >
-
                         </div>
 
-
-                        <!-- 상품 정보 -->
                         <div class="hot-product-info">
-
-                            <h3>
-                                텐션젤리아이스티
-                            </h3>
-
-                            <strong>
-                                5,500원
-                            </strong>
-
+                            <h3>텐션젤리아이스티</h3>
+                            <strong>5,500원</strong>
                         </div>
-
                     </a>
-
                 </li>
 
-
-                <!-- =========================
-                     세 번째 상품
-                ========================= -->
+                <!-- 엔제리너스 상품 3 -->
                 <li class="hot-product-item">
-
-                    <a
-                        href="#"
-                        class="hot-product-link"
-                        aria-label="BEST 아메리카노 4,700원"
-                    >
-
-                        <!-- 상품 이미지 영역 -->
+                    <a href="#" class="hot-product-link">
                         <div class="hot-product-image">
-
-                            <!-- 상품 상태 -->
-                            <span class="hot-product-tag best">
-                                BEST
-                            </span>
-
-                            <!-- 상품 이미지 -->
+                            <span class="hot-product-tag best">BEST</span>
                             <img
                                 src="./images/imgi_20_x240.png"
                                 alt="아메리카노"
                             >
-
                         </div>
 
-
-                        <!-- 상품 정보 -->
                         <div class="hot-product-info">
-
-                            <h3>
-                                아메리카노
-                            </h3>
-
-                            <strong>
-                                4,700원
-                            </strong>
-
+                            <h3>아메리카노</h3>
+                            <strong>4,700원</strong>
                         </div>
-
                     </a>
-
                 </li>
 
-
-                <!-- =========================
-                     네 번째 상품
-                ========================= -->
+                <!-- 엔제리너스 상품 4 -->
                 <li class="hot-product-item">
-
-                    <a
-                        href="#"
-                        class="hot-product-link"
-                        aria-label="BEST 오리지널불고기 7,600원"
-                    >
-
-                        <!-- 상품 이미지 영역 -->
+                    <a href="#" class="hot-product-link">
                         <div class="hot-product-image">
-
-                            <!-- 상품 상태 -->
-                            <span class="hot-product-tag best">
-                                BEST
-                            </span>
-
-                            <!-- 상품 이미지 -->
+                            <span class="hot-product-tag best">BEST</span>
                             <img
                                 src="./images/imgi_21_x240.png"
                                 alt="오리지널불고기"
                             >
-
                         </div>
 
-
-                        <!-- 상품 정보 -->
                         <div class="hot-product-info">
-
-                            <h3>
-                                오리지널불고기
-                            </h3>
-
-                            <strong>
-                                7,600원
-                            </strong>
-
+                            <h3>오리지널불고기</h3>
+                            <strong>7,600원</strong>
                         </div>
-
                     </a>
-
                 </li>
 
-
-                <!-- =========================
-                     다섯 번째 상품
-                ========================= -->
+                <!-- 엔제리너스 상품 5 -->
                 <li class="hot-product-item">
-
-                    <a
-                        href="#"
-                        class="hot-product-link"
-                        aria-label="BEST 에그햄치즈오븐토스트 5,200원"
-                    >
-
-                        <!-- 상품 이미지 영역 -->
+                    <a href="#" class="hot-product-link">
                         <div class="hot-product-image">
-
-                            <!-- 상품 상태 -->
-                            <span class="hot-product-tag best">
-                                BEST
-                            </span>
-
-                            <!-- 상품 이미지 -->
+                            <span class="hot-product-tag best">BEST</span>
                             <img
                                 src="./images/imgi_22_x240.png"
                                 alt="에그햄치즈오븐토스트"
                             >
-
                         </div>
 
-
-                        <!-- 상품 정보 -->
                         <div class="hot-product-info">
-
-                            <h3>
-                                에그햄치즈오븐토스트
-                            </h3>
-
-                            <strong>
-                                5,200원
-                            </strong>
-
+                            <h3>에그햄치즈오븐토스트</h3>
+                            <strong>5,200원</strong>
                         </div>
-
                     </a>
-
                 </li>
 
             </ul>
-            <!-- // 오른쪽 상품 목록 -->
+            <!-- // 엔제리너스 상품 목록 -->
 
         </div>
-        <!-- // Hot Menu 콘텐츠 -->
+    </div>
+    <!-- // 엔제리너스 탭 패널 -->
+
+
+    <!-- =========================
+         크리스피크림 도넛 탭 패널
+    ========================= -->
+    <div
+        class="hot-menu-panel"
+        id="hot-panel-krispy"
+        role="tabpanel"
+        aria-labelledby="hot-tab-krispy"
+        data-hot-panel="krispy"
+        hidden
+    >
+        <div class="hot-menu-content">
+
+            <!-- 크리스피크림 브랜드 배너 -->
+            <a
+                href="#"
+                class="hot-brand-banner"
+                aria-label="크리스피크림 도넛 메뉴 더보기"
+            >
+                <img
+                    src="./images/imgi_23_hot_krispy.png"
+                    alt="크리스피크림 도넛 인기 메뉴"
+                    class="hot-brand-image"
+                >
+
+                <span class="hot-brand-overlay"></span>
+
+                <span class="hot-brand-text">
+                    <strong>
+                        맛있는 즐거움이<br>
+                        찾아온다!
+                    </strong>
+
+                    <span class="hot-brand-more">
+                        메뉴 더보기
+                        <span aria-hidden="true">›</span>
+                    </span>
+                </span>
+            </a>
+
+            <!-- 크리스피크림 상품 목록 -->
+            <ul class="hot-product-list">
+
+                <!-- 크리스피크림 상품 1 -->
+                <li class="hot-product-item">
+                    <a href="#" class="hot-product-link">
+                        <div class="hot-product-image">
+                            <span class="hot-product-tag krispy-best">
+                                BEST
+                            </span>
+
+                            <img
+                                src="./images/imgi_24_x240.png"
+                                alt="오리지널 글레이즈드 더즌"
+                            >
+                        </div>
+
+                        <div class="hot-product-info">
+                            <h3>오리지널 더즌</h3>
+                            <strong>18,000원</strong>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+            <!-- // 크리스피크림 상품 목록 -->
+
+        </div>
+    </div>
+    <!-- // 크리스피크림 도넛 탭 패널 -->
+
+</div>
+</div>
+    <!-- // Hot Menu 탭 및 콘텐츠 -->
 
     </div>
+    <!-- // Hot Menu Inner -->
 
 </section>
 <!-- // Hot Menu Section -->
+
+<!-- // Hot Menu 탭 및 콘텐츠 -->
  <!-- =========================
      EATZ TV Section
 ========================= -->
@@ -2537,7 +2766,74 @@
 
 </div>
 <!-- // Family Site Popup -->
+<!-- =========================
+     Top Button
+========================= -->
+<button
+    type="button"
+    class="top-button"
+    aria-label="페이지 맨 위로 이동"
+>
+    <!-- 하얀색 위쪽 화살표 -->
+    <span class="top-button-arrow" aria-hidden="true"></span>
 
+    <!-- TOP 글자 -->
+    <span class="top-button-text">TOP</span>
+</button>
+<!-- // Top Button -->
+ <!-- =========================
+     Main Event Popup
+========================= -->
+<div
+    class="main-event-popup"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="mainEventPopupTitle"
+    aria-hidden="true"
+>
+
+    <!-- 팝업 뒤쪽 검은 배경 -->
+    <div class="main-event-overlay"></div>
+
+
+    <!-- 팝업 본체 -->
+    <div class="main-event-panel">
+
+        <!-- 접근성을 위한 숨김 제목 -->
+        <h2
+            id="mainEventPopupTitle"
+            class="main-event-hidden-title"
+        >
+            크리스피크림 도넛바 더즌 할인 이벤트
+        </h2>
+
+
+        <!-- 이벤트 이미지 및 쿠폰 링크 -->
+        <a
+            href="#"
+            class="main-event-image-link"
+            aria-label="크리스피크림 도넛바 더즌 할인 쿠폰 받기"
+        >
+            <img
+                src="./images/popup.jpg"
+                alt="크리스피크림 도넛바 더즌 할인, 23,500원에서 19,000원으로 할인"
+            >
+        </a>
+
+
+        <!-- 팝업 닫기 버튼 -->
+        <button
+            type="button"
+            class="main-event-close"
+            aria-label="이벤트 팝업 닫기"
+        >
+            닫기
+        </button>
+
+    </div>
+
+</div>
+<!-- // Main Event Popup -->
 
     <!-- jQuery -->
     <script src="./js/jquery.3.6.0.min.js"></script>

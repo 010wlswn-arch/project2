@@ -506,3 +506,338 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+document.addEventListener("DOMContentLoaded", function () {
+
+    // =========================
+    // Top Button
+    // =========================
+
+    const topButton =
+        document.querySelector(".top-button");
+
+
+    // Top 버튼이 있을 때만 실행
+    if (topButton) {
+
+        // 스크롤 위치에 따라 버튼 표시 및 숨김
+        function toggleTopButton() {
+
+            if (window.scrollY >= 300) {
+
+                // 300px 이상 스크롤하면 버튼 표시
+                topButton.classList.add("show");
+
+            } else {
+
+                // 페이지 상단에서는 버튼 숨김
+                topButton.classList.remove("show");
+
+            }
+
+        }
+
+
+        // 스크롤 이벤트
+        window.addEventListener(
+            "scroll",
+            toggleTopButton
+        );
+
+
+        // Top 버튼 클릭
+        topButton.addEventListener("click", function () {
+
+            // 페이지 맨 위로 부드럽게 이동
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+
+        // 페이지를 새로고침했을 때 현재 위치 확인
+        toggleTopButton();
+
+    }
+
+});
+// =========================
+// Main Event Popup
+// =========================
+
+window.addEventListener("load", function () {
+
+    const mainEventPopup =
+        document.querySelector(".main-event-popup");
+
+    const mainEventClose =
+        document.querySelector(".main-event-close");
+
+    const mainEventOverlay =
+        document.querySelector(".main-event-overlay");
+
+
+    // 팝업 요소가 없으면 실행 중지
+    if (!mainEventPopup) {
+        return;
+    }
+
+
+    // =========================
+    // 페이지 로딩 후 팝업 열기
+    // =========================
+
+    mainEventPopup.classList.add("open");
+
+    mainEventPopup.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    // 팝업이 열렸을 때 배경 스크롤 방지
+    document.body.style.overflow = "hidden";
+
+
+    // =========================
+    // 팝업 닫기 함수
+    // =========================
+
+    function closeMainEventPopup() {
+
+        mainEventPopup.classList.remove("open");
+
+        mainEventPopup.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        // 배경 스크롤 다시 허용
+        document.body.style.overflow = "";
+
+    }
+
+
+    // 닫기 버튼 클릭
+    if (mainEventClose) {
+
+        mainEventClose.addEventListener(
+            "click",
+            closeMainEventPopup
+        );
+
+    }
+
+
+    // 검은 배경 클릭
+    if (mainEventOverlay) {
+
+        mainEventOverlay.addEventListener(
+            "click",
+            closeMainEventPopup
+        );
+
+    }
+
+
+    // ESC 키로 팝업 닫기
+    document.addEventListener("keydown", function (event) {
+
+        if (
+            event.key === "Escape" &&
+            mainEventPopup.classList.contains("open")
+        ) {
+            closeMainEventPopup();
+        }
+
+    });
+
+});
+/* =========================
+   Hot Menu 탭 기능
+   새로고침할 때마다 시작 탭 순차 변경
+========================= */
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* Hot Menu 탭과 패널 찾기 */
+    const hotMenuTabs = document.querySelectorAll("[data-hot-tab]");
+    const hotMenuPanels =
+        document.querySelectorAll("[data-hot-panel]");
+
+    /* Hot Menu가 없으면 실행하지 않음 */
+    if (!hotMenuTabs.length || !hotMenuPanels.length) {
+        return;
+    }
+
+
+    /* =========================
+       탭 순서
+    ========================= */
+    const hotMenuOrder = [
+        "lotteria",
+        "pleating",
+        "angelinus",
+        "krispy"
+    ];
+
+
+    /* =========================
+       선택된 탭으로 변경하는 함수
+    ========================= */
+    function changeHotMenuTab(selectedName, moveFocus = false) {
+
+        /* 탭 버튼 선택 상태 변경 */
+        hotMenuTabs.forEach(function (tab) {
+            const isSelected =
+                tab.dataset.hotTab === selectedName;
+
+            tab.classList.toggle("active", isSelected);
+            tab.setAttribute(
+                "aria-selected",
+                String(isSelected)
+            );
+
+            tab.setAttribute(
+                "tabindex",
+                isSelected ? "0" : "-1"
+            );
+
+            /* 방향키 이동일 때만 포커스 적용 */
+            if (isSelected && moveFocus) {
+                tab.focus();
+            }
+        });
+
+
+        /* 선택한 패널만 화면에 표시 */
+        hotMenuPanels.forEach(function (panel) {
+            const isSelected =
+                panel.dataset.hotPanel === selectedName;
+
+            panel.classList.toggle("active", isSelected);
+            panel.hidden = !isSelected;
+        });
+    }
+
+
+    /* =========================
+       새로고침 시작 탭 계산
+    ========================= */
+
+    /*
+        sessionStorage를 사용하므로
+        현재 브라우저 탭이 열려 있는 동안
+        새로고침할 때마다 숫자가 저장됩니다.
+    */
+    let currentIndex = Number(
+        sessionStorage.getItem("hotMenuStartIndex")
+    );
+
+    /* 저장된 값이 없거나 잘못된 경우 0번부터 시작 */
+    if (
+        !Number.isInteger(currentIndex) ||
+        currentIndex < 0 ||
+        currentIndex >= hotMenuOrder.length
+    ) {
+        currentIndex = 0;
+    }
+
+    /* 이번 화면에서 보여줄 브랜드 */
+    const firstBrand = hotMenuOrder[currentIndex];
+
+    /* 해당 브랜드를 첫 화면에 표시 */
+    changeHotMenuTab(firstBrand);
+
+    /* 다음 새로고침에 표시할 탭 번호 저장 */
+    const nextIndex =
+        (currentIndex + 1) % hotMenuOrder.length;
+
+    sessionStorage.setItem(
+        "hotMenuStartIndex",
+        String(nextIndex)
+    );
+
+
+    /* =========================
+       탭 클릭 기능
+    ========================= */
+    hotMenuTabs.forEach(function (tab, index) {
+
+        /* 탭 클릭 */
+        tab.addEventListener("click", function () {
+            changeHotMenuTab(tab.dataset.hotTab);
+        });
+
+
+        /* =========================
+           키보드 방향키 기능
+        ========================= */
+        tab.addEventListener("keydown", function (event) {
+            let nextTabIndex = index;
+
+            /* 오른쪽 방향키 */
+            if (event.key === "ArrowRight") {
+                nextTabIndex =
+                    (index + 1) % hotMenuTabs.length;
+            }
+
+            /* 왼쪽 방향키 */
+            else if (event.key === "ArrowLeft") {
+                nextTabIndex =
+                    (
+                        index - 1 + hotMenuTabs.length
+                    ) % hotMenuTabs.length;
+            }
+
+            /* 처음 탭 */
+            else if (event.key === "Home") {
+                nextTabIndex = 0;
+            }
+
+            /* 마지막 탭 */
+            else if (event.key === "End") {
+                nextTabIndex = hotMenuTabs.length - 1;
+            }
+
+            /* 관련 없는 키는 실행 중단 */
+            else {
+                return;
+            }
+
+            event.preventDefault();
+
+            const nextTab = hotMenuTabs[nextTabIndex];
+
+            changeHotMenuTab(
+                nextTab.dataset.hotTab,
+                true
+            );
+        });
+    });
+
+});
+/* =========================
+   Header 메뉴 선택 상태 초기화
+========================= */
+document.addEventListener("DOMContentLoaded", function () {
+    const headerNav = document.querySelector(".header-nav");
+
+    if (!headerNav) {
+        return;
+    }
+
+    /* 메뉴 영역에서 마우스가 벗어나면 선택 효과 제거 */
+    headerNav.addEventListener("mouseleave", function () {
+        document
+            .querySelectorAll(".gnb > li.active")
+            .forEach(function (item) {
+                item.classList.remove("active");
+            });
+
+        document
+            .querySelectorAll(".depth2 a.selected")
+            .forEach(function (link) {
+                link.classList.remove("selected");
+            });
+    });
+});
