@@ -10,35 +10,36 @@
         // 객체 data 선언
         // 여러개의 데이터를 key값과 value의 쌍으로 저장하는 기능
         // 배열로 선언하고 저장하여 데이터 접근 방법
-        let jumsu = [100,90,80,70]
+        let jumsu = [100, 90, 80, 70]
         console.log(jumsu)
+
         document.write(jumsu[2] + "<br>")
         document.write(`국어점수 = ${jumsu[0]}<br>`)
         document.write(`영어점수 = ${jumsu[1]}<br>`)
         document.write(`수학점수 = ${jumsu[2]}<br>`)
         document.write(`과학점수 = ${jumsu[3]}<br>`)
 
-         document.write("<hr>")
+        document.write("<hr>")
 
-        //  객체선언
-         let score = [
-        {
-            no: 1,
-            name: "홍길동",
-            kor: 100,
-            eng: 90,
-            mat: 80,
-            sci: 70,
-        },
-        {
-            no: 2,
-            name: "김놀부",
-            kor: 100,
-            eng: 90,
-            mat: 80,
-            sci: 70,
-        }
-    ];
+        // 객체선언
+        let score = [
+            {
+                no: 1,
+                name: "홍길동",
+                kor: 100,
+                eng: 90,
+                mat: 80,
+                sci: 70,
+            },
+            {
+                no: 2,
+                name: "김놀부",
+                kor: 100,
+                eng: 90,
+                mat: 80,
+                sci: 70,
+            }
+        ];
 
         document.write(`번호=${score.no}<br>`)
         document.write(`이름=${score.name}<br>`)
@@ -48,13 +49,14 @@
         document.write(`과학점수=${score.sci}<br>`)
 
         // 객체를 선언
-        const car ={
-            color:"검정",
-            cc:3000,
+        const car = {
+            color: "검정",
+            cc: 3000,
             make: "현대 자동차",
-
         }
+
         document.write("<hr>")
+
         document.write(`색상=${car.color}<br>`)
         document.write(`배기량=${car.cc}<br>`)
         document.write(`제조사=${car.make}<br>`)
@@ -62,7 +64,7 @@
         console.log(car)
 
         // 객체를 선언한다
-        const sungjuk ={
+        const sungjuk = {
             kor: 100,
             eng: 90,
             mat: 80,
@@ -70,12 +72,43 @@
         }
 
         document.write("<hr>")
+
         document.write(`국어=${sungjuk[`kor`]}<br>`)
         document.write(`영어=${sungjuk[`eng`]}<br>`)
         document.write(`수학=${sungjuk[`mat`]}<br>`)
         document.write(`과학=${sungjuk[`sci`]}<br>`)
 
+        // 객체를 배열에 저장
 
+        // 출력할때 반복문 사용
+        // 배열에서 반복문 사용
+        // 학생 점수를 배열에 저장
+        const scores = [100, 90, 80, 70]
+
+        // 과목 이름을 배열에 저장
+        const subjects = ["국어", "영어", "수학", "과학"]
+
+        document.write("<hr>")
+
+        // 반복문을 사용하여 for 반복문 출력
+        for (let i = 0; i < scores.length; i++) {
+            document.write(`${subjects[i]}=${scores[i]}<br>`)
+        }
+
+        // 객체에서 반복문 사용
+        const jumsus = {
+            국어: 100,
+            영어: 90,
+            수학: 80,
+            과학: 70,
+        }
+
+        document.write("<hr>")
+
+        // 객체data를 반복문 사용하여 for in문 사용하여 출력
+        for (let subjects in jumsus) {
+            document.write(`${subjects}=${jumsus[subjects]}<br>`)
+        }
     </script>
 </body>
 </html>
