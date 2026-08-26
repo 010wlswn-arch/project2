@@ -6,7 +6,7 @@ const WEDDING_CONFIG = {
     KAKAO_JAVASCRIPT_KEY: "cdc4a945f8e2d325d1b2c9a5baec7db3",
 
     // 구글 Apps Script 웹 앱(/exec) 주소. 사용하지 않으면 빈칸 유지
-    GUESTBOOK_ENDPOINT: "AKfycbzioh-qLoVoq6ocCJKveI7nTKKC_CWNWBtfWn9xKwcyGlP22LVaWuvEgZBQcp10eQxM5Q",
+    GUESTBOOK_ENDPOINT: "https://script.google.com/macros/s/AKfycbzioh-qLoVoq6ocCJKveI7nTKKC_CWNWBtfWn9xKwcyGlP22LVaWuvEgZBQcp10eQxM5Q/exec",
 
     // 하이픈 없이 입력 예: 01012345678
     GROOM_PHONE: "",
