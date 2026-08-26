@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>책 정보 출력</title>
+</head>
+<body>
+    <script>
+        // 책 정보를 객체로 저장
+        const book = {
+            "책 제목": "미드나잇 라이브러리",
+            "저자": "매트 헤이그",
+            "가격": "14,220원",
+            "출간일": "2021-04-28",
+            "페이지 수": "408",
+            "ISBN": "9791191056556(1191056554)"
+        };
+
+        // 객체를 for in 반복문으로 출력
+        for (let key in book) {
+            document.write(`${key} : ${book[key]}<br>`);
+        }
+    </script>
+</body>
+</html>
