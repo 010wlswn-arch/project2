@@ -1,0 +1,29 @@
+전 세계 날씨 정보 APP - 순수 HTML/CSS/JavaScript 버전
+
+파일 구성
+
+index.html          HTML 화면 구조
+css/style.css       디자인 및 반응형 CSS
+js/config.js        OpenWeather API Key와 기본 도시 설정
+js/lang-ko.js       화면 한글 문구 모음
+js/app.js           API 요청과 앱 기능
+images/             교체할 이미지 보관 폴더
+
+실행 방법
+
+1. 압축을 풉니다.
+2. VS Code에서 폴더를 엽니다.
+3. js/config.js 파일을 엽니다.
+4. OPENWEATHER_API_KEY의 따옴표 안에 본인의 API Key를 입력합니다.
+5. index.html 파일을 Live Server로 실행합니다.
+6. 개발자 도구의 Console에서 API 원본 데이터를 확인합니다.
+
+한글 문구 수정
+
+js/lang-ko.js 파일에서 오른쪽 따옴표 안의 문구만 변경하면 됩니다.
+OpenWeather 날씨 설명은 js/config.js의 LANGUAGE: "kr" 설정으로 한글 표시됩니다.
+
+김포 설정
+
+첫 화면 기본 도시는 js/config.js의 DEFAULT_CITY: "Gimpo"입니다.
+검색창 아래 빠른 검색 목록에도 김포 버튼이 포함되어 있습니다.

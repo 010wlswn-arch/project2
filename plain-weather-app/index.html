@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="전 세계 도시의 현재 날씨와 5일 예보를 확인하는 앱">
+    <title>전 세계 날씨 정보 APP</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="background-circle circle1"></div>
+    <div class="background-circle circle2"></div>
+
+    <div class="app-wrap">
+        <!-- 상단 영역 -->
+        <header class="header">
+            <a class="logo" href="#top" aria-label="날씨 앱 홈">
+                <span class="logo-icon">☁</span>
+                <span>오늘날씨</span>
+            </a>
+
+            <div class="unit-buttons" aria-label="온도 단위 선택">
+                <button type="button" class="unit-button active" data-unit="metric">°C</button>
+                <button type="button" class="unit-button" data-unit="imperial">°F</button>
+            </div>
+        </header>
+
+        <main id="top">
+            <!-- 검색 영역 -->
+            <section class="search-section">
+                <p class="small-title" data-text="worldWeather">WORLD WEATHER</p>
+                <h1 data-text="mainTitle">오늘, 세상은 어떤 날씨일까요?</h1>
+                <p class="intro" data-text="mainDescription">도시를 검색하거나 현재 위치의 날씨를 확인해 보세요.</p>
+
+                <form class="search-form" id="search-form">
+                    <label class="search-box" for="city-input">
+                        <span aria-hidden="true">⌕</span>
+                        <input id="city-input" type="search" placeholder="도시명 검색 (예: 김포, 서울, Tokyo)" autocomplete="off">
+                    </label>
+                    <button class="primary-button" type="submit" id="search-button">검색</button>
+                    <button class="location-button" type="button" id="location-button">◎ 현재 위치</button>
+                </form>
+
+                <!-- 빠른 도시 검색: 김포 추가 -->
+                <div class="quick-cities" aria-label="빠른 도시 검색">
+                    <span data-text="quickSearch">빠른 검색</span>
+                    <button type="button" data-city="Gimpo">김포</button>
+                    <button type="button" data-city="Seoul">서울</button>
+                    <button type="button" data-city="Tokyo">도쿄</button>
+                    <button type="button" data-city="New York">뉴욕</button>
+                    <button type="button" data-city="Paris">파리</button>
+                </div>
+
+                <p class="message" id="message" role="alert"></p>
+            </section>
+
+            <!-- 현재 날씨 -->
+            <section class="current-weather" id="current-weather">
+                <div class="current-info">
+                    <div class="city-line">
+                        <span aria-hidden="true">●</span>
+                        <h2><span id="city-name">김포</span>, <span id="country-name">KR</span></h2>
+                        <button type="button" class="favorite-button" id="favorite-button" aria-label="즐겨찾기 추가">♡</button>
+                    </div>
+                    <p class="local-time" id="local-time"></p>
+                    <div class="temperature-line">
+                        <strong id="current-temp">25°</strong>
+                        <div>
+                            <b id="weather-description">맑음</b>
+                            <span><span data-text="feelsLike">체감</span> <em id="feels-temp">26°</em></span>
+                        </div>
+                    </div>
+                    <p class="min-max">
+                        <span><span data-text="maximum">최고</span> <b id="max-temp">28°</b></span>
+                        <span><span data-text="minimum">최저</span> <b id="min-temp">21°</b></span>
+                    </p>
+                </div>
+
+                <div class="weather-visual">
+                    <div class="sun"></div>
+                    <img id="weather-icon" src="https://openweathermap.org/img/wn/01d@2x.png" alt="맑음">
+                </div>
+
+                <p class="data-state"><span id="state-dot"></span><span id="data-state-text">김포 예시 데이터</span></p>
+            </section>
+
+            <!-- 상세 정보 -->
+            <section class="detail-grid" aria-label="날씨 상세 정보">
+                <article class="detail-card"><span class="detail-icon">💧</span><div><p data-text="humidity">습도</p><strong id="humidity">60%</strong><small data-text="humidityNote">현재 대기 습도</small></div></article>
+                <article class="detail-card"><span class="detail-icon">〰</span><div><p data-text="windSpeed">풍속</p><strong id="wind-speed">2.4 m/s</strong><small data-text="windNote">바람의 속도</small></div></article>
+                <article class="detail-card"><span class="detail-icon">◴</span><div><p data-text="pressure">기압</p><strong id="pressure">1010 hPa</strong><small data-text="pressureNote">해면 기압</small></div></article>
+                <article class="detail-card"><span class="detail-icon">◉</span><div><p data-text="visibility">가시거리</p><strong id="visibility">10 km</strong><small data-text="visibilityNote">시야 확보 거리</small></div></article>
+                <article class="detail-card"><span class="detail-icon">☀</span><div><p data-text="sunrise">일출</p><strong id="sunrise">06:00</strong><small data-text="sunriseNote">해가 뜨는 시간</small></div></article>
+                <article class="detail-card"><span class="detail-icon">◒</span><div><p data-text="sunset">일몰</p><strong id="sunset">19:00</strong><small data-text="sunsetNote">해가 지는 시간</small></div></article>
+            </section>
+
+            <!-- 예보 영역 -->
+            <section class="forecast-layout">
+                <article class="forecast-box">
+                    <div class="section-heading"><div><p>HOURLY</p><h2 data-text="hourlyForecast">시간대별 예보</h2></div><span>☂</span></div>
+                    <div class="hourly-list" id="hourly-list"></div>
+                </article>
+
+                <article class="forecast-box">
+                    <div class="section-heading"><div><p>5-DAY</p><h2 data-text="fiveDayForecast">5일간 날씨</h2></div><span>➤</span></div>
+                    <div class="daily-list" id="daily-list"></div>
+                </article>
+            </section>
+
+            <!-- 저장된 도시 -->
+            <section class="saved-section" id="saved-section">
+                <div><h2 data-text="favorites">즐겨찾는 도시</h2><div class="city-list" id="favorite-list"></div></div>
+                <div><h2 data-text="recentSearch">최근 검색</h2><div class="city-list recent" id="recent-list"></div></div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <strong>오늘날씨</strong>
+            <p data-text="footerText">OpenWeather 데이터를 기반으로 제공됩니다.</p>
+            <button type="button" id="refresh-button">↻ <span data-text="refresh">새로고침</span></button>
+        </footer>
+    </div>
+
+    <!-- 순서 중요: 한글 → 설정 → 기능 -->
+    <script src="./js/lang-ko.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
