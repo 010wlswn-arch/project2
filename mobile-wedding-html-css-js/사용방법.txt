@@ -1,0 +1,7 @@
+1. VS Code에서 mobile-wedding-html 폴더를 엽니다.
+2. js/config.js에서 카카오 JavaScript 키와 전화번호를 입력합니다.
+3. 카카오 개발자 사이트의 JavaScript SDK 도메인에 실행 주소를 등록합니다.
+4. VS Code Live Server로 index.html을 실행합니다.
+5. 구글 시트 방명록을 사용하려면 js/config.js의 GUESTBOOK_ENDPOINT에 Apps Script /exec 주소를 입력합니다.
+
+중요: 이 버전은 React가 아닙니다. npm install이나 npm run dev를 사용하지 않습니다.
