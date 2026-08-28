@@ -5,6 +5,6 @@
 window.PUBLIC_DATA_CONFIG = {
   enabled: false,
   endpoint: "",
-  serviceKey: "aaf1ebdc25fb4af88c7a76692985a04b",
+  serviceKey: "wqTU18g0nW%2BWEvPmkt%2FDRxJ71CdFjqe4VI9B9DzF1TjZOKI6I0UazNdj2lN4fIzGX9Arb4Tpj%2F56KGsotRjSMg%3D%3D",
   pageSize: 100
 };

@@ -310,3 +310,12 @@ ul{list-style:none}
   .footer-grid,.footer-bottom{flex-direction:column}
   .footer-links{flex-wrap:wrap}
 }
+
+/* ---------- lesson program ---------- */
+.program-filter-grid{grid-template-columns:1.35fr repeat(4,1fr)}
+.program-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.program-card{padding:22px}.program-card-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.program-card h3{font-size:18px;margin-top:8px}.program-card h4{font-size:16px;margin:18px 0 12px;color:var(--teal-dark)}.program-category{font-size:12px;font-weight:900;background:#f0f7f8;padding:7px 9px;border-radius:999px}.program-card dl{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}.program-card dl>div{padding:11px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:75px 1fr;gap:8px}.program-card dt{font-size:12px;font-weight:900;color:#738b99}.program-card dd{font-size:13px}.program-detail{font-size:12px;color:var(--muted);background:#f7fbfc;border-radius:10px;padding:10px;margin-top:12px}.program-card small{display:block;color:#91a3ac;margin-top:12px}
+@media(max-width:940px){.program-filter-grid{grid-template-columns:1fr 1fr}.program-grid{grid-template-columns:1fr}}
+@media(max-width:620px){.program-filter-grid{grid-template-columns:1fr}.program-card dl{grid-template-columns:1fr}}
+
+.facility-table-wrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:18px}.facility-table{width:100%;border-collapse:collapse;min-width:1050px}.facility-table th,.facility-table td{padding:12px 13px;border-bottom:1px solid var(--line);text-align:left;font-size:12px;vertical-align:top}.facility-table th{position:sticky;top:0;background:#eff8f9;color:#4c6b79}.facility-table tbody tr:hover{background:#f8fcfd}
