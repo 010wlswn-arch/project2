@@ -9,4 +9,12 @@ document.addEventListener("DOMContentLoaded",()=>{
   document.querySelectorAll(".tab-btn").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".tab-btn").forEach(b=>b.classList.toggle("is-active",b===btn));document.querySelector("#actualPanel").classList.toggle("hidden",btn.dataset.tab!=="actual");document.querySelector("#guidePanel").classList.toggle("hidden",btn.dataset.tab!=="guide")}));
   form.addEventListener("submit",e=>{e.preventDefault();renderPrograms();SportsFinder.toast(SportsFinder.t("filterSuccess"),"success")});[province,facility,category].forEach(el=>el.addEventListener("change",renderPrograms));
   fill();renderPrograms();renderCatalog();
+  const activityParam=new URLSearchParams(location.search).get("activity");
+  if(activityParam){
+    const guideBtn=document.querySelector('[data-tab="guide"]');
+    if(guideBtn) guideBtn.click();
+    [...document.querySelectorAll("#activityCatalog .activity-card")].forEach(card=>{
+      if(card.querySelector("h3")?.textContent.trim()===activityParam){card.classList.add("is-highlighted");card.scrollIntoView({behavior:"smooth",block:"center"});}
+    });
+  }
 });

@@ -36,7 +36,13 @@
 </header>
 
 <main class="map-layout">
-<aside class="map-sidebar"><span class="kicker">FACILITY MAP</span><h1 data-i18n="mapTitle">지도에서 시설 찾기</h1><p class="section-copy" data-i18n="mapDesc">카카오맵 API 키를 넣으면 시설 위치를 지도에서 탐색할 수 있습니다.</p><div class="field" style="margin-top:18px"><label data-i18n="type">시설 유형</label><select id="mapType"></select></div><div id="mapList" class="map-list"></div></aside>
+<aside class="map-sidebar"><span class="kicker">FACILITY MAP</span><h1 data-i18n="mapTitle">지도에서 시설 찾기</h1><p class="section-copy" data-i18n="mapDesc">시설명·지역·유형으로 검색하고 목록을 누르면 해당 시설 위치로 이동합니다.</p>
+<form id="mapFilter" class="map-filter">
+<div class="field"><label data-i18n="keyword">시설명 검색</label><input id="mapKeyword" type="search" placeholder="예: 목동운동장"></div>
+<div class="field"><label data-i18n="region">시도</label><select id="mapProvince"></select></div>
+<div class="field"><label data-i18n="type">시설 유형</label><select id="mapType"></select></div>
+<div class="map-filter-actions"><button class="btn btn-ghost" id="mapReset" type="button" data-i18n="reset">초기화</button><button class="btn btn-primary" type="submit" data-i18n="search">검색</button></div>
+</form><div class="result-count map-count"><span data-i18n="results">검색 결과</span> <strong id="mapResultCount">0</strong></div><div id="mapList" class="map-list"></div></aside>
 <section class="map-canvas"><div id="kakaoMap"></div><div id="mapMessage" class="map-message"><strong data-i18n="mapMissing">카카오맵 API 키가 설정되지 않았습니다.</strong><p data-i18n="mapGuide">config/kakao-map/kakao.config.js에 JavaScript 키를 입력해 주세요.</p></div></section>
 </main>
 
