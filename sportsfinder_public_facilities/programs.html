@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="전국 공공체육시설 검색 및 프로그램 정보 서비스">
+<title>프로그램 | 스포츠인더</title>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-page="programs">
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <button class="lang-btn is-active" data-lang="ko" type="button">한국어</button>
+    <button class="lang-btn" data-lang="en" type="button">English</button>
+    <button class="lang-btn" data-lang="ja" type="button">日本語</button>
+    <button class="lang-btn" data-lang="zh" type="button">中文</button>
+  </div>
+</div>
+<header class="header">
+  <div class="container header-inner">
+    <a class="brand" href="./index.html">
+      <span class="brand-mark">🏟</span>
+      <span><strong>스포츠인더</strong><small data-i18n="brandSub">PUBLIC SPORTS FINDER</small></span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="메뉴" aria-expanded="false" type="button">☰</button>
+    <nav class="main-nav">
+      <a href="./index.html" data-nav="home" data-i18n="home">홈</a>
+      <a href="./facilities.html" data-nav="facilities" data-i18n="facilities">시설 찾기</a>
+      <a href="./programs.html" data-nav="programs" data-i18n="programs">프로그램</a>
+      <a href="./stats.html" data-nav="stats" data-i18n="stats">통계</a>
+      <a href="./map.html" data-nav="map" data-i18n="map">지도</a>
+      <button class="near-btn" type="button" data-nearby data-i18n="near">내 주변 찾기</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="page-hero"><div class="container"><span class="kicker">SPORTS PROGRAM</span><h1 data-i18n="programTitle">운동 프로그램 찾기</h1><p data-i18n="programDesc">공개 강습 데이터와 시설 유형별 가능한 활동을 함께 확인하세요.</p></div></section>
+<section class="page"><div class="container">
+<div class="tabs"><button class="tab-btn is-active" data-tab="actual" data-i18n="actualPrograms">실제 공개 프로그램</button><button class="tab-btn" data-tab="guide" data-i18n="activityGuide">종목별 활동 안내</button></div>
+<div id="actualPanel">
+  <form id="programFilter" class="filter-card card">
+    <div class="filter-grid">
+      <div class="field"><label data-i18n="keyword">통합 검색</label><input id="programQ" type="search" data-i18n-placeholder="searchPh" placeholder="시설명, 지역, 종목 검색"></div>
+      <div class="field"><label data-i18n="region">시도</label><select id="programProvince"></select></div>
+      <div class="field"><label data-i18n="facility">시설</label><select id="programFacility"></select></div>
+      <div class="field"><label data-i18n="programName">프로그램</label><select id="programCategory"></select></div>
+    </div>
+    <div class="filter-actions"><div class="result-count"><span data-i18n="results">검색 결과</span> <strong id="programCount">0</strong></div><button class="btn btn-primary" type="submit" data-i18n="filter">필터 적용</button></div>
+  </form>
+  <div id="programGrid" class="program-grid"></div>
+</div>
+<div id="guidePanel" class="hidden"><div id="activityCatalog" class="activity-grid"></div></div>
+</div></section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><strong>스포츠인더</strong><p data-i18n="footer">전국 공공체육시설 정보를 한곳에서 탐색하는 학습용 웹 프로젝트</p></div>
+    <p data-i18n="disclaimer">2021 시설 현황 및 일부 공개 강습 데이터 기반. 실제 운영 여부는 각 시설에 확인하세요.</p>
+  </div>
+  <div class="container footer-bottom">© 2026 SportsFinder · Public Sports Facility Explorer</div>
+</footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="./js/data/translations.js"></script>
+<script src="./js/modules/common.js"></script>
+<script src="./js/data/programs.js"></script><script src="./js/programs.js"></script>
+</body>
+</html>

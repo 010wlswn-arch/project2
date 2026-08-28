@@ -1,0 +1,14 @@
+
+document.addEventListener("DOMContentLoaded",()=>{
+  const data=window.PUBLIC_FACILITIES||[];
+  const els={form:document.querySelector("#facilityFilter"),q:document.querySelector("#q"),province:document.querySelector("#province"),type:document.querySelector("#facilityType"),activity:document.querySelector("#activity"),grid:document.querySelector("#facilityGrid"),count:document.querySelector("#resultCount"),reset:document.querySelector("#resetBtn")};
+  const iconFor=t=>({"축구장":"⚽","야구장":"⚾","테니스장":"🎾","수영장":"🏊","생활체육관":"🏸","구기체육관":"🏀","게이트볼장":"🥌","빙상장":"⛸️","승마장":"🐎","국궁장":"🏹","양궁장":"🏹","골프연습장":"⛳"}[t]||"🏟️");
+  function options(values){return `<option value="">${SportsFinder.t("all")}</option>`+[...new Set(values.filter(Boolean))].sort().map(v=>`<option value="${SportsFinder.escapeHtml(v)}">${SportsFinder.escapeHtml(v)}</option>`).join("")}
+  function fill(){const p=els.province.value,t=els.type.value,a=els.activity.value;els.province.innerHTML=options(data.map(x=>x.province));els.type.innerHTML=options(data.map(x=>x.type));els.activity.innerHTML=options(data.flatMap(x=>x.activities||[]));els.province.value=p;els.type.value=t;els.activity.value=a}
+  function filtered(){const q=els.q.value.trim().toLowerCase(),p=els.province.value,t=els.type.value,a=els.activity.value;return data.filter(x=>{const text=[x.name,x.province,x.city,x.address,x.type,...(x.activities||[])].join(" ").toLowerCase();return(!q||text.includes(q))&&(!p||x.province===p)&&(!t||x.type===t)&&(!a||(x.activities||[]).includes(a))})}
+  function render(){const rows=filtered();els.count.textContent=rows.length.toLocaleString();const visible=rows.slice(0,120);els.grid.innerHTML=visible.length?visible.map(x=>`<article class="facility-card card"><div class="facility-visual"><span>${iconFor(x.type)}</span><em class="facility-type">${SportsFinder.escapeHtml(x.type)}</em></div><div class="facility-body"><h3>${SportsFinder.escapeHtml(x.name)}</h3><p>${SportsFinder.escapeHtml([x.province,x.city].filter(Boolean).join(" "))}</p><p>${SportsFinder.escapeHtml(x.address||"주소 정보 없음")}</p><div class="tags">${(x.activities||[]).slice(0,4).map(v=>`<span class="tag">${SportsFinder.escapeHtml(v)}</span>`).join("")}</div><a class="detail-link" href="./detail.html?id=${encodeURIComponent(x.id)}">${SportsFinder.t("details")} →</a></div></article>`).join(""):`<div class="empty"><strong>${SportsFinder.t("noResults")}</strong><p>${SportsFinder.t("tryAgain")}</p></div>`}
+  els.form.addEventListener("submit",e=>{e.preventDefault();render();SportsFinder.toast(SportsFinder.t("filterSuccess"),"success")});
+  [els.province,els.type,els.activity].forEach(el=>el.addEventListener("change",render));
+  els.reset.addEventListener("click",()=>{els.form.reset();render()});
+  const params=new URLSearchParams(location.search);els.q.value=params.get("q")||"";fill();els.type.value=params.get("type")||"";render();
+});
