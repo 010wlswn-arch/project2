@@ -125,7 +125,7 @@ img { display: block; width: 100%; }
 .memory-card img { aspect-ratio: 4 / 5; object-fit: cover; }
 .memory-copy { padding: 22px; }
 .memory-copy time { color: var(--rose-deep); font-family: Georgia, serif; font-size: 12px; letter-spacing: .1em; }
-.memory-copy h2 { margin: 5px 0 8px; font-family: "pretendard", "Noto Serif KR", serif; font-size: 23px; font-weight: 500; }
+.memory-copy h2 { margin: 5px 0 8px; font-family: Georgia, "Noto Serif KR", serif; font-size: 23px; font-weight: 500; }
 .memory-copy p { color: var(--muted); font-size: 14px; }
 .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
 .gallery-item { position: relative; overflow: hidden; border-radius: 18px; background: #eee5df; }
@@ -147,10 +147,6 @@ img { display: block; width: 100%; }
 .info-label { color: var(--rose-deep); font-size: 12px; font-weight: 700; }
 .info-value { font-size: 14px; }
 .map-placeholder { display: grid; place-items: center; min-height: 230px; padding: 30px; border-radius: 24px; background: radial-gradient(circle at 30% 25%, #f9efea, #e8ddd5); text-align: center; }
-.map-wrap { overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: white; box-shadow: var(--shadow); }
-#kakao-map { width: 100%; height: 280px; background: radial-gradient(circle at 30% 25%, #f9efea, #e8ddd5); }
-.map-message { padding: 12px 16px; color: var(--muted); font-size: 12px; text-align: center; }
-.map-message:empty { display: none; }
 .contact-person { display: flex; align-items: center; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); }
 .contact-person:last-child { border-bottom: 0; }
 .person-badge { display: grid; place-items: center; flex: 0 0 44px; height: 44px; border-radius: 50%; background: var(--blush); color: var(--rose-deep); font-size: 12px; font-weight: 700; }

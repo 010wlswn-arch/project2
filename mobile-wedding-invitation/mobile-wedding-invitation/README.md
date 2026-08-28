@@ -29,7 +29,6 @@ mobile-wedding-invitation/
 │  └─ style.css
 ├─ js/
 │  ├─ config.js
-│  ├─ kakao-map.js
 │  ├─ main.js
 │  └─ guestbook.js
 ├─ images/
@@ -129,23 +128,6 @@ kakaoJavaScriptKey: "발급받은_JAVASCRIPT_키"
 ```
 
 도메인은 경로를 제외한 프로토콜과 호스트만 등록합니다. 키가 비어 있거나 SDK 로딩에 실패하면 안내 메시지가 표시되고 나머지 청첩장 기능은 계속 작동합니다.
-
-### 6-1. 카카오맵 연결
-
-같은 JavaScript 키를 `venue.html`의 지도에도 사용합니다. `js/kakao-map.js`가 카카오맵 SDK를 동적으로 불러오므로 별도의 지도 `<script>` 태그를 추가할 필요가 없습니다.
-
-`js/config.js`에서 예식장 위도와 경도를 실제 장소에 맞게 변경하세요.
-
-```javascript
-venue: {
-  name: "라비앙로즈 웨딩홀 3층 그랜드홀",
-  address: "서울특별시 강남구 테헤란로 123",
-  lat: 37.5007,
-  lng: 127.0365
-}
-```
-
-지도가 표시되지 않으면 현재 접속 주소가 Kakao Developers의 Web 사이트 도메인에 등록되어 있는지 확인합니다. `localhost`와 `127.0.0.1`은 서로 다른 도메인으로 인식됩니다.
 
 ## 7. 주요 JavaScript 이벤트
 
