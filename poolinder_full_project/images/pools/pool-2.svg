@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
+<rect width="900" height="520" fill="#e9f7f7"/><path d="M0 220L170 80H730L900 220V520H0Z" fill="#d1e6e9"/>
+<rect x="70" y="160" width="760" height="300" rx="20" fill="#0d89af"/><g stroke="#f4fbfc" stroke-width="8"><path d="M100 220H800"/><path d="M100 290H800"/><path d="M100 360H800"/></g>
+<g stroke="#f17f86" stroke-width="5"><path d="M140 220H760"/><path d="M140 360H760"/></g><circle cx="720" cy="105" r="38" fill="#ffd16a"/>
+<text x="70" y="105" fill="#1b5269" font-size="34" font-family="Arial" font-weight="700">INDOOR SWIM CENTER</text></svg>

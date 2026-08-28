@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
+<rect width="900" height="520" fill="#dff2f4"/><rect x="0" y="0" width="900" height="170" fill="#bfe2e6"/>
+<g fill="#fff" opacity=".85"><rect x="70" y="45" width="180" height="80"/><rect x="360" y="45" width="180" height="80"/><rect x="650" y="45" width="180" height="80"/></g>
+<rect x="45" y="205" width="810" height="270" rx="22" fill="#168db4"/><g stroke="#fff" stroke-width="7"><path d="M70 250H830"/><path d="M70 320H830"/><path d="M70 390H830"/></g>
+<text x="70" y="155" fill="#1a5368" font-size="32" font-family="Arial" font-weight="700">PUBLIC SPORTS CENTER</text></svg>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="공공 수영장 검색 서비스 풀인더">
+  <title>즐겨찾기 | 풀인더</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-page="favorites">
+
+<div class="top-language">
+  <div class="container top-language__inner">
+    <span class="top-language__label" data-i18n="languageLabel">언어</span>
+    <div class="language-switcher" role="group" aria-label="Language">
+      <button class="lang-button is-active" type="button" data-lang="ko">한국어</button>
+      <button class="lang-button" type="button" data-lang="en">English</button>
+      <button class="lang-button" type="button" data-lang="ja">日本語</button>
+      <button class="lang-button" type="button" data-lang="zh">中文</button>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="./index.html" aria-label="풀인더 홈">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><path d="M8 21c5 4 10 4 16 0s11-4 16 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M8 30c5 4 10 4 16 0s11-4 16 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+      </span>
+      <span class="brand-copy"><strong>풀인더</strong><small>PUBLIC POOL FINDER</small></span>
+    </a>
+
+    <button class="mobile-menu-button" type="button" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+
+    <nav class="main-nav" aria-label="주요 메뉴">
+      <a href="./index.html" data-nav="home" data-i18n="navHome">홈</a>
+      <a href="./pools.html" data-nav="pools" data-i18n="navPools">수영장 찾기</a>
+      <a href="./map.html" data-nav="map" data-i18n="navMap">지도</a>
+      <a href="./favorites.html" data-nav="favorites" data-i18n="navFavorites">즐겨찾기</a>
+      <button class="nearby-button" type="button" data-nearby data-i18n="navNearby">내 주변 찾기</button>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+  <section class="page-hero">
+    <div class="container page-hero-grid"><div><span class="section-kicker">MY POOLS</span><h1 data-i18n="favoritesTitle">내 즐겨찾기</h1><p data-i18n="favoritesDesc">저장한 수영장을 한곳에서 다시 확인할 수 있습니다.</p></div></div>
+  </section>
+  <section class="page-shell">
+    <div class="container">
+      <div class="favorite-toolbar">
+        <div class="favorite-count"><span data-i18n="results">검색 결과</span> <strong id="favoriteCount">0</strong> <span data-i18n="places">곳</span></div>
+        <button id="clearFavorites" type="button" class="button button--danger" data-i18n="clearFavorites">전체 삭제</button>
+      </div>
+      <div id="favoriteGrid" class="pool-card-grid"></div>
+    </div>
+  </section>
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="brand brand--footer" href="./index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M8 21c5 4 10 4 16 0s11-4 16 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M8 30c5 4 10 4 16 0s11-4 16 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-copy"><strong>풀인더</strong><small>PUBLIC POOL FINDER</small></span>
+      </a>
+      <p data-i18n="footerSummary">공공 수영장 정보를 지역·풀 길이·레인 수·시설 유형으로 빠르게 찾아보세요.</p>
+    </div>
+    <div class="footer-links">
+      <a href="./pools.html" data-i18n="navPools">수영장 찾기</a>
+      <a href="./map.html" data-i18n="navMap">지도</a>
+      <a href="./favorites.html" data-i18n="navFavorites">즐겨찾기</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <small>© 2026 Poolinder. Educational prototype.</small>
+    <small data-i18n="dataNotice">실제 운영정보는 해당 시설의 최신 공지를 확인해 주세요.</small>
+  </div>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="./js/data/translations.js"></script>
+<script src="./js/data/pools.js"></script>
+<script src="./js/modules/common.js"></script>
+<script src="./js/favorites.js"></script>
+</body>
+</html>

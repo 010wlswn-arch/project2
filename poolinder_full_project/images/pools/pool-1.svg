@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dff8fb"/><stop offset=".45" stop-color="#c6eaf0"/><stop offset=".46" stop-color="#148eb5"/><stop offset="1" stop-color="#076b9b"/></linearGradient></defs>
+<rect width="900" height="520" fill="url(#g)"/><rect x="60" y="70" width="780" height="230" rx="18" fill="#f8fcfd" opacity=".55"/>
+<g stroke="#fff" stroke-width="7" opacity=".95"><path d="M40 340H860"/><path d="M40 390H860"/><path d="M40 440H860"/></g>
+<g stroke="#ef777c" stroke-width="5"><path d="M80 340H820"/><path d="M80 440H820"/></g>
+<text x="70" y="115" fill="#20536a" font-size="38" font-family="Arial" font-weight="700">POOL PHOTO PLACEHOLDER</text>
+<text x="70" y="160" fill="#557d8e" font-size="22" font-family="Arial">Replace this SVG with your real pool photo.</text></svg>
