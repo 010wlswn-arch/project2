@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="김민혁과 이서영의 모바일 청첩장">
+  <meta property="og:title" content="민혁 그리고 서영, 결혼합니다">
+  <meta property="og:description" content="2026년 10월 17일 토요일 오후 2시">
+  <meta property="og:image" content="./images/main_wedding.webp">
+  <title>민혁 ♥ 서영 | 모바일 청첩장</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <div class="app-shell">
+    <main id="main" class="page">
+      <section class="hero" aria-labelledby="hero-title">
+        <img class="hero-image" src="./images/main_wedding.webp" alt="신랑 김민혁과 신부 이서영의 웨딩 사진">
+        <div class="hero-content">
+          <p class="hero-kicker">We are getting married</p>
+          <h1 id="hero-title" class="hero-title">민혁 <span aria-hidden="true">&amp;</span> 서영</h1>
+          <p class="hero-meta">2026. 10. 17. SAT · PM 2:00<br>라비앙로즈 웨딩홀 3층 그랜드홀</p>
+        </div>
+      </section>
+
+      <section class="section center">
+        <div class="reveal">
+          <p class="eyebrow">Invitation</p>
+          <h2 class="section-title">소중한 분들을<br>초대합니다</h2>
+          <div class="divider"></div>
+          <p class="invitation-message">서로 다른 길을 걸어온 두 사람이<br>이제 하나의 길을 함께 걸어가려 합니다.<br><br>저희 두 사람의 새로운 시작을<br>소중한 분들과 함께하고 싶습니다.<br><br>귀한 걸음으로 자리를 빛내 주시고<br>따뜻한 축복으로 함께해 주시면 감사하겠습니다.</p>
+          <p class="family-line"><strong>김대성 · 박미정</strong>의 아들 민혁<br><strong>이완성 · 최은주</strong>의 딸 서영</p>
+        </div>
+      </section>
+
+      <section class="section center" style="background:#f8f0ec">
+        <div class="reveal">
+          <p class="eyebrow">Save the date</p>
+          <h2 class="section-title">우리의 날까지</h2>
+          <p id="countdown-message" class="section-copy">2026년 10월 17일 오후 2시</p>
+          <div id="countdown" class="countdown" aria-label="결혼식까지 남은 시간">
+            <div class="time-box"><span class="time-value" data-time="days">00</span><span class="time-label">DAYS</span></div>
+            <div class="time-box"><span class="time-value" data-time="hours">00</span><span class="time-label">HOURS</span></div>
+            <div class="time-box"><span class="time-value" data-time="minutes">00</span><span class="time-label">MINUTES</span></div>
+            <div class="time-box"><span class="time-value" data-time="seconds">00</span><span class="time-label">SECONDS</span></div>
+          </div>
+        </div>
+        <div class="quick-grid reveal" data-delay="1">
+          <a class="button secondary" href="./gallery.html">사진 보기</a>
+          <a class="button rose" href="./venue.html">오시는 길</a>
+          <button class="button secondary" type="button" data-share>공유하기</button>
+          <button id="kakao-share-button" class="button secondary" type="button">카카오톡</button>
+        </div>
+      </section>
+
+      <section class="section center reveal">
+        <img src="./images/bouquet.webp" alt="하얀 꽃과 분홍 장미로 구성된 웨딩 부케" style="border-radius:28px; aspect-ratio:4/5; object-fit:cover">
+        <p class="section-copy" style="margin-top:24px">저희의 새로운 시작을 축복해 주시는<br>모든 분께 진심으로 감사드립니다.</p>
+      </section>
+    </main>
+    <nav class="bottom-nav" aria-label="청첩장 화면">
+      <a href="./index.html" aria-current="page"><span class="nav-icon">⌂</span><span>초대</span></a>
+      <a href="./story.html"><span class="nav-icon">♡</span><span>이야기</span></a>
+      <a href="./gallery.html"><span class="nav-icon">▧</span><span>사진</span></a>
+      <a href="./venue.html"><span class="nav-icon">⌖</span><span>안내</span></a>
+      <a href="./guestbook.html"><span class="nav-icon">✎</span><span>방명록</span></a>
+    </nav>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js" crossorigin="anonymous" onerror="console.warn('Kakao SDK를 불러오지 못했습니다.')"></script>
+  <script src="./js/config.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
