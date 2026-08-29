@@ -1,0 +1,345 @@
+@charset "utf-8";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "맑은 고딕", "malgun gothic", sans-serif;
+    background: #fff;
+    color: #333;
+}
+a{text-decoration: none;}
+li{list-style: none;}
+.popup{
+    width: 400px;
+    height:450px;
+    display: none;
+    border: 1px solid #333;
+    background: #fff;
+    position: fixed;
+    left: 50%;
+    margin-left: -200px;
+    top: 50%;
+    margin-top: -200px;
+    padding: 24px;
+    z-index: 102;
+}
+.popup h2{
+    font-size: 18px;
+    line-height: 32px;
+    text-align: center;
+}
+.popup button{
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    cursor: pointer;
+    background: #ddd;
+    transition: background-color 0.2s;
+    padding: 6px 15px;
+    border: 0;
+    
+}
+.popup button:hover{
+    background-color: #9ca44e;
+}
+
+.wrap{
+    width: 100%;
+    height: 970px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.wrap header{
+    width: 200px;
+    height: 850px;
+}
+.wrap header h1{
+    width: 100%;
+    height: 180px;
+    display: flex;
+    justify-content: center; /* 좌우 가운데 */
+    align-items: center;     /* 상하 가운데 */
+}
+/* 메인메뉴 */
+.gnb{
+    width: 100%;
+    padding: 20px;
+}
+.gnb>li{
+    width: 100%;
+    height: 50px;
+    position: relative;
+}
+.gnb li:hover{
+    background: #9ca44e;
+}
+.gnb>li>a{
+    width: 100%;
+    height: 50px;
+    display: block;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 3px solid #555;
+}
+/* 2차메뉴 */
+.depth2{
+    position: absolute;
+
+    left: 100%;
+    top: 0;
+
+    width: calc(100vw - 200px);
+    min-height: 200px;
+
+    display: none;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    background: rgba(255,255,255,0.95);
+
+    z-index: 500;
+}
+
+/* 2차메뉴 각각 */
+.depth2 li{
+    height: 50px;
+    border-bottom: 1px solid #ccc;
+}
+
+.depth2 li a{
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #333;
+}
+.wrap .rwrap{
+    width: calc(100% - 200px);
+    height: 850px;
+    position: relative;
+}
+/* 바로가기영역 */
+.link {
+    position: absolute;
+    flex-direction: column;
+    top: 24px;
+    right: 24px;
+    display: flex;
+    gap: 10px;
+    z-index: 120;
+    background: #fff;
+}
+
+.link a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.link img {
+    width: 50px;
+    height: 50px;
+}
+/* 로그인/회원가입 */
+.wrap header .login{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    margin-top: 40px;
+}
+.login a{
+    color: #333;
+}
+
+/* 슬라이드 전체 영역 */
+.wrap .rwrap .slide{
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    z-index: 100;
+}
+.wrap .rwrap .slide ul{
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+/* 각각의 슬라이드 */
+.wrap .rwrap .slide li{
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.wrap .rwrap .slide li a{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.wrap .rwrap .slide li a img{
+    width: 100%;
+    height: 100%;
+    /* 이미지 왜곡 해제 */
+    object-fit: cover;
+}
+
+.contents{
+    width: 100%;
+    height: 450px;
+    display: flex;
+    left: 0;
+    /* 자식들을 위 → 아래로 배치 */
+    flex-direction: column;
+}
+.contents .banner{
+    width: 100%;
+    height: 200px;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contents .banner p{
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 500;
+}
+.contents .banner img{
+}
+.contents .tab{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #333;
+}
+.contents .tab li{
+    height: 50px;
+    line-height: 50px;
+}
+.contents .tab .on{
+    border-bottom: 3px solid #9ca44e;
+}
+.contents .tab li a{
+    color: #333;
+    font-weight: 600;
+    display: block;
+}
+.contents .board{
+    width: 100%;
+    height: 200px;
+}
+.contents .notice{
+    width: 100%;
+    height: 200px;
+    justify-content: space-between;
+     display: flex;          /* ← 이게 빠졌어! */
+    flex-direction: column; /* li를 세로로 쌓기 */
+    justify-content: center;
+    
+}
+.contents .notice li{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+     /* 좌우 여백 */
+    padding: 0 10px;
+    
+
+    /* 행 구분선 */
+    border-bottom: 1px solid #ccc;
+}
+.contents .notice li a{
+    color: #333;
+}
+.contents .gallery{
+    width: 100%;
+    height: 200px;
+    display: none;
+    justify-content: space-between;
+    padding: 10px 30px;
+    position: relative;
+}
+/* 각각의 사진이 h2의 기준점 */
+.contents .gallery li {
+    width: 32%;
+    height: 180px;
+    position: relative;
+}
+
+.contents .gallery li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.contents .gallery li img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 사진 위 글자 */
+.contents .gallery li h2 {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 90%;
+    text-align: center;
+
+    color: #fff;
+    font-size: 18px;
+    background: rgba(0, 0, 0, 0.4);
+}
+/* footer영역 */
+footer{
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ccc;
+    margin: 20px;
+}
+footer .fwrap{
+    width: calc(100% - 200px);
+    height: 120px;
+    text-align: center;
+    align-items: center;
+    margin-top: 10px;
+}
+footer .fwrap .fmenu{
+    width: calc(100% - 200px);
+    height: 70px;
+}
+footer .fwrap .fmenu li a{
+    color: #333;
+    font-size: 12px;
+    font-weight: 600;
+}
+footer .fwrap p{
+    width: calc(100% - 200px);
+    height: 50px;
+    color: #333;
+    font-size: 12px;
+}
