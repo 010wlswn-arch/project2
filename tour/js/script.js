@@ -20,10 +20,16 @@ $(function(){
 
     }, 3000);
     // family 버튼을 클릭하면 한번 보이고/ 숨김
-    $("button").click(function(){
+    $(".btn2").click(function(){
         $(".list").fadeToggle();
     })
-
+    //  POPUP
+    $(".first").click(function(){
+        $(".popup").show();
+    });
+    $(".btn1").click(function(){
+        $(".popup").hide();
+    });
 
 
 });

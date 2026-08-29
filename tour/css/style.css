@@ -47,6 +47,40 @@ header nav .gnb li:hover{
     background: #9190D4;
 }
 header nav .gnb li:hover a{color: #fff;}
+/* popup영역 */
+.popup{
+    width: 400px;
+    height: 400px;
+    border: 1px solid #333;
+    display: none;
+    background: #fff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    padding: 16px;
+}
+.popup h2{
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+.popup p{
+    font-size: 14px;
+    line-height: 22px;
+}
+.popup .btn1{
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    padding: 5px 15px;
+    background: #ddd;
+    border: none;
+}
+.popup .btn1:hover{
+    background-color: #EB9D0F;
+}
 /* 2단메뉴 영역 */
 .depth2{
     width: 600px;
